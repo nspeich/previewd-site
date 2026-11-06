@@ -17,3 +17,4 @@ previewd-site/
 - Paiement des plans Pro/Agence : Stripe Checkout.
 - Polices : Fraunces et Inter via Google Fonts (à auto-héberger en production si besoin de souveraineté stricte).
 # previewd-site
+# previewd-site
