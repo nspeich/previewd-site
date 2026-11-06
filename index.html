@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>previewd — Ce que vous écrivez reste chez vous</title>
+    <meta name="description"
+        content="previewd : des previews de code isolées, éphémères et vérifiables. Self-hosted ou cloud managé.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🔒%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&amp;family=Inter:wght@400;500;600&amp;display=swap">
+    <link rel="stylesheet" href="css/Tockens.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Components.css">
+    <link rel="stylesheet" href="css/Sections.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <a class="logo" href="#top">preview<i>d</i></a>
+            <nav><a class="h" href="#promesse">La promesse</a><a class="h" href="#deux">Deux façons</a><a
+                    href="#tarifs">Tarifs</a><a class="btn p" href="#contact"
+                    style="padding:8px 16px;font-size:14px">Commencer</a></nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="wrap hero">
+            <div class="eyebrow">Prévisualisation de code, sous clé</div>
+            <h1>Ce que vous écrivez <em>reste chez vous.</em></h1>
+            <p class="lead">Chaque pull request mérite son propre petit monde, clos, éphémère, et sans fenêtre sur
+                l’extérieur. previewd vous le prouve, ligne après ligne, au lieu de vous demander de nous croire sur
+                parole.</p>
+            <div class="cta"><a class="btn p" href="#tarifs">Voir les formules</a><a class="btn"
+                    href="#promesse">Comprendre la promesse</a></div>
+            <div class="proof rv">
+                <div><b>0</b><span>réseau sortant dans l’enclos</span></div>
+                <div><b>41 000</b><span>lignes, aucun « TODO » laissé</span></div>
+                <div><b>TLA+</b><span>modèle formel de l’isolation</span></div>
+                <div><b>SHA</b><span>chaîne d’audit infalsifiable</span></div>
+            </div>
+        </div>
+
+        <section id="promesse">
+            <div class="wrap">
+                <div class="eyebrow">La promesse</div>
+                <h2 class="rv">Une preview, c’est une URL. L’isolation, c’est une parole tenue.</h2>
+                <p class="sub rv">Beaucoup d’outils vous donnent un lien pour voir votre travail. previewd répond à une
+                    question plus grave : et si le code, quel que soit son auteur, ne pouvait tout simplement pas sortir
+                    de sa boîte ? Le lien n’est que la conséquence visible d’une garantie bien plus profonde.</p>
+                <pre class="rv"><b>$</b> previewd preflight
+<i>✓</i> conteneur sans réseau ............ vérifié
+<i>✓</i> chaîne d’audit (SQLite) .......... intègre
+<i>✓</i> sonde de build ................... conforme
+<b>→</b> tout est en ordre. Le démon peut démarrer.</pre>
+                <p class="note">Si un seul de ces points cède, le démon refuse de démarrer. Nous préférons un silence
+                    franc à une fausse assurance.</p>
+            </div>
+        </section>
+
+        <section id="deux">
+            <div class="wrap">
+                <div class="eyebrow">Deux façons d’en faire partie</div>
+                <h2 class="rv">Chez vous, ou chez nous. Dans les deux cas, en confiance.</h2>
+                <p class="sub rv">Les uns ont besoin que rien ne franchisse leurs murs. Les autres veulent surtout
+                    retrouver le plaisir de créer. Il y a une porte pour chacun.</p>
+                <div class="two">
+                    <div class="card rv"><span class="tag">Souverain · self-hosted · air-gapped</span>
+                        <h3>La tranquillité de ceux qui ont des comptes à rendre.</h3>
+                        <p>Banques, hôpitaux, défense, éditeurs de secrets industriels : votre code dort sous votre
+                            toit, sans jamais croiser Internet.</p>
+                        <ul class="ck">
+                            <li>Isolation Docker sans aucun réseau</li>
+                            <li>Audit par chaîne de hachage, rejouable</li>
+                            <li>Binaire unique, déployable hors ligne</li>
+                            <li>Rapports de conformité prêts à signer</li>
+                        </ul>
+                    </div>
+                    <div class="card rv"><span class="tag">Cloud managé · zéro ops</span>
+                        <h3>Le bonheur de montrer son travail, sans plomberie.</h3>
+                        <p>Freelances et agences : ouvrez une PR, un lien naît. Vos clients valident, vous vous
+                            concentrez sur l’essentiel, créer.</p>
+                        <ul class="ck">
+                            <li>Une preview instantanée par pull request</li>
+                            <li>Domaines personnalisés, logs de build clairs</li>
+                            <li>Partage sécurisé avec vos clients</li>
+                            <li>Aucun serveur à surveiller, jamais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarifs">
+            <div class="wrap">
+                <div class="eyebrow">Tarifs</div>
+                <h2 class="rv">Des formules à taille humaine.</h2>
+                <p class="sub rv">Que vous codiez le soir pour un ami ou que vous protégiez les secrets d’une
+                    institution, voici de quoi commencer sans compter.</p>
+                <div class="tabs" role="tablist" aria-label="Type d’offre">
+                    <button role="tab" aria-selected="false" data-t="oss">Communauté</button>
+                    <button role="tab" aria-selected="true" data-t="saas">Cloud · Freelances &amp; agences</button>
+                    <button role="tab" aria-selected="false" data-t="ent">Enterprise &amp; souveraineté</button>
+                </div>
+
+                <div class="panel" id="p-oss" hidden>
+                    <div class="card" style="max-width:560px"><span class="tag">Open source · Communauté</span>
+                        <div class="price">0 €<small> pour toujours</small></div>
+                        <h3>Le geste libre.</h3>
+                        <p>L’agent complet, offert, pour que chacun puisse vérifier de ses propres yeux ce que nous
+                            avançons.</p>
+                        <ul class="ck">
+                            <li>Binaire complet de l’agent</li>
+                            <li>Préflight de conformité</li>
+                            <li>Chaîne d’audit SQLite</li>
+                            <li>Auto-hébergement, auditabilité totale</li>
+                        </ul>
+                        <a class="btn" href="#contact">Télécharger l’agent</a>
+                    </div>
+                </div>
+
+                <div class="panel" id="p-saas">
+                    <div class="billing"><span>Mensuel</span><button class="sw" id="sw" role="switch"
+                            aria-checked="false" aria-label="Facturation annuelle"></button><span>Annuel <b
+                                style="color:var(--ok)">2 mois offerts</b></span></div>
+                    <div class="plans">
+                        <div class="card"><span class="tag">Hobby</span>
+                            <div class="price">0 €</div>
+                            <p>Pour essayer, apprendre, s’amuser.</p>
+                            <ul class="ck">
+                                <li>Jusqu’à 3 environnements actifs</li>
+                                <li>Durée de vie courte (TTL)</li>
+                                <li>Sans carte bancaire</li>
+                            </ul><a class="btn" href="#contact">Commencer gratuitement</a>
+                        </div>
+                        <div class="card hi"><span class="tag">Pro · Freelance</span>
+                            <div class="price"><span class="amt" data-m="19" data-a="190">19</span> €<small class="per">
+                                    / mois</small></div>
+                            <p>Pour celles et ceux qui vivent de leur art.</p>
+                            <ul class="ck">
+                                <li>Previews illimitées</li>
+                                <li>Domaines personnalisés</li>
+                                <li>Sidecars supportés</li>
+                                <li>Logs de build accessibles</li>
+                            </ul><a class="btn p" href="#contact">Choisir Pro</a>
+                        </div>
+                        <div class="card"><span class="tag">Agence</span>
+                            <div class="price"><span class="amt" data-m="79" data-a="790">79</span> €<small class="per">
+                                    / mois</small></div>
+                            <p>Pour les équipes qui veulent un « oui » rapide.</p>
+                            <ul class="ck">
+                                <li>Tout Pro, pour toute l’équipe</li>
+                                <li>Liens de preview partagés aux clients finaux</li>
+                                <li>Validation simplifiée, sans compte client</li>
+                            </ul><a class="btn" href="#contact">Choisir Agence</a>
+                        </div>
+                    </div>
+                    <p class="note">Paiement sécurisé par carte. Résiliable en un clic, sans question embarrassante.</p>
+                </div>
+
+                <div class="panel" id="p-ent" hidden>
+                    <div class="plans">
+                        <div class="card"><span class="tag">Team</span>
+                            <div class="price">dès 1 500 €<small> / an</small></div>
+                            <p>Pour la première équipe qui veut tout garder chez elle.</p>
+                            <ul class="ck">
+                                <li>Self-hosted, licence annuelle</li>
+                                <li>Support prioritaire</li>
+                                <li>Rapports d’audit</li>
+                            </ul><a class="btn" href="#contact">Demander un devis</a>
+                        </div>
+                        <div class="card hi"><span class="tag">Enterprise</span>
+                            <div class="price">jusqu’à 25 000 €+<small> / an</small></div>
+                            <p>Pour les organisations dont la confiance est le métier.</p>
+                            <ul class="ck">
+                                <li>Déploiement air-gapped accompagné</li>
+                                <li>Conformité et rapports d’audit dédiés</li>
+                                <li>Support prioritaire, interlocuteur nommé</li>
+                            </ul><a class="btn p" href="#contact">Parlons-en</a>
+                        </div>
+                    </div>
+                    <p class="note">Chaque édition se dessine avec vous : le devis suit la taille de votre équipe et vos
+                        exigences.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <p class="quote rv">« La confiance ne se promet pas. Elle se démontre, à chaque démarrage. »</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="wrap">
+                <div class="eyebrow">Contact</div>
+                <h2 class="rv">Dites-nous ce que vous construisez.</h2>
+                <p class="sub">Un humain vous répond, avec plaisir, sous un jour ouvré.</p>
+                <form class="c" id="f"><input name="n" placeholder="Votre prénom" required
+                        autocomplete="given-name"><input name="e" type="email" placeholder="Votre e-mail" required
+                        autocomplete="email"><textarea name="m" rows="4"
+                        placeholder="Votre projet, en quelques mots"></textarea><button class="btn p"
+                        type="submit">Envoyer</button>
+                    <div id="msg" role="status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap"><span>© 2026 previewd. Fait avec soin, loin des regards.</span><span>Confidentialité ·
+                Mentions légales</span></div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>

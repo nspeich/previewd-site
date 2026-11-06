@@ -1,0 +1,77 @@
+/* Reset, typographie et mise en page de base */
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    17px/1.65 Inter,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.serif {
+  font-family: Fraunces, 'Iowan Old Style', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: clamp(40px, 7vw, 78px);
+  max-width: 13em;
+}
+
+h1 em {
+  color: var(--accent);
+}
+
+.lead {
+  max-width: 36em;
+  color: var(--muted);
+  font-size: 19px;
+  margin: 28px 0 36px;
+}
+
+section {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+}
+
+.sub {
+  color: var(--muted);
+  max-width: 38em;
+  margin: 16px 0 44px;
+}
