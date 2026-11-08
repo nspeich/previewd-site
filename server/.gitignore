@@ -1,0 +1,10 @@
+# Configuration réelle (contient des clés) — ne jamais versionner
+.env
+.env.*
+!.env.example
+
+# Journal des événements de facturation (données d'exploitation)
+data/
+
+node_modules/
+npm-debug.log*

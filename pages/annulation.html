@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paiement interrompu — previewd</title>
+  <meta name="theme-color" content="#07080a">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header is-scrolled" id="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="previewd, retour au site">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="21.6" cy="21.4" r="1.9" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">previewd</span>
+      </a>
+      <div class="header-actions">
+        <a class="btn btn-ghost btn-sm" href="index.html">Retour au site</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="status-page">
+      <div class="wrap">
+        <div class="status-icon is-warn" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 7.6v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="16.3" r="1.05" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <h1>Paiement interrompu</h1>
+        <p>
+          Aucun montant n'a été prélevé et votre carte n'a pas été enregistrée. Vous pouvez
+          reprendre quand vous voulez — le panier n'a pas de durée de vie.
+        </p>
+
+        <div class="status-actions">
+          <a class="btn btn-primary" href="paiement.html?plan=pro">Réessayer</a>
+          <a class="btn btn-ghost" href="index.html#tarifs">Comparer les offres</a>
+        </div>
+
+        <p class="legal" style="margin-left:auto;margin-right:auto;text-align:center">
+          Un moyen de paiement refusé, une question de facturation ? Écrivez à
+          <a href="mailto:contact@previewd.example" style="color:var(--accent)">contact@previewd.example</a>.
+          Et si vous préférez ne dépendre de personne : l'édition Open Source est gratuite et complète.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom">
+      <p>© <span id="year">2026</span> previewd. Tous droits réservés.</p>
+      <p class="footer-mono">Site de démonstration · aucune ressource externe chargée</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

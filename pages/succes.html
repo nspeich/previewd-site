@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abonnement confirmé — previewd</title>
+  <meta name="theme-color" content="#07080a">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header is-scrolled" id="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="previewd, retour au site">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="21.6" cy="21.4" r="1.9" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">previewd</span>
+      </a>
+      <div class="header-actions">
+        <a class="btn btn-ghost btn-sm" href="index.html">Retour au site</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="status-page">
+      <div class="wrap">
+        <div class="status-icon" id="status-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <h1 id="status-title">C'est parti.</h1>
+        <p id="status-text">
+          Votre abonnement est en cours d'activation. Vous recevrez un courriel avec les
+          instructions pour relier votre première forge.
+        </p>
+
+        <dl class="status-card" id="status-card" hidden>
+          <div class="status-row"><dt>Formule</dt><dd id="status-plan">—</dd></div>
+          <div class="status-row"><dt>Montant</dt><dd id="status-amount">—</dd></div>
+          <div class="status-row"><dt>Courriel</dt><dd id="status-email">—</dd></div>
+          <div class="status-row"><dt>Statut</dt><dd id="status-state">—</dd></div>
+        </dl>
+
+        <div class="status-actions">
+          <a class="btn btn-primary" href="index.html#deploiement">Relier ma forge</a>
+          <a class="btn btn-ghost" href="index.html">Retour à l'accueil</a>
+        </div>
+
+        <p class="legal" style="margin-left:auto;margin-right:auto;text-align:center">
+          Une question sur cette commande ? Écrivez à
+          <a href="mailto:contact@previewd.example" style="color:var(--accent)">contact@previewd.example</a>
+          en précisant l'identifiant de session affiché par Stripe.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom">
+      <p>© <span id="year">2026</span> previewd. Tous droits réservés.</p>
+      <p class="footer-mono">Paiement traité par Stripe</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/paiement.js" defer></script>
+</body>
+</html>
