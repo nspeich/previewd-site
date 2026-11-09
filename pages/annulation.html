@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paiement interrompu — previewd</title>
+  <title data-i18n="cancel.title">Paiement interrompu — previewd</title>
   <meta name="theme-color" content="#07080a">
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
 
   <header class="site-header is-scrolled" id="header">
     <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="previewd, retour au site">
+      <a class="brand" href="../index.html" aria-label="previewd, retour au site" data-i18n-aria-label="a11y.brandSite">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
           <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,7 +22,13 @@
         <span class="brand-name">previewd</span>
       </a>
       <div class="header-actions">
-        <a class="btn btn-ghost btn-sm" href="index.html">Retour au site</a>
+        <a class="btn btn-ghost btn-sm" href="../index.html" data-i18n="header.backSite">Retour au site</a>
+      </div>
+
+      <div class="lang-switch" data-lang-switch>
+        <select class="lang-select" id="lang-select" data-lang-select aria-label="Langue du site" data-i18n-aria-label="a11y.lang">
+          <option value="fr" lang="fr">FR</option>
+        </select>
       </div>
     </div>
   </header>
@@ -38,18 +44,18 @@
           </svg>
         </div>
 
-        <h1>Paiement interrompu</h1>
-        <p>
+        <h1 data-i18n="cancel.h1">Paiement interrompu</h1>
+        <p data-i18n="cancel.text">
           Aucun montant n'a été prélevé et votre carte n'a pas été enregistrée. Vous pouvez
           reprendre quand vous voulez — le panier n'a pas de durée de vie.
         </p>
 
         <div class="status-actions">
-          <a class="btn btn-primary" href="paiement.html?plan=pro">Réessayer</a>
-          <a class="btn btn-ghost" href="index.html#tarifs">Comparer les offres</a>
+          <a class="btn btn-primary" href="paiement.html?plan=pro" data-i18n="cancel.retry">Réessayer</a>
+          <a class="btn btn-ghost" href="../index.html#tarifs" data-i18n="cancel.compare">Comparer les offres</a>
         </div>
 
-        <p class="legal" style="margin-left:auto;margin-right:auto;text-align:center">
+        <p class="legal" style="margin-left:auto;margin-right:auto;text-align:center" data-i18n="cancel.help">
           Un moyen de paiement refusé, une question de facturation ? Écrivez à
           <a href="mailto:contact@previewd.example" style="color:var(--accent)">contact@previewd.example</a>.
           Et si vous préférez ne dépendre de personne : l'édition Open Source est gratuite et complète.
@@ -60,11 +66,12 @@
 
   <footer class="site-footer">
     <div class="wrap footer-bottom">
-      <p>© <span id="year">2026</span> previewd. Tous droits réservés.</p>
-      <p class="footer-mono">Site de démonstration · aucune ressource externe chargée</p>
+      <p>© <span id="year">2026</span> previewd. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+      <p class="footer-mono" data-i18n="footer.demo">Site de démonstration · aucune ressource externe chargée</p>
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+  <script src="../js/main.js" defer></script>
 </body>
 </html>

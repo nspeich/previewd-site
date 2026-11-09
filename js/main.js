@@ -8,6 +8,17 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Les textes produits par le script passent par le même dictionnaire que
+  // le HTML. Si i18n.js n'a pas pu charger (page ouverte en file://), on
+  // retombe sur les libellés français d'origine.
+  function t(key, fallback) {
+    if (window.i18n && window.i18n.ready) {
+      var value = window.i18n.t(key);
+      if (value) return value;
+    }
+    return fallback;
+  }
+
   /* ---------------------------------------------------------------------
      1. En-tête : fond au défilement
      --------------------------------------------------------------------- */
@@ -31,7 +42,10 @@
     if (!header || !burger) return;
     header.classList.toggle("is-open", open);
     burger.setAttribute("aria-expanded", String(open));
-    burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    burger.setAttribute(
+      "aria-label",
+      open ? t("a11y.menuClose", "Fermer le menu") : t("a11y.menuOpen", "Ouvrir le menu")
+    );
   }
 
   if (burger) {
@@ -209,15 +223,16 @@
         .writeText(text.trim())
         .then(function () {
           var label = button.textContent;
-          button.textContent = "Copié";
+          button.textContent = t("js.copied", "Copié");
           button.disabled = true;
           window.setTimeout(function () {
-            button.textContent = label;
+            // Le libellé d'origine peut avoir changé de langue entre-temps.
+            button.textContent = t("deploy.copy", label);
             button.disabled = false;
           }, 1800);
         })
         .catch(function () {
-          button.textContent = "Échec";
+          button.textContent = t("js.copyFailed", "Échec");
         });
     });
   });
@@ -251,16 +266,19 @@
       var org = (document.getElementById("org") || {}).value || "";
       var contexte = (document.getElementById("contexte") || {}).value || "";
 
-      var sujet = "Demande d'évaluation previewd — " + (org || "organisation");
+      var sujet =
+        t("js.mailSubject", "Demande d'évaluation previewd") +
+        " — " +
+        (org || t("js.mailOrg", "organisation"));
       var corps = [
-        "Nom : " + nom,
-        "Courriel : " + email,
-        "Organisation : " + org,
+        t("js.mailName", "Nom") + ": " + nom,
+        t("js.mailEmail", "Courriel") + ": " + email,
+        t("js.mailOrgLabel", "Organisation") + ": " + org,
         "",
-        "Contexte :",
-        contexte || "(non précisé)",
+        t("js.mailContext", "Contexte") + ":",
+        contexte || t("js.mailUnspecified", "(non précisé)"),
         "",
-        "— Demande envoyée depuis le site previewd",
+        t("js.mailFooter", "— Demande envoyée depuis le site previewd"),
       ].join("\n");
 
       var destination = (form.getAttribute("action") || "")
@@ -276,8 +294,10 @@
         encodeURIComponent(corps);
 
       if (note) {
-        note.textContent =
-          "Votre logiciel de messagerie est ouvert avec la demande pré-remplie. Rien n'a été transmis à un serveur.";
+        note.textContent = t(
+          "contact.noteSent",
+          "Votre logiciel de messagerie est ouvert avec la demande pré-remplie. Rien n'a été transmis à un serveur."
+        );
         note.classList.add("is-sent");
       }
     });

@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>previewd — Un environnement par pull request, sans jamais quitter votre réseau</title>
-  <meta name="description" content="previewd construit, isole et détruit un environnement de prévisualisation pour chaque pull request, entièrement sur votre infrastructure. Aucun cloud, aucune sortie réseau, aucun secret écrit sur disque.">
+  <title data-i18n="meta.title">previewd — Un environnement par pull request, sans jamais quitter votre réseau</title>
+  <meta name="description" content="previewd construit, isole et détruit un environnement de prévisualisation pour chaque pull request, entièrement sur votre infrastructure. Aucun cloud, aucune sortie réseau, aucun secret écrit sur disque." data-i18n-content="meta.description">
   <meta name="theme-color" content="#07080a">
-  <meta property="og:title" content="previewd — La prévisualisation qui ne sort pas de chez vous">
-  <meta property="og:description" content="Un binaire statique, un hôte Linux, Docker et Traefik. Chaque pull request obtient son adresse, son réseau scellé et sa piste d'audit infalsifiable.">
+  <meta property="og:title" content="previewd — La prévisualisation qui ne sort pas de chez vous" data-i18n-content="meta.ogTitle">
+  <meta property="og:description" content="Un binaire statique, un hôte Linux, Docker et Traefik. Chaque pull request obtient son adresse, son réseau scellé et sa piste d'audit infalsifiable." data-i18n-content="meta.ogDescription">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
 
   <header class="site-header" id="header">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="previewd, retour en haut">
+      <a class="brand" href="#top" aria-label="previewd, retour en haut" data-i18n-aria-label="a11y.brandTop">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
           <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -25,21 +25,27 @@
         <span class="brand-name">previewd</span>
       </a>
 
-      <nav class="nav" id="nav" aria-label="Navigation principale">
-        <a href="#probleme">Le problème</a>
-        <a href="#fonctionnement">Fonctionnement</a>
-        <a href="#preuves">Preuves</a>
-        <a href="#deploiement">Déploiement</a>
-        <a href="#tarifs">Tarifs</a>
-        <a href="#faq">FAQ</a>
+      <nav class="nav" id="nav" aria-label="Navigation principale" data-i18n-aria-label="a11y.nav">
+        <a href="#probleme" data-i18n="nav.problem">Le problème</a>
+        <a href="#fonctionnement" data-i18n="nav.how">Fonctionnement</a>
+        <a href="#preuves" data-i18n="nav.proofs">Preuves</a>
+        <a href="#deploiement" data-i18n="nav.deploy">Déploiement</a>
+        <a href="#tarifs" data-i18n="nav.pricing">Tarifs</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn-ghost btn-sm" href="#deploiement">Installation</a>
-        <a class="btn btn-primary btn-sm" href="#contact">Demander une évaluation</a>
+        <a class="btn btn-ghost btn-sm" href="#deploiement" data-i18n="header.install">Installation</a>
+        <a class="btn btn-primary btn-sm" href="#contact" data-i18n="header.cta">Demander une évaluation</a>
       </div>
 
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu">
+      <div class="lang-switch" data-lang-switch>
+        <select class="lang-select" id="lang-select" data-lang-select aria-label="Langue du site" data-i18n-aria-label="a11y.lang">
+          <option value="fr" lang="fr">FR</option>
+        </select>
+      </div>
+
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu" data-i18n-aria-label="a11y.menuOpen">
         <span></span><span></span>
       </button>
     </div>
@@ -54,16 +60,16 @@
         <div class="hero-copy">
           <p class="badge">
             <span class="badge-dot" aria-hidden="true"></span>
-            v1.1 · GitHub Enterprise Server &amp; GitLab Self-Managed
+            <span data-i18n="hero.badge">v1.1 · GitHub Enterprise Server &amp; GitLab Self-Managed</span>
           </p>
 
-          <h1>
+          <h1 data-i18n="hero.h1">
             Chaque pull request obtient<br>
             <span class="hl">son environnement.</span><br>
             Rien ne quitte votre réseau.
           </h1>
 
-          <p class="lead">
+          <p class="lead" data-i18n="hero.lead">
             previewd construit la version exacte proposée par une pull request, l'exécute dans
             une boîte scellée sur <em>votre</em> serveur, lui donne une adresse web, puis jette
             tout à la fermeture. Un binaire statique. Aucun compte cloud. Zéro octet envoyé à un tiers.
@@ -71,16 +77,16 @@
 
           <div class="hero-cta">
             <a class="btn btn-primary" href="#contact">
-              Demander une évaluation
+              <span data-i18n="hero.primary">Demander une évaluation</span>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="btn btn-ghost" href="#fonctionnement">Voir comment ça marche</a>
+            <a class="btn btn-ghost" href="#fonctionnement" data-i18n="hero.secondary">Voir comment ça marche</a>
           </div>
 
           <ul class="hero-facts">
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Installation hors ligne, paquet <code>.deb</code> / <code>.rpm</code></li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Fonctionne sur un réseau sans Internet</li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Aucun secret écrit sur disque</li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.fact1">Installation hors ligne, paquet <code>.deb</code> / <code>.rpm</code></span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.fact2">Fonctionne sur un réseau sans Internet</span></li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.fact3">Aucun secret écrit sur disque</span></li>
           </ul>
         </div>
 
@@ -88,56 +94,56 @@
           <div class="panel">
             <div class="panel-bar">
               <span class="live-dot"></span>
-              <span class="panel-title">previewd · réconciliation</span>
-              <span class="panel-tag">hors ligne</span>
+              <span class="panel-title" data-i18n="panel.title">previewd · réconciliation</span>
+              <span class="panel-tag" data-i18n="panel.tag">hors ligne</span>
             </div>
 
             <ol class="pipeline">
               <li class="step is-done">
                 <span class="step-num">01</span>
                 <div class="step-body">
-                  <strong>pull_request.opened</strong>
-                  <small>HMAC-SHA256 vérifié · source autorisée</small>
+                  <strong data-i18n="panel.s1.t">pull_request.opened</strong>
+                  <small data-i18n="panel.s1.s">HMAC-SHA256 vérifié · source autorisée</small>
                 </div>
-                <span class="step-state">signé</span>
+                <span class="step-state" data-i18n="panel.s1.state">signé</span>
               </li>
               <li class="step is-done">
                 <span class="step-num">02</span>
                 <div class="step-body">
-                  <strong>Décision d'exécution</strong>
-                  <small>auteur avec droit d'écriture sur la branche</small>
+                  <strong data-i18n="panel.s2.t">Décision d'exécution</strong>
+                  <small data-i18n="panel.s2.s">auteur avec droit d'écriture sur la branche</small>
                 </div>
-                <span class="step-state">autorisé</span>
+                <span class="step-state" data-i18n="panel.s2.state">autorisé</span>
               </li>
               <li class="step is-done">
                 <span class="step-num">03</span>
                 <div class="step-body">
-                  <strong>Build sans réseau</strong>
-                  <small>networkmode=none · cgroup borné 4 Gio / 200 %</small>
+                  <strong data-i18n="panel.s3.t">Build sans réseau</strong>
+                  <small data-i18n="panel.s3.s">networkmode=none · cgroup borné 4 Gio / 200 %</small>
                 </div>
-                <span class="step-state">scellé</span>
+                <span class="step-state" data-i18n="panel.s3.state">scellé</span>
               </li>
               <li class="step is-done">
                 <span class="step-num">04</span>
                 <div class="step-body">
-                  <strong>Conteneur verrouillé</strong>
-                  <small>toutes capacités retirées · racine en lecture seule</small>
+                  <strong data-i18n="panel.s4.t">Conteneur verrouillé</strong>
+                  <small data-i18n="panel.s4.s">toutes capacités retirées · racine en lecture seule</small>
                 </div>
-                <span class="step-state">isolé</span>
+                <span class="step-state" data-i18n="panel.s4.state">isolé</span>
               </li>
               <li class="step is-active">
                 <span class="step-num">05</span>
                 <div class="step-body">
-                  <strong>Route publiée</strong>
-                  <small>pr-4821-a91c3f0e2b.votre-domaine</small>
+                  <strong data-i18n="panel.s5.t">Route publiée</strong>
+                  <small data-i18n="panel.s5.s">pr-4821-a91c3f0e2b.votre-domaine</small>
                 </div>
-                <span class="step-state">en ligne</span>
+                <span class="step-state" data-i18n="panel.s5.state">en ligne</span>
               </li>
             </ol>
 
             <div class="panel-foot">
-              <span class="mono">200 OK · 38 ms</span>
-              <span class="mono muted">audit : 5 entrées · chaîne vérifiée</span>
+              <span class="mono" data-i18n="panel.ok">200 OK · 38 ms</span>
+              <span class="mono muted" data-i18n="panel.audit">audit : 5 entrées · chaîne vérifiée</span>
             </div>
           </div>
           <div class="panel-flare" aria-hidden="true"></div>
@@ -146,23 +152,23 @@
     </section>
 
     <!-- ============ BANDEAU CHIFFRES ============ -->
-    <section class="stats" aria-label="Chiffres clés">
+    <section class="stats" aria-label="Chiffres clés" data-i18n-aria-label="stats.label">
       <div class="wrap stats-grid">
         <div class="stat">
           <span class="stat-value" data-count="0">0</span>
-          <span class="stat-label">connexion sortante émise par previewd à l'exécution</span>
+          <span class="stat-label" data-i18n="stats.1">connexion sortante émise par previewd à l'exécution</span>
         </div>
         <div class="stat">
           <span class="stat-value" data-count="1">1</span>
-          <span class="stat-label">binaire statique, sans CGO, à installer sur un seul hôte</span>
+          <span class="stat-label" data-i18n="stats.2">binaire statique, sans CGO, à installer sur un seul hôte</span>
         </div>
         <div class="stat">
           <span class="stat-value" data-count="17">17</span>
-          <span class="stat-label">dépendances directes, toutes figées et vérifiées</span>
+          <span class="stat-label" data-i18n="stats.3">dépendances directes, toutes figées et vérifiées</span>
         </div>
         <div class="stat">
           <span class="stat-value" data-count="11">11</span>
-          <span class="stat-label">modèles TLA+ vérifiés, du webhook à l'expiration</span>
+          <span class="stat-label" data-i18n="stats.4">modèles TLA+ vérifiés, du webhook à l'expiration</span>
         </div>
       </div>
     </section>
@@ -171,9 +177,9 @@
     <section class="section" id="probleme">
       <div class="wrap">
         <header class="section-head reveal">
-          <p class="eyebrow">Le problème</p>
-          <h2>Vos relecteurs lisent le changement. Personne ne peut le lancer.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="problem.eyebrow">Le problème</p>
+          <h2 data-i18n="problem.h2">Vos relecteurs lisent le changement. Personne ne peut le lancer.</h2>
+          <p class="section-lead" data-i18n="problem.lead">
             Une pull request, c'est une promesse : « ce code fonctionne ». Aujourd'hui, la vérifier
             coûte soit un environnement de test partagé que tout le monde casse, soit un service de
             prévisualisation hébergé — qui veut dire envoyer votre code, et souvent vos secrets,
@@ -186,8 +192,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17.3 8.6 3.9 3.9 0 0 1 17 18H7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.5 14.5l2 2 3.5-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Le code part chez un tiers</h3>
-            <p>
+            <h3 data-i18n="problem.c1.t">Le code part chez un tiers</h3>
+            <p data-i18n="problem.c1.p">
               Banques, hôpitaux, opérateurs d'importance vitale : le code source est souvent
               l'actif le plus sensible de l'entreprise. L'envoyer sur un cloud étranger n'est pas
               une option — et sur un réseau isolé, il n'y a simplement pas d'Internet.
@@ -198,8 +204,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 20v-1.6A4.4 4.4 0 0 1 9.4 14h5.2a4.4 4.4 0 0 1 4.4 4.4V20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <h3>Les environnements sont partagés</h3>
-            <p>
+            <h3 data-i18n="problem.c2.t">Les environnements sont partagés</h3>
+            <p data-i18n="problem.c2.p">
               Une recette commune, un seul jeu de données, un seul jeu de secrets. Deux branches
               testées en même temps se marchent dessus, et personne ne sait plus quelle version
               tourne réellement quand un bug apparaît.
@@ -210,8 +216,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 9h8M8 13h5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <h3>Rien n'est démontrable</h3>
-            <p>
+            <h3 data-i18n="problem.c3.t">Rien n'est démontrable</h3>
+            <p data-i18n="problem.c3.p">
               « Qui a autorisé le déploiement de cette branche, à quelle heure, et avec quel
               commit ? » Sans trace infalsifiable, la réponse vient d'un souvenir. Un auditeur,
               lui, demande une preuve.
@@ -225,9 +231,9 @@
     <section class="section section-alt" id="fonctionnement">
       <div class="wrap">
         <header class="section-head reveal">
-          <p class="eyebrow">Fonctionnement</p>
-          <h2>Du webhook à la démolition, en cinq temps.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="how.eyebrow">Fonctionnement</p>
+          <h2 data-i18n="how.h2">Du webhook à la démolition, en cinq temps.</h2>
+          <p class="section-lead" data-i18n="how.lead">
             Un seul chemin, sans exception. Chaque étape a son test, et chaque refus est journalisé.
           </p>
         </header>
@@ -237,100 +243,100 @@
             <li class="flow-step reveal">
               <span class="flow-num">01</span>
               <div>
-                <h3>Le webhook arrive, signé</h3>
-                <p>
+                <h3 data-i18n="how.s1.t">Le webhook arrive, signé</h3>
+                <p data-i18n="how.s1.p">
                   Votre forge envoie un événement sur TLS. previewd vérifie la signature HMAC du corps
                   brut, la source réseau, et refuse un corps de plus de 1 Mio. La même livraison
                   rejouée n'est jamais traitée deux fois.
                 </p>
-                <p class="flow-note">422 → 202 → job durable en base</p>
+                <p class="flow-note" data-i18n="how.s1.n">422 → 202 → job durable en base</p>
               </div>
             </li>
 
             <li class="flow-step reveal">
               <span class="flow-num">02</span>
               <div>
-                <h3>La décision est vérifiée à la source</h3>
-                <p>
+                <h3 data-i18n="how.s2.t">La décision est vérifiée à la source</h3>
+                <p data-i18n="how.s2.p">
                   Une branche du dépôt, poussée par quelqu'un qui a le droit d'écrire : le déploiement
                   part. Une fourche ou un contributeur externe : previewd attend qu'un approbateur
                   nommé valide <em>ce commit précis</em>. Le statut est relu auprès de la forge, jamais
                   déduit de l'événement.
                 </p>
-                <p class="flow-note">Chaque décision entre dans la piste d'audit</p>
+                <p class="flow-note" data-i18n="how.s2.n">Chaque décision entre dans la piste d'audit</p>
               </div>
             </li>
 
             <li class="flow-step reveal">
               <span class="flow-num">03</span>
               <div>
-                <h3>Le build se fait sans réseau — et le prouve</h3>
-                <p>
+                <h3 data-i18n="how.s3.t">Le build se fait sans réseau — et le prouve</h3>
+                <p data-i18n="how.s3.p">
                   Le code est récupéré en archive avec un jeton limité au dépôt, révoqué après usage.
                   Le Dockerfile passe un contrôle strict qui n'accepte que ce qu'il comprend : toute
                   instruction inconnue est un refus. Puis BuildKit construit avec <code>networkmode=none</code>
                   dans un cgroup borné.
                 </p>
-                <p class="flow-note">Au démarrage, une sonde de build doit échouer à joindre le réseau, sinon le démon refuse de démarrer</p>
+                <p class="flow-note" data-i18n="how.s3.n">Au démarrage, une sonde de build doit échouer à joindre le réseau, sinon le démon refuse de démarrer</p>
               </div>
             </li>
 
             <li class="flow-step reveal">
               <span class="flow-num">04</span>
               <div>
-                <h3>Le conteneur est scellé</h3>
-                <p>
+                <h3 data-i18n="how.s4.t">Le conteneur est scellé</h3>
+                <p data-i18n="how.s4.p">
                   Chaque environnement a son propre réseau interne, sans route par défaut. Toutes les
                   capacités sont retirées, <code>no-new-privileges</code> activé, le système de fichiers
                   racine en lecture seule. Les secrets arrivent en fichiers mémoire, en lecture seule —
                   jamais en variable d'environnement.
                 </p>
-                <p class="flow-note">Aucun label Docker, aucun socket Traefik : une image ne peut pas s'ajouter une route</p>
+                <p class="flow-note" data-i18n="how.s4.n">Aucun label Docker, aucun socket Traefik : une image ne peut pas s'ajouter une route</p>
               </div>
             </li>
 
             <li class="flow-step reveal">
               <span class="flow-num">05</span>
               <div>
-                <h3>L'adresse est publiée, puis tout disparaît</h3>
-                <p>
+                <h3 data-i18n="how.s5.t">L'adresse est publiée, puis tout disparaît</h3>
+                <p data-i18n="how.s5.p">
                   Une route atomique est écrite pour Traefik, et le lien revient directement en
                   commentaire et en statut de commit sur la pull request. À la fermeture, au retrait
                   de l'approbation ou à l'expiration du TTL, previewd détruit conteneur, réseau, image,
                   route et secrets — dans cet ordre, chaque étape s'exécutant même si la précédente échoue.
                 </p>
-                <p class="flow-note">TTL par défaut : 7 jours, sans nouvelle poussée</p>
+                <p class="flow-note" data-i18n="how.s5.n">TTL par défaut : 7 jours, sans nouvelle poussée</p>
               </div>
             </li>
           </ol>
 
           <aside class="flow-aside reveal">
-            <div class="forge-tabs" role="tablist" aria-label="Forge">
-              <button class="forge-tab is-active" role="tab" aria-selected="true" aria-controls="panel-ghes" id="tab-ghes">GitHub Enterprise</button>
-              <button class="forge-tab" role="tab" aria-selected="false" aria-controls="panel-gitlab" id="tab-gitlab">GitLab Self-Managed</button>
+            <div class="forge-tabs" role="tablist" aria-label="Forge" data-i18n-aria-label="forge.tabsLabel">
+              <button class="forge-tab is-active" role="tab" aria-selected="true" aria-controls="panel-ghes" id="tab-ghes" data-i18n="forge.tabGhes">GitHub Enterprise</button>
+              <button class="forge-tab" role="tab" aria-selected="false" aria-controls="panel-gitlab" id="tab-gitlab" data-i18n="forge.tabGitlab">GitLab Self-Managed</button>
             </div>
 
             <div class="forge-panel is-active" role="tabpanel" id="panel-ghes" aria-labelledby="tab-ghes">
               <dl class="spec">
-                <div><dt>Authentification</dt><dd><code>X-Hub-Signature-256</code> · HMAC-SHA256</dd></div>
-                <div><dt>Jeton d'accès</dt><dd>GitHub App, portée dépôt, révoqué après usage</dd></div>
-                <div><dt>Confiance</dt><dd>commit dans le dépôt, auteur avec droit d'écriture</dd></div>
-                <div><dt>Approbation</dt><dd>review ou label, liée au <code>commit_id</code></dd></div>
-                <div><dt>Anti-rejeu</dt><dd>identifiant de livraison + empreinte du corps</dd></div>
+                <div><dt data-i18n="forge.auth">Authentification</dt><dd data-i18n="forge.ghes.auth"><code>X-Hub-Signature-256</code> · HMAC-SHA256</dd></div>
+                <div><dt data-i18n="forge.token">Jeton d'accès</dt><dd data-i18n="forge.ghes.token">GitHub App, portée dépôt, révoqué après usage</dd></div>
+                <div><dt data-i18n="forge.trust">Confiance</dt><dd data-i18n="forge.ghes.trust">commit dans le dépôt, auteur avec droit d'écriture</dd></div>
+                <div><dt data-i18n="forge.approval">Approbation</dt><dd data-i18n="forge.ghes.approval">review ou label, liée au <code>commit_id</code></dd></div>
+                <div><dt data-i18n="forge.replay">Anti-rejeu</dt><dd data-i18n="forge.ghes.replay">identifiant de livraison + empreinte du corps</dd></div>
               </dl>
             </div>
 
             <div class="forge-panel" role="tabpanel" id="panel-gitlab" aria-labelledby="tab-gitlab" hidden>
               <dl class="spec">
-                <div><dt>Authentification</dt><dd><code>X-Gitlab-Token</code>, comparaison à temps constant</dd></div>
-                <div><dt>Jeton d'accès</dt><dd><code>PRIVATE-TOKEN</code> en lecture seule</dd></div>
-                <div><dt>Confiance</dt><dd>auteur membre actif, rôle Developer ou supérieur</dd></div>
-                <div><dt>Approbation</dt><dd>hooks <code>approved</code> / <code>unapproved</code>, reconfirmés à chaque usage</dd></div>
-                <div><dt>Anti-rejeu</dt><dd>UUID d'événement + empreinte du corps</dd></div>
+                <div><dt data-i18n="forge.auth">Authentification</dt><dd data-i18n="forge.gitlab.auth"><code>X-Gitlab-Token</code>, comparaison à temps constant</dd></div>
+                <div><dt data-i18n="forge.token">Jeton d'accès</dt><dd data-i18n="forge.gitlab.token"><code>PRIVATE-TOKEN</code> en lecture seule</dd></div>
+                <div><dt data-i18n="forge.trust">Confiance</dt><dd data-i18n="forge.gitlab.trust">auteur membre actif, rôle Developer ou supérieur</dd></div>
+                <div><dt data-i18n="forge.approval">Approbation</dt><dd data-i18n="forge.gitlab.approval">hooks <code>approved</code> / <code>unapproved</code>, reconfirmés à chaque usage</dd></div>
+                <div><dt data-i18n="forge.replay">Anti-rejeu</dt><dd data-i18n="forge.gitlab.replay">UUID d'événement + empreinte du corps</dd></div>
               </dl>
             </div>
 
-            <p class="aside-foot">
+            <p class="aside-foot" data-i18n="forge.asideFoot">
               Un seul fournisseur actif à la fois. Le passage de l'un à l'autre ne change ni le
               modèle de menace, ni les tests de sortie réseau.
             </p>
@@ -343,9 +349,9 @@
     <section class="section" id="preuves">
       <div class="wrap">
         <header class="section-head reveal">
-          <p class="eyebrow">Preuves, pas promesses</p>
-          <h2>La sécurité n'est pas une page de documentation. C'est un test qui échoue.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="proofs.eyebrow">Preuves, pas promesses</p>
+          <h2 data-i18n="proofs.h2">La sécurité n'est pas une page de documentation. C'est un test qui échoue.</h2>
+          <p class="section-lead" data-i18n="proofs.lead">
             Chaque affirmation ci-dessous est adossée à un contrôle exécuté à chaque intégration.
             Un binaire qui lie un SDK de télémétrie ne se compile pas. Un build qui atteint le réseau
             fait échouer la sonde de démarrage. Une route orpheline empêche le démon de servir.
@@ -357,8 +363,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-2.9 7.6-7 9-4.1-1.4-7-4.7-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.8 12l2.2 2.2 4.2-4.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Build sans réseau, prouvé à chaque démarrage</h3>
-            <p>
+            <h3 data-i18n="proofs.c1.t">Build sans réseau, prouvé à chaque démarrage</h3>
+            <p data-i18n="proofs.c1.p">
               Une sonde exécute un build réel : elle vérifie qu'aucune interface hors boucle locale
               n'existe, qu'aucune route ne mène ailleurs et que la connexion TCP échoue. Si la sonde
               réussit à sortir, le démon refuse de démarrer.
@@ -369,8 +375,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.2" fill="currentColor"/></svg>
             </div>
-            <h3>Zéro secret sur disque</h3>
-            <p>
+            <h3 data-i18n="proofs.c2.t">Zéro secret sur disque</h3>
+            <p data-i18n="proofs.c2.p">
               Les clés de previewd sont des credentials systemd. Les secrets applicatifs vivent en
               mémoire verrouillée et n'atteignent le conteneur que comme fichiers d'un ramfs
               en lecture seule. Ni variable d'environnement, ni <code>docker inspect</code>, ni couche d'image.
@@ -381,8 +387,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="18.5" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <h3>Piste d'audit à chaîne de hachages</h3>
-            <p>
+            <h3 data-i18n="proofs.c3.t">Piste d'audit à chaîne de hachages</h3>
+            <p data-i18n="proofs.c3.p">
               Chaque décision d'autorisation est écrite dans un journal append-only où chaque entrée
               scelle la précédente. <code>previewd audit verify</code> rejoue la chaîne ;
               <code>audit export</code> produit une preuve lisible par un tiers.
@@ -393,8 +399,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v6M12 14v6M4 12h6M14 12h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <h3>Routage sans socket Docker</h3>
-            <p>
+            <h3 data-i18n="proofs.c4.t">Routage sans socket Docker</h3>
+            <p data-i18n="proofs.c4.p">
               Traefik lit un unique dossier de fichiers de routes, en lecture seule, sans API ni
               fournisseur Docker. Une image compromise ne peut pas fabriquer une route : elle n'a
               aucun moyen d'en écrire une.
@@ -405,8 +411,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-4 4 4 4M15 6l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 4l-2 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <h3>Un parseur qui refuse ce qu'il ignore</h3>
-            <p>
+            <h3 data-i18n="proofs.c5.t">Un parseur qui refuse ce qu'il ignore</h3>
+            <p data-i18n="proofs.c5.p">
               Le contrôle du Dockerfile ne bloque pas une liste de choses dangereuses : il n'autorise
               qu'une liste de choses comprises. Une directive ajoutée par une future version de Docker
               devient un refus, pas une faille silencieuse.
@@ -417,8 +423,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3 2 5 5 5 8.5s-2 6.5-5 8.5c-3-2-5-5-5-8.5s2-6.5 5-8.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.5 12h15" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <h3>La CI interdit la télémétrie</h3>
-            <p>
+            <h3 data-i18n="proofs.c6.t">La CI interdit la télémétrie</h3>
+            <p data-i18n="proofs.c6.p">
               Un contrôle sur le binaire lié échoue si OpenTelemetry, gRPC ou un SDK cloud apparaît
               dans les dépendances. Un second contrôle analyse le code et les fichiers de déploiement.
               L'absence de fuite est mesurée, pas déclarée.
@@ -429,8 +435,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l5-5 4 3 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Sondes d'exfiltration réelles</h3>
-            <p>
+            <h3 data-i18n="proofs.c7.t">Sondes d'exfiltration réelles</h3>
+            <p data-i18n="proofs.c7.p">
               La suite de bout en bout fait exécuter à une pull request une connexion TCP et une
               requête DNS vers un écouteur de l'hôte : rien ne doit arriver. Un build témoin, lui,
               doit l'atteindre — sinon le test ne prouve rien et il échoue.
@@ -441,8 +447,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h7l4 4v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M13.5 4v4.5H18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.5 13l1.8 1.8 3.2-3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Modèles formels et tests de propriétés</h3>
-            <p>
+            <h3 data-i18n="proofs.c8.t">Modèles formels et tests de propriétés</h3>
+            <p data-i18n="proofs.c8.p">
               Onze configurations TLA+ couvrent la file, les approbations, le redémarrage, le TTL et
               les workers. En parallèle, des tests par propriétés génèrent des millions de séquences
               d'événements pour chercher une violation d'invariant — pas un exemple choisi à la main.
@@ -453,8 +459,8 @@
             <div class="card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M4.5 12h15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </div>
-            <h3>Redémarrage et panne, traités comme un risque</h3>
-            <p>
+            <h3 data-i18n="proofs.c9.t">Redémarrage et panne, traités comme un risque</h3>
+            <p data-i18n="proofs.c9.p">
               Au démarrage, un balayage inventorie ce qui tourne, détruit ce qui n'est plus gardé,
               vérifie qu'aucune route n'oriente vers un environnement non gardé — et refuse de servir
               si ce n'est pas le cas.
@@ -468,9 +474,9 @@
     <section class="section section-alt" id="equipes">
       <div class="wrap">
         <header class="section-head reveal">
-          <p class="eyebrow">Pour qui</p>
-          <h2>Trois équipes, une seule infrastructure.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="teams.eyebrow">Pour qui</p>
+          <h2 data-i18n="teams.h2">Trois équipes, une seule infrastructure.</h2>
+          <p class="section-lead" data-i18n="teams.lead">
             Ce que le développeur gagne en confort, le responsable sécurité le gagne en preuve.
             C'est le même mécanisme qui produit les deux.
           </p>
@@ -478,35 +484,35 @@
 
         <div class="cards cards-3">
           <article class="card card-tall reveal">
-            <p class="card-kicker">Développement</p>
-            <h3>« Je lance la PR avant de la relire »</h3>
+            <p class="card-kicker" data-i18n="teams.dev.kicker">Développement</p>
+            <h3 data-i18n="teams.dev.h3">« Je lance la PR avant de la relire »</h3>
             <ul class="ticks">
-              <li>Une adresse par pull request, prête en quelques minutes</li>
-              <li>Reconstruite à chaque poussée, sans action manuelle</li>
-              <li>Le lien en commentaire et en statut de commit, directement dans la forge</li>
-              <li>Un 404 honnête une fois la PR fermée, plutôt qu'une vieille version qui traîne</li>
+              <li data-i18n="teams.dev.l1">Une adresse par pull request, prête en quelques minutes</li>
+              <li data-i18n="teams.dev.l2">Reconstruite à chaque poussée, sans action manuelle</li>
+              <li data-i18n="teams.dev.l3">Le lien en commentaire et en statut de commit, directement dans la forge</li>
+              <li data-i18n="teams.dev.l4">Un 404 honnête une fois la PR fermée, plutôt qu'une vieille version qui traîne</li>
             </ul>
           </article>
 
           <article class="card card-tall reveal">
-            <p class="card-kicker">Sécurité &amp; conformité</p>
-            <h3>« Je peux le prouver, pas seulement l'affirmer »</h3>
+            <p class="card-kicker" data-i18n="teams.sec.kicker">Sécurité &amp; conformité</p>
+            <h3 data-i18n="teams.sec.h3">« Je peux le prouver, pas seulement l'affirmer »</h3>
             <ul class="ticks">
-              <li>Code de pull request traité comme hostile par défaut</li>
-              <li>Contributeurs externes bloqués jusqu'à approbation du commit exact</li>
-              <li>Journal chaîné, exportable, vérifiable hors du serveur</li>
-              <li>Aucun flux sortant à justifier dans l'analyse de risque</li>
+              <li data-i18n="teams.sec.l1">Code de pull request traité comme hostile par défaut</li>
+              <li data-i18n="teams.sec.l2">Contributeurs externes bloqués jusqu'à approbation du commit exact</li>
+              <li data-i18n="teams.sec.l3">Journal chaîné, exportable, vérifiable hors du serveur</li>
+              <li data-i18n="teams.sec.l4">Aucun flux sortant à justifier dans l'analyse de risque</li>
             </ul>
           </article>
 
           <article class="card card-tall reveal">
-            <p class="card-kicker">Exploitation</p>
-            <h3>« Un paquet, un service, aucun opérateur »</h3>
+            <p class="card-kicker" data-i18n="teams.ops.kicker">Exploitation</p>
+            <h3 data-i18n="teams.ops.h3">« Un paquet, un service, aucun opérateur »</h3>
             <ul class="ticks">
-              <li><code>.deb</code> et <code>.rpm</code> signables, installables sans dépôt distant</li>
-              <li>Un fichier SQLite, une base de schéma versionnée, migration automatique</li>
-              <li><code>previewd doctor</code> vérifie l'hôte et rend un code de sortie exploitable</li>
-              <li><code>backup</code> / <code>restore</code> à chaud, avec vérification de la chaîne d'audit</li>
+              <li data-i18n="teams.ops.l1"><code>.deb</code> et <code>.rpm</code> signables, installables sans dépôt distant</li>
+              <li data-i18n="teams.ops.l2">Un fichier SQLite, une base de schéma versionnée, migration automatique</li>
+              <li data-i18n="teams.ops.l3"><code>previewd doctor</code> vérifie l'hôte et rend un code de sortie exploitable</li>
+              <li data-i18n="teams.ops.l4"><code>backup</code> / <code>restore</code> à chaud, avec vérification de la chaîne d'audit</li>
             </ul>
           </article>
         </div>
@@ -517,9 +523,9 @@
     <section class="section" id="deploiement">
       <div class="wrap deploy-grid">
         <div class="deploy-copy reveal">
-          <p class="eyebrow">Déploiement</p>
-          <h2>Trois commandes. Zéro dépôt distant.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="deploy.eyebrow">Déploiement</p>
+          <h2 data-i18n="deploy.h2">Trois commandes. Zéro dépôt distant.</h2>
+          <p class="section-lead" data-i18n="deploy.lead">
             Le paquet installe le binaire, l'unité systemd, la slice de build et le réglage Docker.
             Il crée un utilisateur système sans shell ni répertoire personnel. Avant le premier
             démarrage, previewd vérifie ce qui lui manque et refuse de tourner tant que ce n'est pas
@@ -527,14 +533,14 @@
           </p>
 
           <ul class="checklist">
-            <li>Docker Engine avec cgroup v2</li>
-            <li>Traefik, sans socket monté, en lecture seule</li>
-            <li>Un ramfs monté pour le dépôt des secrets</li>
-            <li>L'adresse de votre forge dans les plages autorisées</li>
-            <li>Les images de base autorisées, chargées localement</li>
+            <li data-i18n="deploy.check1">Docker Engine avec cgroup v2</li>
+            <li data-i18n="deploy.check2">Traefik, sans socket monté, en lecture seule</li>
+            <li data-i18n="deploy.check3">Un ramfs monté pour le dépôt des secrets</li>
+            <li data-i18n="deploy.check4">L'adresse de votre forge dans les plages autorisées</li>
+            <li data-i18n="deploy.check5">Les images de base autorisées, chargées localement</li>
           </ul>
 
-          <p class="deploy-note">
+          <p class="deploy-note" data-i18n="deploy.note">
             Aucune image n'est téléchargée à l'exécution : previewd refuse une image de base absente
             du démon. Le comportement est le même sur un hôte connecté — c'est ce qui rend le
             déploiement prévisible.
@@ -544,29 +550,29 @@
         <div class="deploy-code reveal">
           <div class="code-card">
             <div class="code-head">
-              <span class="mono">hôte de production</span>
-              <button class="copy-btn" type="button" data-copy="install">Copier</button>
+              <span class="mono" data-i18n="deploy.host">hôte de production</span>
+              <button class="copy-btn" type="button" data-copy="install" data-i18n="deploy.copy">Copier</button>
             </div>
-            <pre id="install"><code><span class="c-comment"># 1. installer, sans dépôt ni réseau</span>
+            <pre id="install"><code><span class="c-comment" data-i18n="deploy.code1"># 1. installer, sans dépôt ni réseau</span>
 <span class="c-cmd">sudo apt install ./previewd_1.1.0_amd64.deb</span>
 
-<span class="c-comment"># 2. configurer les chemins et identifiants (jamais un secret)</span>
+<span class="c-comment" data-i18n="deploy.code2"># 2. configurer les chemins et identifiants (jamais un secret)</span>
 <span class="c-cmd">sudo editor /etc/previewd/previewd.conf</span>
 
-<span class="c-comment"># 3. sceller les credentials, vérifier l'hôte, démarrer</span>
+<span class="c-comment" data-i18n="deploy.code3"># 3. sceller les credentials, vérifier l'hôte, démarrer</span>
 <span class="c-cmd">sudo previewd doctor</span>
 <span class="c-cmd">sudo systemctl enable --now previewd</span></code></pre>
           </div>
 
           <div class="term-card">
             <div class="term-line"><span class="prompt">$</span> previewd doctor</div>
-            <div class="term-line ok">[PASS] ramfs de secrets : type, propriétaire, mode</div>
-            <div class="term-line ok">[PASS] cgroup de build : borné, sans swap</div>
-            <div class="term-line ok">[PASS] filtre de sortie du démon Docker</div>
-            <div class="term-line ok">[PASS] isolation de Traefik : aucun socket</div>
-            <div class="term-line ok">[PASS] mémoire verrouillée (mlockall)</div>
-            <div class="term-line ok">[PASS] dérive d'horloge forge : 41 ms</div>
-            <div class="term-line muted">7 contrôles · sortie 0</div>
+            <div class="term-line ok" data-i18n="deploy.term1">[PASS] ramfs de secrets : type, propriétaire, mode</div>
+            <div class="term-line ok" data-i18n="deploy.term2">[PASS] cgroup de build : borné, sans swap</div>
+            <div class="term-line ok" data-i18n="deploy.term3">[PASS] filtre de sortie du démon Docker</div>
+            <div class="term-line ok" data-i18n="deploy.term4">[PASS] isolation de Traefik : aucun socket</div>
+            <div class="term-line ok" data-i18n="deploy.term5">[PASS] mémoire verrouillée (mlockall)</div>
+            <div class="term-line ok" data-i18n="deploy.term6">[PASS] dérive d'horloge forge : 41 ms</div>
+            <div class="term-line muted" data-i18n="deploy.termFoot">7 contrôles · sortie 0</div>
           </div>
         </div>
       </div>
@@ -576,9 +582,9 @@
     <section class="section section-alt" id="tarifs">
       <div class="wrap">
         <header class="section-head reveal">
-          <p class="eyebrow">Tarifs</p>
-          <h2>Trois façons d'adopter previewd. La même exigence.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="pricing.eyebrow">Tarifs</p>
+          <h2 data-i18n="pricing.h2">Trois façons d'adopter previewd. La même exigence.</h2>
+          <p class="section-lead" data-i18n="pricing.lead">
             Le logiciel est le même partout. Ce qui change, c'est qui l'administre : vous, nous, ou
             votre équipe infrastructure. Aucune des trois options ne vous enferme — le binaire reste
             exportable et vos secrets ne quittent jamais l'infrastructure que vous avez choisie.
@@ -590,111 +596,111 @@
           <!-- Pilier 1 : communauté -->
           <article class="pillar reveal">
             <header class="pillar-head">
-              <p class="pillar-kicker">01 · Communauté</p>
-              <h3>Open Source</h3>
-              <p class="pillar-tagline">
+              <p class="pillar-kicker" data-i18n="pricing.community.kicker">01 · Communauté</p>
+              <h3 data-i18n="pricing.community.h3">Open Source</h3>
+              <p class="pillar-tagline" data-i18n="pricing.community.tagline">
                 Pour celles et ceux qui veulent tout lire, tout vérifier et tout héberger.
                 Vous êtes chez vous, et rien ne vous échappe.
               </p>
               <p class="pillar-price">
                 <span class="amount">0</span><span class="unit">€</span>
-                <span class="period">pour toujours</span>
+                <span class="period" data-i18n="pricing.community.period">pour toujours</span>
               </p>
             </header>
 
             <ul class="ticks">
-              <li>Le binaire complet de l'agent, sans fonction retirée</li>
-              <li>Le préflight Dockerfile et ses refus par défaut</li>
-              <li>La chaîne d'audit SQLite, vérifiable hors du serveur</li>
-              <li>Isolation réseau, staging en ramfs, TTL, compose sidecars</li>
-              <li>Les modèles TLA+ et les tests de propriétés</li>
+              <li data-i18n="pricing.community.l1">Le binaire complet de l'agent, sans fonction retirée</li>
+              <li data-i18n="pricing.community.l2">Le préflight Dockerfile et ses refus par défaut</li>
+              <li data-i18n="pricing.community.l3">La chaîne d'audit SQLite, vérifiable hors du serveur</li>
+              <li data-i18n="pricing.community.l4">Isolation réseau, staging en ramfs, TTL, compose sidecars</li>
+              <li data-i18n="pricing.community.l5">Les modèles TLA+ et les tests de propriétés</li>
             </ul>
 
-            <a class="btn btn-ghost btn-block" href="#deploiement">Installer le binaire</a>
-            <p class="pillar-foot">Paquet <code>.deb</code> / <code>.rpm</code> · aucun compte</p>
+            <a class="btn btn-ghost btn-block" href="#deploiement" data-i18n="pricing.community.cta">Installer le binaire</a>
+            <p class="pillar-foot" data-i18n="pricing.community.foot">Paquet <code>.deb</code> / <code>.rpm</code> · aucun compte</p>
           </article>
 
           <!-- Pilier 2 : SaaS -->
           <article class="pillar pillar-saas reveal">
-            <span class="pillar-badge">Sans engagement</span>
+            <span class="pillar-badge" data-i18n="pricing.saas.badge">Sans engagement</span>
             <header class="pillar-head">
-              <p class="pillar-kicker">02 · Freelance &amp; agences</p>
-              <h3>Previewd Cloud</h3>
-              <p class="pillar-tagline">
+              <p class="pillar-kicker" data-i18n="pricing.saas.kicker">02 · Freelance &amp; agences</p>
+              <h3 data-i18n="pricing.saas.h3">Previewd Cloud</h3>
+              <p class="pillar-tagline" data-i18n="pricing.saas.tagline">
                 Pour livrer des aperçus à vos clients sans leur envoyer de code, et sans monter
                 un serveur pour chaque projet.
               </p>
             </header>
 
-            <div class="saas-tabs" role="tablist" aria-label="Formule d'abonnement">
-              <button class="saas-tab" type="button" role="tab" aria-selected="false" aria-controls="saas-hobby" id="stab-hobby">Hobby</button>
-              <button class="saas-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="saas-pro" id="stab-pro">Pro</button>
-              <button class="saas-tab" type="button" role="tab" aria-selected="false" aria-controls="saas-agence" id="stab-agence">Agence</button>
+            <div class="saas-tabs" role="tablist" aria-label="Formule d'abonnement" data-i18n-aria-label="pricing.saas.tabsLabel">
+              <button class="saas-tab" type="button" role="tab" aria-selected="false" aria-controls="saas-hobby" id="stab-hobby" data-i18n="plans.hobby.short">Hobby</button>
+              <button class="saas-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="saas-pro" id="stab-pro" data-i18n="plans.pro.short">Pro</button>
+              <button class="saas-tab" type="button" role="tab" aria-selected="false" aria-controls="saas-agence" id="stab-agence" data-i18n="plans.agence.short">Agence</button>
             </div>
 
             <div class="saas-panel is-active" role="tabpanel" id="saas-pro" aria-labelledby="stab-pro">
               <p class="pillar-price">
                 <span class="amount">19</span><span class="unit">€</span>
-                <span class="period">/ mois</span>
+                <span class="period" data-i18n="plans.per">/ mois</span>
               </p>
-              <p class="saas-desc">Le plan des indépendants qui veulent montrer, pas héberger.</p>
+              <p class="saas-desc" data-i18n="plans.pro.desc">Le plan des indépendants qui veulent montrer, pas héberger.</p>
               <ul class="ticks">
-                <li>Prévisualisations illimitées</li>
-                <li>Domaines personnalisés</li>
-                <li>Sidecars compose pris en charge</li>
-                <li>Logs de build accessibles depuis le navigateur</li>
-                <li>TTL de 7 jours, reconstruit à chaque poussée</li>
+                <li data-i18n="plans.pro.f1">Prévisualisations illimitées</li>
+                <li data-i18n="plans.pro.f2">Domaines personnalisés</li>
+                <li data-i18n="plans.pro.f3">Sidecars compose pris en charge</li>
+                <li data-i18n="plans.pro.f4">Logs de build accessibles depuis le navigateur</li>
+                <li data-i18n="plans.pro.f5">TTL de 7 jours, reconstruit à chaque poussée</li>
               </ul>
-              <a class="btn btn-primary btn-block" href="paiement.html?plan=pro">Choisir Pro</a>
-              <p class="pillar-foot">Paiement par carte · résiliable en un clic</p>
+              <a class="btn btn-primary btn-block" href="pages/paiement.html?plan=pro" data-i18n="plans.pro.cta">Choisir Pro</a>
+              <p class="pillar-foot" data-i18n="plans.pro.foot">Paiement par carte · résiliable en un clic</p>
             </div>
 
             <div class="saas-panel" role="tabpanel" id="saas-hobby" aria-labelledby="stab-hobby" hidden>
               <p class="pillar-price">
                 <span class="amount">0</span><span class="unit">€</span>
-                <span class="period">/ mois</span>
+                <span class="period" data-i18n="plans.per">/ mois</span>
               </p>
-              <p class="saas-desc">Pour essayer sur un vrai projet, sans carte bancaire.</p>
+              <p class="saas-desc" data-i18n="plans.hobby.desc">Pour essayer sur un vrai projet, sans carte bancaire.</p>
               <ul class="ticks">
-                <li>Jusqu'à 3 environnements actifs</li>
-                <li>TTL court : 24 heures</li>
-                <li>Sous-domaine fourni</li>
-                <li>Une personne, un projet</li>
-                <li>Support communautaire</li>
+                <li data-i18n="plans.hobby.f1">Jusqu'à 3 environnements actifs</li>
+                <li data-i18n="plans.hobby.f2">TTL court : 24 heures</li>
+                <li data-i18n="plans.hobby.f3">Sous-domaine fourni</li>
+                <li data-i18n="plans.hobby.f4">Une personne, un projet</li>
+                <li data-i18n="plans.hobby.f5">Support communautaire</li>
               </ul>
-              <a class="btn btn-ghost btn-block" href="paiement.html?plan=hobby">Commencer gratuitement</a>
-              <p class="pillar-foot">Aucune carte demandée</p>
+              <a class="btn btn-ghost btn-block" href="pages/paiement.html?plan=hobby" data-i18n="plans.hobby.cta">Commencer gratuitement</a>
+              <p class="pillar-foot" data-i18n="plans.hobby.foot">Aucune carte demandée</p>
             </div>
 
             <div class="saas-panel" role="tabpanel" id="saas-agence" aria-labelledby="stab-agence" hidden>
               <p class="pillar-price">
                 <span class="amount">79</span><span class="unit">€</span>
-                <span class="period">/ mois</span>
+                <span class="period" data-i18n="plans.per">/ mois</span>
               </p>
-              <p class="saas-desc">Pour les équipes qui font valider chaque écran par leur client.</p>
+              <p class="saas-desc" data-i18n="plans.agence.desc">Pour les équipes qui font valider chaque écran par leur client.</p>
               <ul class="ticks">
-                <li>Tout le plan Pro, pour toute l'équipe</li>
-                <li>Liens de revue protégés par mot de passe et par expiration</li>
-                <li>Validation client sans créer de compte</li>
-                <li>Espaces séparés par projet ou par client</li>
-                <li>Support prioritaire</li>
+                <li data-i18n="plans.agence.f1">Tout le plan Pro, pour toute l'équipe</li>
+                <li data-i18n="plans.agence.f2">Liens de revue protégés par mot de passe et par expiration</li>
+                <li data-i18n="plans.agence.f3">Validation client sans créer de compte</li>
+                <li data-i18n="plans.agence.f4">Espaces séparés par projet ou par client</li>
+                <li data-i18n="plans.agence.f5">Support prioritaire</li>
               </ul>
-              <a class="btn btn-primary btn-block" href="paiement.html?plan=agence">Choisir Agence</a>
-              <p class="pillar-foot">Paiement par carte · résiliable en un clic</p>
+              <a class="btn btn-primary btn-block" href="pages/paiement.html?plan=agence" data-i18n="plans.agence.cta">Choisir Agence</a>
+              <p class="pillar-foot" data-i18n="plans.agence.foot">Paiement par carte · résiliable en un clic</p>
             </div>
           </article>
 
           <!-- Pilier 3 : entreprise -->
           <article class="pillar reveal">
             <header class="pillar-head">
-              <p class="pillar-kicker">03 · Enterprise &amp; souveraineté</p>
-              <h3>Votre infrastructure</h3>
-              <p class="pillar-tagline">
+              <p class="pillar-kicker" data-i18n="pricing.ent.kicker">03 · Enterprise &amp; souveraineté</p>
+              <h3 data-i18n="pricing.ent.h3">Votre infrastructure</h3>
+              <p class="pillar-tagline" data-i18n="pricing.ent.tagline">
                 Pour les organisations où le code ne sort pas, et où l'auditeur demande des preuves.
               </p>
               <p class="pillar-price">
-                <span class="amount range">À partir de 1 000+</span><span class="unit">€</span>
-                <span class="period">/ an</span>
+                <span class="amount range" data-i18n="pricing.ent.price">À partir de 1 500+</span><span class="unit">€</span>
+                <span class="period" data-i18n="pricing.ent.period">/ an</span>
               </p>
             </header>
 
@@ -704,82 +710,82 @@
             </div>
 
             <ul class="ticks">
-              <li>Édition Team ou Enterprise, selon le nombre d'hôtes</li>
-              <li>Déploiement sur réseau isolé, installation sans Internet</li>
-              <li>Support prioritaire avec engagement contractuel</li>
-              <li>Conformité : exports d'audit, modèles formels, revue de code conjointe</li>
-              <li>Accompagnement à l'homologation et formation des équipes</li>
+              <li data-i18n="pricing.ent.l1">Édition Team ou Enterprise, selon le nombre d'hôtes</li>
+              <li data-i18n="pricing.ent.l2">Déploiement sur réseau isolé, installation sans Internet</li>
+              <li data-i18n="pricing.ent.l3">Support prioritaire avec engagement contractuel</li>
+              <li data-i18n="pricing.ent.l4">Conformité : exports d'audit, modèles formels, revue de code conjointe</li>
+              <li data-i18n="pricing.ent.l5">Accompagnement à l'homologation et formation des équipes</li>
             </ul>
 
-            <a class="btn btn-ghost btn-block" href="#contact">Demander un devis</a>
-            <p class="pillar-foot">Facturation annuelle · bon de commande accepté</p>
+            <a class="btn btn-ghost btn-block" href="#contact" data-i18n="pricing.ent.cta">Demander un devis</a>
+            <p class="pillar-foot" data-i18n="pricing.ent.foot">Facturation annuelle · bon de commande accepté</p>
           </article>
         </div>
 
         <!-- Grille comparative -->
         <div class="compare reveal">
           <table>
-            <caption>Comparaison détaillée des offres</caption>
+            <caption data-i18n="table.caption">Comparaison détaillée des offres</caption>
             <thead>
               <tr>
-                <th scope="col">Fonctionnalité</th>
-                <th scope="col">Communauté</th>
-                <th scope="col">Hobby</th>
-                <th scope="col">Pro</th>
-                <th scope="col">Agence</th>
-                <th scope="col">Enterprise</th>
+                <th scope="col" data-i18n="table.colFeature">Fonctionnalité</th>
+                <th scope="col" data-i18n="table.colCommunity">Communauté</th>
+                <th scope="col" data-i18n="table.colHobby">Hobby</th>
+                <th scope="col" data-i18n="table.colPro">Pro</th>
+                <th scope="col" data-i18n="table.colAgency">Agence</th>
+                <th scope="col" data-i18n="table.colEnterprise">Enterprise</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Environnements actifs</th>
-                <td>Illimités</td><td>3</td><td>Illimités</td><td>Illimités</td><td>Illimités</td>
+                <th scope="row" data-i18n="table.env">Environnements actifs</th>
+                <td data-i18n="table.unlimited">Illimités</td><td>3</td><td data-i18n="table.unlimited">Illimités</td><td data-i18n="table.unlimited">Illimités</td><td data-i18n="table.unlimited">Illimités</td>
               </tr>
               <tr>
-                <th scope="row">Durée de vie (TTL)</th>
-                <td>Configurable</td><td>24 heures</td><td>7 jours</td><td>7 jours</td><td>Configurable</td>
+                <th scope="row" data-i18n="table.ttl">Durée de vie (TTL)</th>
+                <td data-i18n="table.configurable">Configurable</td><td data-i18n="table.h24">24 heures</td><td data-i18n="table.d7">7 jours</td><td data-i18n="table.d7">7 jours</td><td data-i18n="table.configurable">Configurable</td>
               </tr>
               <tr>
-                <th scope="row">Domaines personnalisés</th>
-                <td class="yes">Oui</td><td class="no">—</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td>
+                <th scope="row" data-i18n="table.domain">Domaines personnalisés</th>
+                <td class="yes" data-i18n="table.yes">Oui</td><td class="no" data-i18n="table.no">—</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td>
               </tr>
               <tr>
-                <th scope="row">Sidecars compose</th>
-                <td class="yes">Oui</td><td class="no">—</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td>
+                <th scope="row" data-i18n="table.sidecar">Sidecars compose</th>
+                <td class="yes" data-i18n="table.yes">Oui</td><td class="no" data-i18n="table.no">—</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td>
               </tr>
               <tr>
-                <th scope="row">Logs de build</th>
-                <td>Sur l'hôte</td><td class="no">—</td><td>Dans le navigateur</td><td>Dans le navigateur</td><td>Avec export</td>
+                <th scope="row" data-i18n="table.logs">Logs de build</th>
+                <td data-i18n="table.host">Sur l'hôte</td><td class="no" data-i18n="table.no">—</td><td data-i18n="table.browser">Dans le navigateur</td><td data-i18n="table.browser">Dans le navigateur</td><td data-i18n="table.export">Avec export</td>
               </tr>
               <tr>
-                <th scope="row">Chaîne d'audit vérifiable</th>
-                <td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td>
+                <th scope="row" data-i18n="table.audit">Chaîne d'audit vérifiable</th>
+                <td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td>
               </tr>
               <tr>
-                <th scope="row">Liens de revue pour vos clients</th>
-                <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">Oui</td><td class="yes">Oui</td>
+                <th scope="row" data-i18n="table.review">Liens de revue pour vos clients</th>
+                <td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="yes" data-i18n="table.yes">Oui</td><td class="yes" data-i18n="table.yes">Oui</td>
               </tr>
               <tr>
-                <th scope="row">Déploiement isolé, sans Internet</th>
-                <td class="yes">Oui</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">Oui</td>
+                <th scope="row" data-i18n="table.airgap">Déploiement isolé, sans Internet</th>
+                <td class="yes" data-i18n="table.yes">Oui</td><td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="yes" data-i18n="table.yes">Oui</td>
               </tr>
               <tr>
-                <th scope="row">Rapports de conformité</th>
-                <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">Oui</td>
+                <th scope="row" data-i18n="table.reports">Rapports de conformité</th>
+                <td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="no" data-i18n="table.no">—</td><td class="yes" data-i18n="table.yes">Oui</td>
               </tr>
               <tr>
-                <th scope="row">Support</th>
-                <td>Communauté</td><td>Communauté</td><td>Prioritaire</td><td>Prioritaire</td><td>SLA contractuel</td>
+                <th scope="row" data-i18n="table.support">Support</th>
+                <td data-i18n="table.community">Communauté</td><td data-i18n="table.community">Communauté</td><td data-i18n="table.priority">Prioritaire</td><td data-i18n="table.priority">Prioritaire</td><td data-i18n="table.sla">SLA contractuel</td>
               </tr>
               <tr>
-                <th scope="row">Facturation</th>
-                <td>Aucune</td><td>Aucune</td><td>19 €/mois</td><td>79 €/mois</td><td>1 500 – 25 000 €+/an</td>
+                <th scope="row" data-i18n="table.billing">Facturation</th>
+                <td data-i18n="table.none">Aucune</td><td data-i18n="table.none">Aucune</td><td data-i18n="table.m19">19 €/mois</td><td data-i18n="table.m79">79 €/mois</td><td data-i18n="table.ent">1 500 – 25 000 €+/an</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <p class="plans-foot">
+        <p class="plans-foot" data-i18n="pricing.plansFoot">
           Prix hors taxes ; la TVA est ajoutée au paiement selon votre pays. Les abonnements Cloud
           sont payés par carte bancaire via Stripe et résiliables à tout moment, sans frais. Les
           offres Enterprise sont facturées annuellement, sur bon de commande, avec un devis chiffré
@@ -792,14 +798,14 @@
     <section class="section" id="faq">
       <div class="wrap faq-wrap">
         <header class="section-head section-head-left reveal">
-          <p class="eyebrow">Questions fréquentes</p>
-          <h2>Ce qu'on nous demande avant de signer.</h2>
+          <p class="eyebrow" data-i18n="faq.eyebrow">Questions fréquentes</p>
+          <h2 data-i18n="faq.h2">Ce qu'on nous demande avant de signer.</h2>
         </header>
 
         <div class="faq reveal">
           <details>
-            <summary>Est-ce que cela remplace un service de prévisualisation hébergé ?</summary>
-            <p>
+            <summary data-i18n="faq.q1">Est-ce que cela remplace un service de prévisualisation hébergé ?</summary>
+            <p data-i18n="faq.a1">
               Pour l'usage — voir tourner une pull request — oui. Pour le confort, non : il n'y a pas
               de tableau de bord web ni de gestion d'utilisateurs. previewd s'appuie sur la forge que
               vous avez déjà : les droits, les approbations et les commentaires restent là où vos
@@ -808,8 +814,8 @@
           </details>
 
           <details>
-            <summary>Faut-il un accès Internet sur le serveur ?</summary>
-            <p>
+            <summary data-i18n="faq.q2">Faut-il un accès Internet sur le serveur ?</summary>
+            <p data-i18n="faq.a2">
               Non. L'installation se fait depuis un paquet, les images de base doivent être présentes
               localement, les dépendances de compilation sont figées dans le dépôt, et le binaire
               n'embarque aucun client de télémétrie — un contrôle de CI échoue s'il en apparaît un.
@@ -818,8 +824,8 @@
           </details>
 
           <details>
-            <summary>Que se passe-t-il si le serveur redémarre au mauvais moment ?</summary>
-            <p>
+            <summary data-i18n="faq.q3">Que se passe-t-il si le serveur redémarre au mauvais moment ?</summary>
+            <p data-i18n="faq.a3">
               Au démarrage, previewd inventorie les conteneurs, les réseaux et les routes existants,
               détruit ce qu'aucun environnement gardé ne réclame, puis vérifie une condition finale :
               aucune route publiée ne doit pointer vers un environnement non gardé. Si la condition
@@ -828,8 +834,8 @@
           </details>
 
           <details>
-            <summary>Un contributeur externe peut-il déployer ?</summary>
-            <p>
+            <summary data-i18n="faq.q4">Un contributeur externe peut-il déployer ?</summary>
+            <p data-i18n="faq.a4">
               Pas sans approbation. Une pull request venue d'une fourche reste parquée, sans build,
               jusqu'à ce qu'une personne nommée dans la configuration approuve ce commit précis. Une
               nouvelle poussée annule l'approbation et remet l'environnement en attente. Le retrait
@@ -838,8 +844,8 @@
           </details>
 
           <details>
-            <summary>Mes secrets applicatifs sont-ils en sécurité ?</summary>
-            <p>
+            <summary data-i18n="faq.q5">Mes secrets applicatifs sont-ils en sécurité ?</summary>
+            <p data-i18n="faq.a5">
               Ils ne sont jamais écrits sur disque : ils vivent dans un ramfs, en fichiers 0444, montés
               en lecture seule dans le conteneur. Ils ne passent ni par une variable d'environnement,
               ni par l'API Docker, ni par une couche d'image. Au redémarrage, ils disparaissent — et
@@ -848,8 +854,8 @@
           </details>
 
           <details>
-            <summary>Et Kubernetes ? Plusieurs nœuds ?</summary>
-            <p>
+            <summary data-i18n="faq.q6">Et Kubernetes ? Plusieurs nœuds ?</summary>
+            <p data-i18n="faq.a6">
               Non, et c'est assumé. previewd est un agent mono-nœud : c'est ce qui rend son état
               vérifiable, son modèle formel complet et son exploitation tenable sur un réseau isolé.
               Un cluster réparti demanderait un consensus, donc une machinerie que ce produit
@@ -858,8 +864,8 @@
           </details>
 
           <details>
-            <summary>Mes applications doivent-elles être modifiées ?</summary>
-            <p>
+            <summary data-i18n="faq.q7">Mes applications doivent-elles être modifiées ?</summary>
+            <p data-i18n="faq.a7">
               Elles doivent construire une image à partir d'une image de base autorisée et ne pas
               avoir besoin d'écrire hors de leur répertoire de travail. Les applications qui
               écrivent au démarrage peuvent s'appuyer sur les services annexes de la composition,
@@ -874,38 +880,38 @@
     <section class="cta-final" id="contact">
       <div class="wrap cta-inner">
         <div class="reveal">
-          <p class="eyebrow">Évaluation</p>
-          <h2>Voyez-le tourner sur votre réseau,<br>pas sur le nôtre.</h2>
-          <p class="section-lead">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Évaluation</p>
+          <h2 data-i18n="contact.h2">Voyez-le tourner sur votre réseau,<br>pas sur le nôtre.</h2>
+          <p class="section-lead" data-i18n="contact.lead">
             Une évaluation se déroule chez vous : un hôte, un paquet, votre forge. Nous accompagnons
             l'installation et la revue du modèle de menace, puis vous décidez avec des preuves en main.
           </p>
           <ul class="cta-points">
-            <li>30 jours, sans engagement</li>
-            <li>Installation assistée à distance ou sur site</li>
-            <li>Vos données ne sortent jamais de votre infrastructure — y compris pendant l'essai</li>
+            <li data-i18n="contact.point1">30 jours, sans engagement</li>
+            <li data-i18n="contact.point2">Installation assistée à distance ou sur site</li>
+            <li data-i18n="contact.point3">Vos données ne sortent jamais de votre infrastructure — y compris pendant l'essai</li>
           </ul>
         </div>
 
         <form class="contact-card reveal" id="contact-form" action="mailto:contact@previewd.example" method="post" enctype="text/plain">
           <div class="field">
-            <label for="nom">Nom</label>
+            <label for="nom" data-i18n="contact.name">Nom</label>
             <input id="nom" name="nom" type="text" autocomplete="name" required>
           </div>
           <div class="field">
-            <label for="email">Courriel professionnel</label>
+            <label for="email" data-i18n="contact.email">Courriel professionnel</label>
             <input id="email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="field">
-            <label for="org">Organisation</label>
+            <label for="org" data-i18n="contact.org">Organisation</label>
             <input id="org" name="org" type="text" autocomplete="organization" required>
           </div>
           <div class="field">
-            <label for="contexte">Contexte</label>
-            <textarea id="contexte" name="contexte" rows="3" placeholder="Forge utilisée, contraintes réseau, échéance…"></textarea>
+            <label for="contexte" data-i18n="contact.context">Contexte</label>
+            <textarea id="contexte" name="contexte" rows="3" placeholder="Forge utilisée, contraintes réseau, échéance…" data-i18n-placeholder="contact.placeholder"></textarea>
           </div>
-          <button class="btn btn-primary btn-block" type="submit">Envoyer la demande</button>
-          <p class="form-note" id="form-note">
+          <button class="btn btn-primary btn-block" type="submit" data-i18n="contact.submit">Envoyer la demande</button>
+          <p class="form-note" id="form-note" data-i18n="contact.note">
             L'envoi ouvre votre logiciel de messagerie : ce formulaire ne transmet rien à un serveur.
           </p>
         </form>
@@ -924,37 +930,38 @@
           </svg>
           <span class="brand-name">previewd</span>
         </a>
-        <p>Environnements de prévisualisation souverains pour infrastructures régulées et isolées.</p>
+        <p data-i18n="footer.tagline">Environnements de prévisualisation souverains pour infrastructures régulées et isolées.</p>
       </div>
 
-      <nav class="footer-col" aria-label="Produit">
-        <h4>Produit</h4>
-        <a href="#fonctionnement">Fonctionnement</a>
-        <a href="#preuves">Preuves</a>
-        <a href="#deploiement">Déploiement</a>
-        <a href="#tarifs">Tarifs</a>
+      <nav class="footer-col" aria-label="Produit" data-i18n-aria-label="footer.product">
+        <h4 data-i18n="footer.product">Produit</h4>
+        <a href="#fonctionnement" data-i18n="footer.how">Fonctionnement</a>
+        <a href="#preuves" data-i18n="footer.proofs">Preuves</a>
+        <a href="#deploiement" data-i18n="footer.deploy">Déploiement</a>
+        <a href="#tarifs" data-i18n="footer.pricing">Tarifs</a>
       </nav>
 
-      <nav class="footer-col" aria-label="Ressources">
-        <h4>Ressources</h4>
-        <a href="#faq">Questions fréquentes</a>
-        <a href="#contact">Demander une évaluation</a>
-        <a href="#preuves">Modèle de menace</a>
+      <nav class="footer-col" aria-label="Ressources" data-i18n-aria-label="footer.resources">
+        <h4 data-i18n="footer.resources">Ressources</h4>
+        <a href="#faq" data-i18n="footer.faq">Questions fréquentes</a>
+        <a href="#contact" data-i18n="footer.evaluate">Demander une évaluation</a>
+        <a href="#preuves" data-i18n="footer.threatModel">Modèle de menace</a>
       </nav>
 
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contact">Contact</h4>
         <a href="mailto:contact@previewd.example">contact@previewd.example</a>
-        <p class="footer-mono">GitHub Enterprise Server · GitLab Self-Managed</p>
+        <p class="footer-mono" data-i18n="footer.mono">GitHub Enterprise Server · GitLab Self-Managed</p>
       </div>
     </div>
 
     <div class="wrap footer-bottom">
-      <p>© <span id="year">2026</span> previewd. Tous droits réservés.</p>
-      <p class="footer-mono">Site de démonstration · aucune ressource externe chargée</p>
+      <p>© <span id="year">2026</span> previewd. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+      <p class="footer-mono" data-i18n="footer.demo">Site de démonstration · aucune ressource externe chargée</p>
     </div>
   </footer>
 
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

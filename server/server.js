@@ -247,8 +247,8 @@ async function createCheckoutSession(plan) {
   const params = new URLSearchParams();
 
   params.set("mode", "subscription");
-  params.set("success_url", `${PUBLIC_BASE_URL}/succes.html?session_id={CHECKOUT_SESSION_ID}`);
-  params.set("cancel_url", `${PUBLIC_BASE_URL}/annulation.html?plan=${plan.id}`);
+  params.set("success_url", `${PUBLIC_BASE_URL}/pages/succes.html?session_id={CHECKOUT_SESSION_ID}`);
+  params.set("cancel_url", `${PUBLIC_BASE_URL}/pages/annulation.html?plan=${plan.id}`);
 
   params.set("line_items[0][quantity]", "1");
   params.set("line_items[0][price_data][currency]", CURRENCY);
@@ -379,6 +379,8 @@ const NOT_FOUND_PAGE = `<!doctype html>
 a{color:#5eead4}code{font-family:ui-monospace,monospace;color:#8e99a8}</style></head>
 <body><main><h1>404</h1><p>Cette page n'existe pas.</p>
 <p><a href="/">Retour à l'accueil</a></p></main></body></html>`;
+
+const LEGACY_PAGE_REDIRECTS = new Set(["/paiement.html", "/succes.html", "/annulation.html"]);
 
 async function serveStatic(req, res, pathname) {
   if (req.method !== "GET" && req.method !== "HEAD") {
@@ -588,6 +590,17 @@ async function handle(req, res) {
 
     console.log(`[webhook] ${event.type} reçu et vérifié`);
     return sendJSON(res, 200, { received: true });
+  }
+
+  // Les pages ont déménagé dans pages/ : on garde les anciens liens valables.
+  if (LEGACY_PAGE_REDIRECTS.has(pathname)) {
+    res.writeHead(301, {
+      ...SECURITY_HEADERS,
+      Location: `/pages${pathname}${url.search}`,
+      "Content-Length": 0,
+    });
+    res.end();
+    return;
   }
 
   // Tout le reste : fichiers statiques.

@@ -7,24 +7,57 @@ prévisualisation souverains.
 
 ```text
 previewd_site/
-├── index.html          page de vente (hero, fonctionnement, preuves, tarifs, FAQ)
-├── paiement.html       récapitulatif d'abonnement + ouverture de Stripe Checkout
-├── succes.html         retour après paiement, avec vérification de la session
-├── annulation.html     retour après abandon
+├── index.html            page de vente (hero, fonctionnement, preuves, tarifs, FAQ)
+├── pages/
+│   ├── paiement.html     récapitulatif d'abonnement + ouverture de Stripe Checkout
+│   ├── succes.html       retour après paiement, avec vérification de la session
+│   └── annulation.html   retour après abandon
 ├── css/
-│   └── style.css       feuille de style unique (thème sombre, responsive)
+│   └── style.css         feuille de style unique (thème sombre, responsive)
 ├── js/
-│   ├── main.js         navigation, apparitions, onglets, FAQ, formulaire
-│   └── paiement.js     sélection du plan, appel serveur, vérification au retour
+│   ├── i18n.js           moteur de traduction (dictionnaire, sélecteur, mémoire)
+│   ├── main.js           navigation, apparitions, onglets, FAQ, formulaire
+│   └── paiement.js       sélection du plan, appel serveur, vérification au retour
+├── json/
+│   └── translate.json    dictionnaire fr / en / es (source unique des textes)
 └── server/
-    ├── server.js       serveur HTTP sans dépendance (statique + Stripe)
-    ├── package.json    scripts npm, aucune dépendance
-    ├── .env.example    modèle de configuration
-    └── .gitignore      protège .env et data/
+    ├── server.js         serveur HTTP sans dépendance (statique + Stripe)
+    ├── package.json      scripts npm, aucune dépendance
+    ├── .env.example      modèle de configuration
+    └── .gitignore        protège .env et data/
 ```
 
-Aucune ressource externe n'est chargée : le site s'ouvre et s'affiche même sans
-Internet. Seul le paiement a besoin du serveur, donc d'un accès à Stripe.
+Aucune ressource externe n'est chargée : ni police, ni CDN, ni script tiers. Seul
+le paiement a besoin du serveur, donc d'un accès à Stripe.
+
+## Langues (i18n)
+
+Le site existe en **français, anglais et espagnol**. Le sélecteur se trouve dans
+l'en-tête de chaque page et le choix est mémorisé (`localStorage`, clé
+`previewd.lang`) ; il survit d'une page à l'autre et d'une visite à l'autre.
+
+- Les textes vivent dans [`json/translate.json`](json/translate.json), sous trois
+  objets de clés identiques (`fr`, `en`, `es`). C'est la source unique.
+- Le HTML porte les attributs `data-i18n`, `data-i18n-content`,
+  `data-i18n-aria-label` et `data-i18n-placeholder` ; le texte français reste
+  dans la page et sert de repli si le dictionnaire n'est pas chargé.
+- `js/i18n.js` expose `i18n.t(clé, variables?)` et rediffuse l'événement
+  `previewd:lang` ; les textes produits par les scripts (bouton « Copier »,
+  formulaire, page de retour Stripe) se retraduisent donc en direct.
+- Les liens de partage peuvent forcer une langue : `?lang=es`.
+
+**Une limite à connaître** : le dictionnaire est chargé en `fetch`. Ouvert en
+`file://` (double-clic sur `index.html`), le navigateur refuse cette lecture —
+la page reste alors en français et le sélecteur est masqué. Servez le site
+(`npm start` dans `server/`) pour disposer des trois langues.
+
+### Ajouter une langue
+
+1. Copier un bloc de langue dans `json/translate.json` (même liste de clés),
+   puis l'ajouter à `meta.languages`.
+2. Ajouter la correspondance de format dans `INTL_LOCALES` (`js/paiement.js`)
+   pour les montants.
+3. C'est tout : le sélecteur se construit à partir du dictionnaire.
 
 ## Lancer le site
 
@@ -45,7 +78,7 @@ pas une seule dépendance.
 2. Tableau de bord → Développeurs → Clés API : copiez la **clé secrète** `sk_test_…`.
 3. `cp .env.example .env`, puis renseignez `STRIPE_SECRET_KEY`.
 4. Redémarrez le serveur : la bannière indique `test (aucun prélèvement réel)`.
-5. Ouvrez `http://localhost:8787/paiement.html?plan=pro` et payez avec la carte
+5. Ouvrez `http://localhost:8787/pages/paiement.html?plan=pro` et payez avec la carte
    de test `4242 4242 4242 4242`, une date future quelconque, un CVC à 3 chiffres.
 
 Autres cartes utiles : `4000 0025 0000 3155` (3D Secure requis),
@@ -72,14 +105,17 @@ tableau de bord Stripe, avec au moins les événements
 
 ```text
 index.html#tarifs
-  └─ « Choisir Pro » → paiement.html?plan=pro
+  └─ « Choisir Pro » → pages/paiement.html?plan=pro
        └─ POST /api/checkout  { "plan": "pro" }
             └─ serveur → POST https://api.stripe.com/v1/checkout/sessions
                  └─ redirection vers Stripe Checkout (page hébergée)
-                      ├─ succès    → succes.html?session_id=cs_...
+                      ├─ succès    → pages/succes.html?session_id=cs_...
                       │                └─ GET /api/session?id=… (vérification)
-                      └─ abandon   → annulation.html
+                      └─ abandon   → pages/annulation.html
 ```
+
+Les anciennes adresses (`/paiement.html`, `/succes.html`, `/annulation.html`)
+redirigent en 301 vers `pages/`, pour ne pas casser les liens déjà diffusés.
 
 Le montant n'est **jamais** transmis par le navigateur : il envoie un identifiant
 de formule (`pro`, `agence`), et le serveur applique le tarif du catalogue. Un
@@ -114,6 +150,10 @@ complète. Il manque, volontairement à ce stade :
 ## Vérifications faites
 
 - Pages HTML : balises équilibrées, aucune ressource externe.
+- i18n : 381 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
+  ni vide) ; toutes les clés `data-i18n` du HTML existent dans les trois
+  langues ; bascule vérifiée dans le navigateur, y compris après rechargement
+  (mémoire du choix) et sur les pages de paiement (`79 €` / `€79`).
 - Serveur lancé sans clé : `/api/checkout` répond 503 avec un message explicite
   (le paiement est désactivé, jamais simulé).
 - Accès direct à `/server/.env`, `/server/server.js` et aux fichiers cachés : 403.

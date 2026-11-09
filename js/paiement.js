@@ -5,63 +5,37 @@
      2. au retour de Stripe, re-vérifier la session côté serveur avant de
         prétendre que le paiement a réussi.
    Aucune clé n'est présente ici : la clé secrète reste sur le serveur.
+   --------------------------------------------------------------------------
+   Les libellés viennent de json/translate.json via i18n.js. Si le dictionnaire
+   n'a pas pu être chargé, les valeurs françaises passées en second argument
+   servent de repli.
    ========================================================================== */
 
 (function () {
   "use strict";
 
-  /* --- Offres (affichage uniquement ; les montants font foi côté serveur) - */
+  var INTL_LOCALES = { fr: "fr-FR", en: "en-IE", es: "es-ES" };
+
+  /* --- Offres : seuls les faits commerciaux vivent ici. ----------------- */
+  /* Les montants qui font foi sont définis côté serveur (server/server.js). */
   var PLANS = {
-    hobby: {
-      name: "Plan Hobby",
-      price: "0 €",
-      per: "/ mois",
-      vat: "Aucune carte demandée",
-      free: true,
-      cta: "Demander l'accès gratuit",
-      features: [
-        "Jusqu'à 3 environnements actifs",
-        "TTL court : 24 heures",
-        "Sous-domaine fourni",
-        "Une personne, un projet",
-        "Support communautaire",
-      ],
-      mailto:
-        "mailto:contact@previewd.example" +
-        "?subject=" +
-        encodeURIComponent("Activation du plan Hobby previewd"),
-    },
-    pro: {
-      name: "Plan Pro",
-      price: "19 €",
-      per: "/ mois",
-      vat: "Hors taxes · TVA ajoutée au paiement",
-      free: false,
-      cta: "Payer 19 € par mois",
-      features: [
-        "Prévisualisations illimitées",
-        "Domaines personnalisés",
-        "Sidecars compose pris en charge",
-        "Logs de build dans le navigateur",
-        "TTL de 7 jours, reconstruit à chaque poussée",
-      ],
-    },
-    agence: {
-      name: "Plan Agence",
-      price: "79 €",
-      per: "/ mois",
-      vat: "Hors taxes · TVA ajoutée au paiement",
-      free: false,
-      cta: "Payer 79 € par mois",
-      features: [
-        "Tout le plan Pro, pour toute l'équipe",
-        "Liens de revue protégés par mot de passe",
-        "Validation client sans créer de compte",
-        "Espaces séparés par projet ou par client",
-        "Support prioritaire",
-      ],
-    },
+    hobby: { free: true },
+    pro: { free: false },
+    agence: { free: false },
   };
+
+  function lang() {
+    if (window.i18n && window.i18n.ready) return window.i18n.lang;
+    return document.documentElement.getAttribute("lang") || "fr";
+  }
+
+  function t(key, fallback) {
+    if (window.i18n && window.i18n.ready) {
+      var value = window.i18n.t(key);
+      if (value) return value;
+    }
+    return fallback === undefined ? "" : fallback;
+  }
 
   function param(name) {
     return new URLSearchParams(window.location.search).get(name);
@@ -73,15 +47,29 @@
     element.hidden = false;
   }
 
+  function formatMoney(cents) {
+    var locale = INTL_LOCALES[lang()] || "fr-FR";
+    try {
+      return new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 2,
+      }).format(cents / 100);
+    } catch (error) {
+      return (cents / 100).toFixed(2).replace(".", ",") + " €";
+    }
+  }
+
   /* ---------------------------------------------------------------------
      A. Page de paiement
      --------------------------------------------------------------------- */
   var payButton = document.getElementById("pay-btn");
 
   if (payButton) {
-    var key = (param("plan") || "pro").toLowerCase();
-    var plan = PLANS[key] || PLANS.pro;
-    if (!PLANS[key]) key = "pro";
+    var requested = (param("plan") || "pro").toLowerCase();
+    var planKey = PLANS[requested] ? requested : "pro";
+    var freePlan = PLANS[planKey].free;
+    var busy = false;
 
     var nameEl = document.getElementById("plan-name");
     var priceEl = document.getElementById("plan-price");
@@ -90,50 +78,71 @@
     var listEl = document.getElementById("plan-features");
     var errorEl = document.getElementById("pay-error");
 
-    if (nameEl) nameEl.textContent = plan.name;
-    if (priceEl) priceEl.textContent = plan.price;
-    if (perEl) perEl.textContent = plan.per;
-    if (vatEl) vatEl.textContent = plan.vat;
-    if (listEl) {
-      listEl.innerHTML = "";
-      plan.features.forEach(function (feature) {
-        var li = document.createElement("li");
-        li.textContent = feature;
-        listEl.appendChild(li);
-      });
-    }
-    payButton.textContent = plan.cta;
+    function renderPlan() {
+      var base = "plans." + planKey + ".";
 
-    // Le plan gratuit n'appelle pas Stripe : il n'y a rien à encaisser.
-    var freePlan = plan.free;
+      if (nameEl) nameEl.textContent = t(base + "name", "Plan");
+      if (priceEl) priceEl.textContent = t(base + "price", "");
+      if (perEl) perEl.textContent = t("plans.per", "/ mois");
+      if (vatEl) {
+        vatEl.textContent = PLANS[planKey].free
+          ? t(base + "foot", "Aucune carte demandée")
+          : t("plans.vat", "Hors taxes · TVA ajoutée au paiement");
+      }
+
+      if (listEl) {
+        listEl.innerHTML = "";
+        ["f1", "f2", "f3", "f4", "f5"].forEach(function (suffix) {
+          var label = t(base + suffix);
+          if (!label) return;
+          var li = document.createElement("li");
+          li.textContent = label;
+          listEl.appendChild(li);
+        });
+      }
+
+      if (!busy) payButton.textContent = t(base + "pay", "Payer par carte");
+    }
+
+    function hobbyMailto() {
+      return (
+        "mailto:contact@previewd.example?subject=" +
+        encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby previewd"))
+      );
+    }
+
+    renderPlan();
+    window.addEventListener("previewd:lang", renderPlan);
 
     payButton.addEventListener("click", function () {
       if (freePlan) {
-        window.location.href = plan.mailto;
+        window.location.href = hobbyMailto();
         return;
       }
 
       if (window.location.protocol === "file:") {
         showError(
           errorEl,
-          "Cette page doit être servie par le petit serveur du site (le paiement ne peut pas " +
-            "être créé sans lui). Lancez « npm start » dans le dossier server, puis ouvrez " +
-            "http://localhost:8787/paiement.html?plan=" +
-            key +
-            "."
+          t(
+            "js.fileProtocol",
+            "Cette page doit être servie par le petit serveur du site. Lancez « npm start » " +
+              "dans le dossier server, puis ouvrez http://localhost:8787/pages/paiement.html?plan=" +
+              planKey +
+              "."
+          ).replace("{plan}", planKey)
         );
         return;
       }
 
-      var label = payButton.textContent;
+      busy = true;
       payButton.disabled = true;
-      payButton.textContent = "Ouverture du paiement…";
+      payButton.textContent = t("js.opening", "Ouverture du paiement…");
       if (errorEl) errorEl.hidden = true;
 
       fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: key }),
+        body: JSON.stringify({ plan: planKey }),
       })
         .then(function (response) {
           return response.json().then(function (data) {
@@ -146,27 +155,36 @@
             return;
           }
 
-          var message = "Le paiement n'a pas pu être ouvert.";
-          if (result.data && result.data.message) {
-            message = result.data.message;
-          }
+          var message;
           if (result.status === 503) {
-            message =
+            message = t(
+              "js.stripeMissing",
               "Stripe n'est pas encore configuré sur ce serveur : renseignez STRIPE_SECRET_KEY " +
-              "dans server/.env (clé de test fournie par Stripe), puis redémarrez le serveur.";
+                "dans server/.env (clé de test fournie par Stripe), puis redémarrez le serveur."
+            );
+          } else if (lang() === "fr" && result.data && result.data.message) {
+            // Le serveur répond en français : on ne l'affiche que dans cette langue.
+            message = result.data.message;
+          } else {
+            message = t("js.checkoutFailed", "Le paiement n'a pas pu être ouvert.");
           }
 
           showError(errorEl, message);
+          busy = false;
           payButton.disabled = false;
-          payButton.textContent = label;
+          renderPlan();
         })
         .catch(function () {
           showError(
             errorEl,
-            "Impossible de joindre le serveur de paiement. Vérifiez qu'il est démarré, puis réessayez."
+            t(
+              "js.serverUnreachable",
+              "Impossible de joindre le serveur de paiement. Vérifiez qu'il est démarré, puis réessayez."
+            )
           );
+          busy = false;
           payButton.disabled = false;
-          payButton.textContent = label;
+          renderPlan();
         });
     });
   }
@@ -180,76 +198,113 @@
     var sessionId = param("session_id");
     var titleEl = document.getElementById("status-title");
     var textEl = document.getElementById("status-text");
+    var apiSession = null;
+    var failed = false;
+    var paid = false;
 
-    if (!sessionId) {
-      if (textEl) {
-        textEl.textContent =
-          "Cette page s'affiche après un paiement. Aucune session n'est indiquée : si vous " +
-          "venez de payer, retrouvez votre abonnement dans le courriel de confirmation de Stripe.";
-      }
-      return;
+    function setText(id, value) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = value;
     }
 
-    fetch("/api/session?id=" + encodeURIComponent(sessionId))
-      .then(function (response) {
-        return response.json().then(function (data) {
-          return { ok: response.ok, data: data };
-        });
-      })
-      .then(function (result) {
-        if (!result.ok || !result.data) {
-          if (textEl) {
-            textEl.textContent =
-              "Le paiement a bien été transmis à Stripe, mais nous n'avons pas pu vérifier la " +
-              "session depuis ce navigateur. Gardez le courriel de confirmation : il fait foi.";
-          }
-          return;
-        }
-
-        var session = result.data;
-        var paid = session.status === "paid" || session.status === "no_payment_required";
-
-        if (titleEl) {
-          titleEl.textContent = paid ? "C'est parti." : "Paiement en cours de confirmation.";
-        }
+    function renderStatus() {
+      if (!sessionId) {
         if (textEl) {
-          textEl.textContent = paid
-            ? "Votre abonnement est actif. Vous allez recevoir les instructions pour relier " +
-              "votre première forge et lancer votre premier aperçu."
-            : "Stripe n'a pas encore confirmé le paiement (certains moyens de paiement prennent " +
-              "quelques minutes). Actualisez cette page dans un instant.";
-        }
-
-        statusCard.hidden = false;
-
-        var setText = function (id, value) {
-          var el = document.getElementById(id);
-          if (el) el.textContent = value;
-        };
-
-        setText("status-plan", session.plan_label || session.plan || "—");
-
-        if (typeof session.amount === "number") {
-          setText(
-            "status-amount",
-            (session.amount / 100).toFixed(2).replace(".", ",") +
-              " €" +
-              (session.interval === "month" ? " / mois" : "")
+          textEl.textContent = t(
+            "js.sessionMissing",
+            "Cette page s'affiche après un paiement. Aucune session n'est indiquée : si vous " +
+              "venez de payer, retrouvez votre abonnement dans le courriel de confirmation de Stripe."
           );
         }
+        return;
+      }
 
-        setText("status-email", session.email || "—");
-        setText(
-          "status-state",
-          paid ? "Payé" : session.status === "unpaid" ? "En attente" : session.status || "—"
-        );
-      })
-      .catch(function () {
+      if (failed) {
         if (textEl) {
-          textEl.textContent =
+          textEl.textContent = t(
+            "js.serverOffline",
             "Le paiement a été transmis à Stripe. La vérification locale est indisponible " +
-            "(serveur arrêté) ; le courriel de confirmation de Stripe fait foi.";
+              "(serveur arrêté) ; le courriel de confirmation de Stripe fait foi."
+          );
         }
-      });
+        return;
+      }
+
+      if (!apiSession) return;
+
+      if (titleEl) titleEl.textContent = paid ? t("js.paidTitle", "C'est parti.") : t("js.pendingTitle", "Paiement en cours de confirmation.");
+      if (textEl) {
+        textEl.textContent = paid
+          ? t(
+              "js.paidText",
+              "Votre abonnement est actif. Vous allez recevoir les instructions pour relier " +
+                "votre première forge et lancer votre premier aperçu."
+            )
+          : t(
+              "js.pendingText",
+              "Stripe n'a pas encore confirmé le paiement (certains moyens de paiement prennent " +
+                "quelques minutes). Actualisez cette page dans un instant."
+            );
+      }
+
+      var knownPlan = apiSession.plan && PLANS[apiSession.plan];
+      setText(
+        "status-plan",
+        knownPlan ? t("plans." + apiSession.plan + ".name") : apiSession.plan_label || apiSession.plan || "—"
+      );
+
+      if (typeof apiSession.amount === "number") {
+        setText(
+          "status-amount",
+          formatMoney(apiSession.amount) +
+            (apiSession.interval === "month" ? " " + t("js.perMonth", "/ mois") : "")
+        );
+      }
+
+      setText("status-email", apiSession.email || "—");
+      setText(
+        "status-state",
+        paid
+          ? t("js.paid", "Payé")
+          : apiSession.status === "unpaid"
+            ? t("js.waiting", "En attente")
+            : apiSession.status || "—"
+      );
+    }
+
+    window.addEventListener("previewd:lang", renderStatus);
+
+    if (!sessionId) {
+      renderStatus();
+    } else {
+      fetch("/api/session?id=" + encodeURIComponent(sessionId))
+        .then(function (response) {
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (!result.ok || !result.data) {
+            if (textEl) {
+              textEl.textContent = t(
+                "js.verifFailed",
+                "Le paiement a bien été transmis à Stripe, mais nous n'avons pas pu vérifier la " +
+                  "session depuis ce navigateur. Gardez le courriel de confirmation : il fait foi."
+              );
+            }
+            return;
+          }
+
+          apiSession = result.data;
+          paid = apiSession.status === "paid" || apiSession.status === "no_payment_required";
+
+          statusCard.hidden = false;
+          renderStatus();
+        })
+        .catch(function () {
+          failed = true;
+          renderStatus();
+        });
+    }
   }
 })();

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paiement — previewd</title>
-  <meta name="description" content="Finalisez votre abonnement previewd. Paiement sécurisé par Stripe, sans engagement.">
+  <title data-i18n="pay.docTitle">Paiement — previewd</title>
+  <meta name="description" content="Finalisez votre abonnement previewd. Paiement sécurisé par Stripe, sans engagement." data-i18n-content="pay.docDescription">
   <meta name="theme-color" content="#07080a">
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
 
   <header class="site-header is-scrolled" id="header">
     <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="previewd, retour au site">
+      <a class="brand" href="../index.html" aria-label="previewd, retour au site" data-i18n-aria-label="a11y.brandSite">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
           <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -24,8 +24,14 @@
       </a>
 
       <div class="header-actions">
-        <a class="btn btn-ghost btn-sm" href="index.html#tarifs">Tarifs</a>
-        <a class="btn btn-ghost btn-sm" href="index.html">Retour au site</a>
+        <a class="btn btn-ghost btn-sm" href="../index.html#tarifs" data-i18n="header.backPricing">Tarifs</a>
+        <a class="btn btn-ghost btn-sm" href="../index.html" data-i18n="header.backSite">Retour au site</a>
+      </div>
+
+      <div class="lang-switch" data-lang-switch>
+        <select class="lang-select" id="lang-select" data-lang-select aria-label="Langue du site" data-i18n-aria-label="a11y.lang">
+          <option value="fr" lang="fr">FR</option>
+        </select>
       </div>
     </div>
   </header>
@@ -34,9 +40,9 @@
     <section class="pay-page">
       <div class="wrap">
         <div class="pay-head">
-          <p class="eyebrow">Paiement</p>
-          <h1 id="pay-title">Finalisez votre abonnement</h1>
-          <p id="pay-subtitle">
+          <p class="eyebrow" data-i18n="pay.eyebrow">Paiement</p>
+          <h1 id="pay-title" data-i18n="pay.title">Finalisez votre abonnement</h1>
+          <p id="pay-subtitle" data-i18n="pay.subtitle">
             Une dernière étape avant votre premier aperçu. Le paiement est traité par Stripe,
             sur une page hébergée : aucune donnée bancaire ne transite par ce site.
           </p>
@@ -46,8 +52,8 @@
           <div>
             <div class="pay-includes">
               <details open>
-                <summary>Ce que couvre l'abonnement</summary>
-                <p>
+                <summary data-i18n="pay.inc1.q">Ce que couvre l'abonnement</summary>
+                <p data-i18n="pay.inc1.a">
                   Un espace de prévisualisation hébergé par nos soins, relié à votre forge. Chaque
                   pull request obtient son adresse, reconstruite à chaque poussée et détruite à la
                   fermeture. Vous n'administrez ni serveur, ni Docker, ni certificat.
@@ -55,16 +61,16 @@
               </details>
 
               <details>
-                <summary>Puis-je changer de formule plus tard ?</summary>
-                <p>
+                <summary data-i18n="pay.inc2.q">Puis-je changer de formule plus tard ?</summary>
+                <p data-i18n="pay.inc2.a">
                   Oui, à tout moment, depuis le portail client. Le changement est appliqué
                   immédiatement et la facturation est calculée au prorata. Aucun engagement de durée.
                 </p>
               </details>
 
               <details>
-                <summary>Comment résilier ?</summary>
-                <p>
+                <summary data-i18n="pay.inc3.q">Comment résilier ?</summary>
+                <p data-i18n="pay.inc3.a">
                   En un clic, depuis le portail client accessible avec l'adresse courriel utilisée
                   au paiement. L'abonnement s'arrête à la fin de la période déjà payée ; vos
                   environnements sont détruits et vos données de prévisualisation supprimées.
@@ -72,8 +78,8 @@
               </details>
 
               <details>
-                <summary>Une facture est-elle fournie ?</summary>
-                <p>
+                <summary data-i18n="pay.inc4.q">Une facture est-elle fournie ?</summary>
+                <p data-i18n="pay.inc4.a">
                   Oui. Stripe émet une facture à chaque prélèvement, disponible dans le portail
                   client et envoyée par courriel. Le numéro de TVA intracommunautaire peut être
                   renseigné au moment du paiement pour l'autoliquidation.
@@ -81,8 +87,8 @@
               </details>
 
               <details>
-                <summary>Quels moyens de paiement ?</summary>
-                <p>
+                <summary data-i18n="pay.inc5.q">Quels moyens de paiement ?</summary>
+                <p data-i18n="pay.inc5.a">
                   Carte bancaire (Visa, Mastercard, American Express) et prélèvement SEPA pour les
                   abonnements récurrents, selon ce que Stripe propose dans votre pays. Le paiement
                   est confirmé avant toute mise en service.
@@ -90,8 +96,8 @@
               </details>
 
               <details>
-                <summary>Et si je préfère tout héberger moi-même ?</summary>
-                <p>
+                <summary data-i18n="pay.inc6.q">Et si je préfère tout héberger moi-même ?</summary>
+                <p data-i18n="pay.inc6.a">
                   L'édition Open Source est gratuite, complète, et ne nécessite aucun compte. Si
                   votre code ne doit pas quitter votre réseau, c'est la seule option à considérer —
                   ainsi que l'offre Enterprise, déployée sur votre infrastructure.
@@ -99,7 +105,7 @@
               </details>
             </div>
 
-            <p class="legal">
+            <p class="legal" data-i18n="pay.legal">
               Paiement sécurisé par Stripe. Les prix sont indiqués hors taxes ; la TVA est ajoutée
               au paiement selon votre pays de facturation. Abonnement mensuel sans engagement,
               résiliable depuis le portail client. Les données de carte sont saisies chez Stripe et
@@ -134,18 +140,18 @@
 
             <p class="pay-methods">
               <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.6" y="3.6" width="12.8" height="8.8" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M1.6 6.6h12.8" stroke="currentColor" stroke-width="1.3"/></svg>
-              Stripe Checkout · carte bancaire · SEPA
+              <span data-i18n="pay.methods">Stripe Checkout · carte bancaire · SEPA</span>
             </p>
 
             <p class="pay-secure">
               <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.2" y="7" width="9.6" height="6.4" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.6 7V5.4a2.4 2.4 0 0 1 4.8 0V7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Aucune donnée bancaire ne passe par ce site. Vous êtes redirigé vers la page
-              sécurisée de Stripe, puis ramené ici.
+              <span data-i18n="pay.secure">Aucune donnée bancaire ne passe par ce site. Vous êtes redirigé vers la page
+              sécurisée de Stripe, puis ramené ici.</span>
             </p>
 
-            <a class="pay-back" href="index.html#tarifs">
+            <a class="pay-back" href="../index.html#tarifs">
               <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Revenir aux tarifs
+              <span data-i18n="pay.back">Revenir aux tarifs</span>
             </a>
           </aside>
         </div>
@@ -155,12 +161,13 @@
 
   <footer class="site-footer">
     <div class="wrap footer-bottom">
-      <p>© <span id="year">2026</span> previewd. Tous droits réservés.</p>
-      <p class="footer-mono">Paiement traité par Stripe · site de démonstration</p>
+      <p>© <span id="year">2026</span> previewd. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+      <p class="footer-mono" data-i18n="pay.mono">Paiement traité par Stripe · site de démonstration</p>
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
-  <script src="js/paiement.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/paiement.js" defer></script>
 </body>
 </html>
