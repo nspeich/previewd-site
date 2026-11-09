@@ -1,5 +1,5 @@
 /* ==========================================================================
-   previewd — moteur i18n
+   Preview-d — moteur i18n
    --------------------------------------------------------------------------
    Un dictionnaire (json/translate.json), quatre langues possibles, et un
    sélecteur persistant dans l'en-tête. Aucune dépendance, aucun appel réseau
@@ -24,7 +24,7 @@
 
   var SCRIPT = document.currentScript;
   var DICT_URL = new URL("../json/translate.json", SCRIPT ? SCRIPT.src : window.location.href);
-  var DEFAULT_STORAGE_KEY = "previewd.lang";
+  var DEFAULT_STORAGE_KEY = "Preview-d.lang";
   var PARAM = "lang";
 
   var state = {
@@ -145,7 +145,7 @@
     syncSelect();
 
     window.dispatchEvent(
-      new CustomEvent("previewd:lang", {
+      new CustomEvent("Preview-d:lang", {
         detail: {
           lang: state.lang,
           label: entry ? entry.label : state.lang,

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   previewd — interactions du site
+   Preview-d — interactions du site
    Aucune dépendance externe, aucun appel réseau.
    ========================================================================== */
 
@@ -267,7 +267,7 @@
       var contexte = (document.getElementById("contexte") || {}).value || "";
 
       var sujet =
-        t("js.mailSubject", "Demande d'évaluation previewd") +
+        t("js.mailSubject", "Demande d'évaluation Preview-d") +
         " — " +
         (org || t("js.mailOrg", "organisation"));
       var corps = [
@@ -278,7 +278,7 @@
         t("js.mailContext", "Contexte") + ":",
         contexte || t("js.mailUnspecified", "(non précisé)"),
         "",
-        t("js.mailFooter", "— Demande envoyée depuis le site previewd"),
+        t("js.mailFooter", "— Demande envoyée depuis le site Preview-d"),
       ].join("\n");
 
       var destination = (form.getAttribute("action") || "")

@@ -1,9 +1,9 @@
 {
-  "name": "previewd-site",
+  "name": "Preview-d-site",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Site de vente previewd et paiement Stripe Checkout, sans dépendance npm",
+  "description": "Site de vente Preview-d et paiement Stripe Checkout, sans dépendance npm",
   "engines": {
     "node": ">=20"
   },

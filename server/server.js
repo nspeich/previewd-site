@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * previewd — serveur du site et du paiement
+ * Preview-d — serveur du site et du paiement
  * =========================================================================
  * Rôle : servir les pages du site et créer les sessions Stripe Checkout.
  *
@@ -256,7 +256,7 @@ async function createCheckoutSession(plan) {
   params.set("line_items[0][price_data][recurring][interval]", plan.interval);
   params.set(
     "line_items[0][price_data][product_data][name]",
-    `previewd Cloud — ${plan.label}`
+    `Preview-d Cloud — ${plan.label}`
   );
   params.set("line_items[0][price_data][product_data][description]", plan.description);
 
@@ -373,7 +373,7 @@ const MIME_TYPES = {
 };
 
 const NOT_FOUND_PAGE = `<!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><title>Page introuvable — previewd</title>
+<html lang="fr"><head><meta charset="utf-8"><title>Page introuvable — Preview-d</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>body{background:#07080a;color:#e8ecf1;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}
 a{color:#5eead4}code{font-family:ui-monospace,monospace;color:#8e99a8}</style></head>
@@ -623,7 +623,7 @@ const server = createServer((req, res) => {
 
 server.listen(PORT, HOST, () => {
   console.log("");
-  console.log("  previewd — site et paiement");
+  console.log("  Preview-d — site et paiement");
   console.log(`  adresse      : http://${HOST === "0.0.0.0" ? "localhost" : HOST}:${PORT}`);
   console.log(`  origine Stripe : ${PUBLIC_BASE_URL}`);
   console.log(`  Stripe       : ${stripeMode()}`);

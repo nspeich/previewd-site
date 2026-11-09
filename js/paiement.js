@@ -1,5 +1,5 @@
 /* ==========================================================================
-   previewd — paiement
+   Preview-d — paiement
    Deux responsabilités :
      1. afficher la bonne offre et ouvrir une session Stripe Checkout ;
      2. au retour de Stripe, re-vérifier la session côté serveur avant de
@@ -106,13 +106,13 @@
 
     function hobbyMailto() {
       return (
-        "mailto:contact@previewd.example?subject=" +
-        encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby previewd"))
+        "mailto:contact@Preview-d.example?subject=" +
+        encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby Preview-d"))
       );
     }
 
     renderPlan();
-    window.addEventListener("previewd:lang", renderPlan);
+    window.addEventListener("Preview-d:lang", renderPlan);
 
     payButton.addEventListener("click", function () {
       if (freePlan) {
@@ -272,7 +272,7 @@
       );
     }
 
-    window.addEventListener("previewd:lang", renderStatus);
+    window.addEventListener("Preview-d:lang", renderStatus);
 
     if (!sessionId) {
       renderStatus();

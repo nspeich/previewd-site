@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="meta.title">previewd — Un environnement par pull request, sans jamais quitter votre réseau</title>
-  <meta name="description" content="previewd construit, isole et détruit un environnement de prévisualisation pour chaque pull request, entièrement sur votre infrastructure. Aucun cloud, aucune sortie réseau, aucun secret écrit sur disque." data-i18n-content="meta.description">
+  <title data-i18n="meta.title">Preview-d — Un environnement par pull request, sans jamais quitter votre réseau</title>
+  <meta name="description" content="Preview-d construit, isole et détruit un environnement de prévisualisation pour chaque pull request, entièrement sur votre infrastructure. Aucun cloud, aucune sortie réseau, aucun secret écrit sur disque." data-i18n-content="meta.description">
   <meta name="theme-color" content="#07080a">
-  <meta property="og:title" content="previewd — La prévisualisation qui ne sort pas de chez vous" data-i18n-content="meta.ogTitle">
+  <meta property="og:title" content="Preview-d — La prévisualisation qui ne sort pas de chez vous" data-i18n-content="meta.ogTitle">
   <meta property="og:description" content="Un binaire statique, un hôte Linux, Docker et Traefik. Chaque pull request obtient son adresse, son réseau scellé et sa piste d'audit infalsifiable." data-i18n-content="meta.ogDescription">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
@@ -16,13 +16,13 @@
 
   <header class="site-header" id="header">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="previewd, retour en haut" data-i18n-aria-label="a11y.brandTop">
+      <a class="brand" href="#top" aria-label="Preview-d, retour en haut" data-i18n-aria-label="a11y.brandTop">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
           <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="21.6" cy="21.4" r="1.9" fill="currentColor"/>
         </svg>
-        <span class="brand-name">previewd</span>
+        <span class="brand-name">Preview-d</span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Navigation principale" data-i18n-aria-label="a11y.nav">
@@ -70,7 +70,7 @@
           </h1>
 
           <p class="lead" data-i18n="hero.lead">
-            previewd construit la version exacte proposée par une pull request, l'exécute dans
+            Preview-d construit la version exacte proposée par une pull request, l'exécute dans
             une boîte scellée sur <em>votre</em> serveur, lui donne une adresse web, puis jette
             tout à la fermeture. Un binaire statique. Aucun compte cloud. Zéro octet envoyé à un tiers.
           </p>
@@ -94,7 +94,7 @@
           <div class="panel">
             <div class="panel-bar">
               <span class="live-dot"></span>
-              <span class="panel-title" data-i18n="panel.title">previewd · réconciliation</span>
+              <span class="panel-title" data-i18n="panel.title">Preview-d · réconciliation</span>
               <span class="panel-tag" data-i18n="panel.tag">hors ligne</span>
             </div>
 
@@ -156,7 +156,7 @@
       <div class="wrap stats-grid">
         <div class="stat">
           <span class="stat-value" data-count="0">0</span>
-          <span class="stat-label" data-i18n="stats.1">connexion sortante émise par previewd à l'exécution</span>
+          <span class="stat-label" data-i18n="stats.1">connexion sortante émise par Preview-d à l'exécution</span>
         </div>
         <div class="stat">
           <span class="stat-value" data-count="1">1</span>
@@ -245,7 +245,7 @@
               <div>
                 <h3 data-i18n="how.s1.t">Le webhook arrive, signé</h3>
                 <p data-i18n="how.s1.p">
-                  Votre forge envoie un événement sur TLS. previewd vérifie la signature HMAC du corps
+                  Votre forge envoie un événement sur TLS. Preview-d vérifie la signature HMAC du corps
                   brut, la source réseau, et refuse un corps de plus de 1 Mio. La même livraison
                   rejouée n'est jamais traitée deux fois.
                 </p>
@@ -259,7 +259,7 @@
                 <h3 data-i18n="how.s2.t">La décision est vérifiée à la source</h3>
                 <p data-i18n="how.s2.p">
                   Une branche du dépôt, poussée par quelqu'un qui a le droit d'écrire : le déploiement
-                  part. Une fourche ou un contributeur externe : previewd attend qu'un approbateur
+                  part. Une fourche ou un contributeur externe : Preview-d attend qu'un approbateur
                   nommé valide <em>ce commit précis</em>. Le statut est relu auprès de la forge, jamais
                   déduit de l'événement.
                 </p>
@@ -302,7 +302,7 @@
                 <p data-i18n="how.s5.p">
                   Une route atomique est écrite pour Traefik, et le lien revient directement en
                   commentaire et en statut de commit sur la pull request. À la fermeture, au retrait
-                  de l'approbation ou à l'expiration du TTL, previewd détruit conteneur, réseau, image,
+                  de l'approbation ou à l'expiration du TTL, Preview-d détruit conteneur, réseau, image,
                   route et secrets — dans cet ordre, chaque étape s'exécutant même si la précédente échoue.
                 </p>
                 <p class="flow-note" data-i18n="how.s5.n">TTL par défaut : 7 jours, sans nouvelle poussée</p>
@@ -377,7 +377,7 @@
             </div>
             <h3 data-i18n="proofs.c2.t">Zéro secret sur disque</h3>
             <p data-i18n="proofs.c2.p">
-              Les clés de previewd sont des credentials systemd. Les secrets applicatifs vivent en
+              Les clés de Preview-d sont des credentials systemd. Les secrets applicatifs vivent en
               mémoire verrouillée et n'atteignent le conteneur que comme fichiers d'un ramfs
               en lecture seule. Ni variable d'environnement, ni <code>docker inspect</code>, ni couche d'image.
             </p>
@@ -390,7 +390,7 @@
             <h3 data-i18n="proofs.c3.t">Piste d'audit à chaîne de hachages</h3>
             <p data-i18n="proofs.c3.p">
               Chaque décision d'autorisation est écrite dans un journal append-only où chaque entrée
-              scelle la précédente. <code>previewd audit verify</code> rejoue la chaîne ;
+              scelle la précédente. <code>Preview-d audit verify</code> rejoue la chaîne ;
               <code>audit export</code> produit une preuve lisible par un tiers.
             </p>
           </article>
@@ -511,7 +511,7 @@
             <ul class="ticks">
               <li data-i18n="teams.ops.l1"><code>.deb</code> et <code>.rpm</code> signables, installables sans dépôt distant</li>
               <li data-i18n="teams.ops.l2">Un fichier SQLite, une base de schéma versionnée, migration automatique</li>
-              <li data-i18n="teams.ops.l3"><code>previewd doctor</code> vérifie l'hôte et rend un code de sortie exploitable</li>
+              <li data-i18n="teams.ops.l3"><code>Preview-d doctor</code> vérifie l'hôte et rend un code de sortie exploitable</li>
               <li data-i18n="teams.ops.l4"><code>backup</code> / <code>restore</code> à chaud, avec vérification de la chaîne d'audit</li>
             </ul>
           </article>
@@ -528,7 +528,7 @@
           <p class="section-lead" data-i18n="deploy.lead">
             Le paquet installe le binaire, l'unité systemd, la slice de build et le réglage Docker.
             Il crée un utilisateur système sans shell ni répertoire personnel. Avant le premier
-            démarrage, previewd vérifie ce qui lui manque et refuse de tourner tant que ce n'est pas
+            démarrage, Preview-d vérifie ce qui lui manque et refuse de tourner tant que ce n'est pas
             en place.
           </p>
 
@@ -541,7 +541,7 @@
           </ul>
 
           <p class="deploy-note" data-i18n="deploy.note">
-            Aucune image n'est téléchargée à l'exécution : previewd refuse une image de base absente
+            Aucune image n'est téléchargée à l'exécution : Preview-d refuse une image de base absente
             du démon. Le comportement est le même sur un hôte connecté — c'est ce qui rend le
             déploiement prévisible.
           </p>
@@ -554,18 +554,18 @@
               <button class="copy-btn" type="button" data-copy="install" data-i18n="deploy.copy">Copier</button>
             </div>
             <pre id="install"><code><span class="c-comment" data-i18n="deploy.code1"># 1. installer, sans dépôt ni réseau</span>
-<span class="c-cmd">sudo apt install ./previewd_1.1.0_amd64.deb</span>
+<span class="c-cmd">sudo apt install ./Preview-d_1.1.0_amd64.deb</span>
 
 <span class="c-comment" data-i18n="deploy.code2"># 2. configurer les chemins et identifiants (jamais un secret)</span>
-<span class="c-cmd">sudo editor /etc/previewd/previewd.conf</span>
+<span class="c-cmd">sudo editor /etc/Preview-d/Preview-d.conf</span>
 
 <span class="c-comment" data-i18n="deploy.code3"># 3. sceller les credentials, vérifier l'hôte, démarrer</span>
-<span class="c-cmd">sudo previewd doctor</span>
-<span class="c-cmd">sudo systemctl enable --now previewd</span></code></pre>
+<span class="c-cmd">sudo Preview-d doctor</span>
+<span class="c-cmd">sudo systemctl enable --now Preview-d</span></code></pre>
           </div>
 
           <div class="term-card">
-            <div class="term-line"><span class="prompt">$</span> previewd doctor</div>
+            <div class="term-line"><span class="prompt">$</span> Preview-d doctor</div>
             <div class="term-line ok" data-i18n="deploy.term1">[PASS] ramfs de secrets : type, propriétaire, mode</div>
             <div class="term-line ok" data-i18n="deploy.term2">[PASS] cgroup de build : borné, sans swap</div>
             <div class="term-line ok" data-i18n="deploy.term3">[PASS] filtre de sortie du démon Docker</div>
@@ -583,7 +583,7 @@
       <div class="wrap">
         <header class="section-head reveal">
           <p class="eyebrow" data-i18n="pricing.eyebrow">Tarifs</p>
-          <h2 data-i18n="pricing.h2">Trois façons d'adopter previewd. La même exigence.</h2>
+          <h2 data-i18n="pricing.h2">Trois façons d'adopter Preview-d. La même exigence.</h2>
           <p class="section-lead" data-i18n="pricing.lead">
             Le logiciel est le même partout. Ce qui change, c'est qui l'administre : vous, nous, ou
             votre équipe infrastructure. Aucune des trois options ne vous enferme — le binaire reste
@@ -625,7 +625,7 @@
             <span class="pillar-badge" data-i18n="pricing.saas.badge">Sans engagement</span>
             <header class="pillar-head">
               <p class="pillar-kicker" data-i18n="pricing.saas.kicker">02 · Freelance &amp; agences</p>
-              <h3 data-i18n="pricing.saas.h3">Previewd Cloud</h3>
+              <h3 data-i18n="pricing.saas.h3">Preview-d Cloud</h3>
               <p class="pillar-tagline" data-i18n="pricing.saas.tagline">
                 Pour livrer des aperçus à vos clients sans leur envoyer de code, et sans monter
                 un serveur pour chaque projet.
@@ -807,7 +807,7 @@
             <summary data-i18n="faq.q1">Est-ce que cela remplace un service de prévisualisation hébergé ?</summary>
             <p data-i18n="faq.a1">
               Pour l'usage — voir tourner une pull request — oui. Pour le confort, non : il n'y a pas
-              de tableau de bord web ni de gestion d'utilisateurs. previewd s'appuie sur la forge que
+              de tableau de bord web ni de gestion d'utilisateurs. Preview-d s'appuie sur la forge que
               vous avez déjà : les droits, les approbations et les commentaires restent là où vos
               équipes travaillent. C'est un choix : moins de surface, moins de comptes à administrer.
             </p>
@@ -826,7 +826,7 @@
           <details>
             <summary data-i18n="faq.q3">Que se passe-t-il si le serveur redémarre au mauvais moment ?</summary>
             <p data-i18n="faq.a3">
-              Au démarrage, previewd inventorie les conteneurs, les réseaux et les routes existants,
+              Au démarrage, Preview-d inventorie les conteneurs, les réseaux et les routes existants,
               détruit ce qu'aucun environnement gardé ne réclame, puis vérifie une condition finale :
               aucune route publiée ne doit pointer vers un environnement non gardé. Si la condition
               est fausse, le démon refuse de servir plutôt que de servir un état incohérent.
@@ -856,7 +856,7 @@
           <details>
             <summary data-i18n="faq.q6">Et Kubernetes ? Plusieurs nœuds ?</summary>
             <p data-i18n="faq.a6">
-              Non, et c'est assumé. previewd est un agent mono-nœud : c'est ce qui rend son état
+              Non, et c'est assumé. Preview-d est un agent mono-nœud : c'est ce qui rend son état
               vérifiable, son modèle formel complet et son exploitation tenable sur un réseau isolé.
               Un cluster réparti demanderait un consensus, donc une machinerie que ce produit
               n'apporte pas.
@@ -893,7 +893,7 @@
           </ul>
         </div>
 
-        <form class="contact-card reveal" id="contact-form" action="mailto:contact@previewd.example" method="post" enctype="text/plain">
+        <form class="contact-card reveal" id="contact-form" action="mailto:contact@Preview-d.example" method="post" enctype="text/plain">
           <div class="field">
             <label for="nom" data-i18n="contact.name">Nom</label>
             <input id="nom" name="nom" type="text" autocomplete="name" required>
@@ -928,7 +928,7 @@
             <path d="M11 22V10.6h5.1a3.7 3.7 0 0 1 0 7.4H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="21.6" cy="21.4" r="1.9" fill="currentColor"/>
           </svg>
-          <span class="brand-name">previewd</span>
+          <span class="brand-name">Preview-d</span>
         </a>
         <p data-i18n="footer.tagline">Environnements de prévisualisation souverains pour infrastructures régulées et isolées.</p>
       </div>
@@ -950,13 +950,13 @@
 
       <div class="footer-col">
         <h4 data-i18n="footer.contact">Contact</h4>
-        <a href="mailto:contact@previewd.example">contact@previewd.example</a>
+        <a href="mailto:contact@Preview-d.example">contact@Preview-d.example</a>
         <p class="footer-mono" data-i18n="footer.mono">GitHub Enterprise Server · GitLab Self-Managed</p>
       </div>
     </div>
 
     <div class="wrap footer-bottom">
-      <p>© <span id="year">2026</span> previewd. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+      <p>© <span id="year">2026</span> Preview-d. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
       <p class="footer-mono" data-i18n="footer.demo">Site de démonstration · aucune ressource externe chargée</p>
     </div>
   </footer>

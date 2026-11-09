@@ -1,12 +1,12 @@
-# previewd — site de vente
+# Preview-d — site de vente
 
-Site statique et tunnel de paiement pour **previewd**, l'agent d'environnements de
+Site statique et tunnel de paiement pour **Preview-d**, l'agent d'environnements de
 prévisualisation souverains.
 
 ## Structure
 
 ```text
-previewd_site/
+Preview-d_site/
 ├── index.html            page de vente (hero, fonctionnement, preuves, tarifs, FAQ)
 ├── pages/
 │   ├── paiement.html     récapitulatif d'abonnement + ouverture de Stripe Checkout
@@ -34,7 +34,7 @@ le paiement a besoin du serveur, donc d'un accès à Stripe.
 
 Le site existe en **français, anglais et espagnol**. Le sélecteur se trouve dans
 l'en-tête de chaque page et le choix est mémorisé (`localStorage`, clé
-`previewd.lang`) ; il survit d'une page à l'autre et d'une visite à l'autre.
+`Preview-d.lang`) ; il survit d'une page à l'autre et d'une visite à l'autre.
 
 - Les textes vivent dans [`json/translate.json`](json/translate.json), sous trois
   objets de clés identiques (`fr`, `en`, `es`). C'est la source unique.
@@ -42,7 +42,7 @@ l'en-tête de chaque page et le choix est mémorisé (`localStorage`, clé
   `data-i18n-aria-label` et `data-i18n-placeholder` ; le texte français reste
   dans la page et sert de repli si le dictionnaire n'est pas chargé.
 - `js/i18n.js` expose `i18n.t(clé, variables?)` et rediffuse l'événement
-  `previewd:lang` ; les textes produits par les scripts (bouton « Copier »,
+  `Preview-d:lang` ; les textes produits par les scripts (bouton « Copier »,
   formulaire, page de retour Stripe) se retraduisent donc en direct.
 - Les liens de partage peuvent forcer une langue : `?lang=es`.
 
@@ -65,7 +65,7 @@ Le site fonctionne en double-cliquant `index.html`, mais **le paiement exige le
 serveur** : une session Stripe doit être créée côté serveur, avec la clé secrète.
 
 ```bash
-cd previewd_site/server
+cd Preview-d_site/server
 npm start          # http://localhost:8787
 ```
 
@@ -162,6 +162,6 @@ complète. Il manque, volontairement à ce stade :
 - Parcours complet testé contre un faux Stripe local (`STRIPE_API_BASE`) :
   création de session, redirection, vérification au retour.
 
-*Les identifiants de démonstration (`contact@previewd.example`, montants,
+*Les identifiants de démonstration (`contact@Preview-d.example`, montants,
 mentions légales) sont à remplacer avant toute mise en ligne réelle.*
-# previewd-site
+# Preview-d-site
