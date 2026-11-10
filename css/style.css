@@ -1902,12 +1902,6 @@ html[lang="es"] .pillar-price .unit {
   transform: none;
 }
 
-.wa-number {
-  font-size: 0.86em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
 @media (max-width: 560px) {
   .contact-actions {
     grid-template-columns: 1fr;

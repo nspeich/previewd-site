@@ -175,10 +175,12 @@ complète. Il manque, volontairement à ce stade :
 Le formulaire de la page de vente compose un courriel destiné à
 `previewd@previewd.dev` (aucun serveur n'est sollicité : le message s'ouvre dans
 le logiciel de messagerie du visiteur). Un bouton WhatsApp ouvre la conversation
-avec le `+33 6 65 11 03 38` (`https://wa.me/33665110338`).
+avec le `+33 6 65 11 03 38` (`https://wa.me/33665110338`). Le libellé du
+bouton reste « WhatsApp » : le numéro n'est présent que dans le lien et dans
+l'étiquette d'accessibilité, jamais affiché en clair.
 
 Les feuilles de style et les scripts sont appelés avec un paramètre de version
-(`css/style.css?v=20261111`) : sans lui, l'hébergeur sert l'ancien fichier
+(`css/style.css?v=20261112`) : sans lui, l'hébergeur sert l'ancien fichier
 pendant plusieurs heures après un déploiement et la page apparaît à moitié
 stylée. À incrémenter à chaque modification de `style.css`, `main.js`,
 `i18n.js` ou `paiement.js`.
