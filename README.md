@@ -1,13 +1,15 @@
-# Preview-d — site de vente
+# Previewd — site de vente
 
-Site statique et tunnel de paiement pour **Preview-d**, l'agent d'environnements de
+Site statique et tunnel de paiement pour **Previewd**, l'agent d'environnements de
 prévisualisation souverains.
 
 ## Structure
 
 ```text
-Preview-d_site/
-├── index.html            page de vente (hero, fonctionnement, preuves, tarifs, FAQ)
+Previewd_site/
+├── index.html            page de vente (hero avec bandeau tarifaire, onglets
+│                         problème / fonctionnement / preuves / pour qui,
+│                         déploiement, tarifs mis en avant, FAQ)
 ├── pages/
 │   ├── paiement.html     récapitulatif d'abonnement + ouverture de Stripe Checkout
 │   ├── succes.html       retour après paiement, avec vérification de la session
@@ -34,7 +36,7 @@ le paiement a besoin du serveur, donc d'un accès à Stripe.
 
 Le site existe en **français, anglais et espagnol**. Le sélecteur se trouve dans
 l'en-tête de chaque page et le choix est mémorisé (`localStorage`, clé
-`Preview-d.lang`) ; il survit d'une page à l'autre et d'une visite à l'autre.
+`Previewd.lang`) ; il survit d'une page à l'autre et d'une visite à l'autre.
 
 - Les textes vivent dans [`json/translate.json`](json/translate.json), sous trois
   objets de clés identiques (`fr`, `en`, `es`). C'est la source unique.
@@ -42,9 +44,11 @@ l'en-tête de chaque page et le choix est mémorisé (`localStorage`, clé
   `data-i18n-aria-label` et `data-i18n-placeholder` ; le texte français reste
   dans la page et sert de repli si le dictionnaire n'est pas chargé.
 - `js/i18n.js` expose `i18n.t(clé, variables?)` et rediffuse l'événement
-  `Preview-d:lang` ; les textes produits par les scripts (bouton « Copier »,
+  `Previewd:lang` ; les textes produits par les scripts (bouton « Copier »,
   formulaire, page de retour Stripe) se retraduisent donc en direct.
-- Les liens de partage peuvent forcer une langue : `?lang=es`.
+- Les prix suivent la langue : euro en français, dollar américain en anglais
+  et en espagnol (`19 €` / `$19`). Le navigateur envoie aussi la devise au
+  serveur, qui facture le montant correspondant dans Stripe.
 
 **Une limite à connaître** : le dictionnaire est chargé en `fetch`. Ouvert en
 `file://` (double-clic sur `index.html`), le navigateur refuse cette lecture —
@@ -65,7 +69,7 @@ Le site fonctionne en double-cliquant `index.html`, mais **le paiement exige le
 serveur** : une session Stripe doit être créée côté serveur, avec la clé secrète.
 
 ```bash
-cd Preview-d_site/server
+cd Previewd_site/server
 npm start          # http://localhost:8787
 ```
 
@@ -150,10 +154,11 @@ complète. Il manque, volontairement à ce stade :
 ## Vérifications faites
 
 - Pages HTML : balises équilibrées, aucune ressource externe.
-- i18n : 381 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
+- i18n : 387 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
   ni vide) ; toutes les clés `data-i18n` du HTML existent dans les trois
   langues ; bascule vérifiée dans le navigateur, y compris après rechargement
-  (mémoire du choix) et sur les pages de paiement (`79 €` / `€79`).
+  (mémoire du choix) et sur les pages de paiement (`79 €` en français, `$79` en
+  anglais et en espagnol).
 - Serveur lancé sans clé : `/api/checkout` répond 503 avec un message explicite
   (le paiement est désactivé, jamais simulé).
 - Accès direct à `/server/.env`, `/server/server.js` et aux fichiers cachés : 403.
@@ -162,6 +167,6 @@ complète. Il manque, volontairement à ce stade :
 - Parcours complet testé contre un faux Stripe local (`STRIPE_API_BASE`) :
   création de session, redirection, vérification au retour.
 
-*Les identifiants de démonstration (`contact@Preview-d.example`, montants,
+*Les identifiants de démonstration (`contact@Previewd.example`, montants,
 mentions légales) sont à remplacer avant toute mise en ligne réelle.*
-# Preview-d-site
+# Previewd-site

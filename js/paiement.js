@@ -1,22 +1,26 @@
-/* ==========================================================================
-   Preview-d — paiement
+/* 
+   Previewd — paiement
    Deux responsabilités :
      1. afficher la bonne offre et ouvrir une session Stripe Checkout ;
      2. au retour de Stripe, re-vérifier la session côté serveur avant de
         prétendre que le paiement a réussi.
    Aucune clé n'est présente ici : la clé secrète reste sur le serveur.
-   --------------------------------------------------------------------------
+   
    Les libellés viennent de json/translate.json via i18n.js. Si le dictionnaire
    n'a pas pu être chargé, les valeurs françaises passées en second argument
    servent de repli.
-   ========================================================================== */
+  */
 
 (function () {
   "use strict";
 
-  var INTL_LOCALES = { fr: "fr-FR", en: "en-IE", es: "es-ES" };
+  var INTL_LOCALES = { fr: "fr-FR", en: "en-US", es: "es-ES" };
 
-  /* --- Offres : seuls les faits commerciaux vivent ici. ----------------- */
+  /* La devise suit la langue : euro en français, dollar américain en anglais
+     et en espagnol. C'est la même règle que le catalogue du serveur. */
+  var CURRENCY_BY_LANG = { fr: "EUR", en: "USD", es: "USD" };
+
+  /* --- Offres : seuls les faits commerciaux vivent ici.  */
   /* Les montants qui font foi sont définis côté serveur (server/server.js). */
   var PLANS = {
     hobby: { free: true },
@@ -47,22 +51,28 @@
     element.hidden = false;
   }
 
-  function formatMoney(cents) {
+  function currency() {
+    return CURRENCY_BY_LANG[lang()] || "EUR";
+  }
+
+  /* À défaut d'indication du serveur, on formate dans la devise de la langue
+     courante ; la devise réellement facturée (session Stripe) est prioritaire. */
+  function formatMoney(cents, code) {
     var locale = INTL_LOCALES[lang()] || "fr-FR";
+    var unit = code || currency();
     try {
       return new Intl.NumberFormat(locale, {
         style: "currency",
-        currency: "EUR",
+        currency: unit,
+        currencyDisplay: "narrowSymbol",
         minimumFractionDigits: 2,
       }).format(cents / 100);
     } catch (error) {
-      return (cents / 100).toFixed(2).replace(".", ",") + " €";
+      return (cents / 100).toFixed(2) + (unit.toUpperCase() === "USD" ? " $" : " €");
     }
   }
 
-  /* ---------------------------------------------------------------------
-     A. Page de paiement
-     --------------------------------------------------------------------- */
+/* Page de paiement */
   var payButton = document.getElementById("pay-btn");
 
   if (payButton) {
@@ -106,13 +116,13 @@
 
     function hobbyMailto() {
       return (
-        "mailto:contact@Preview-d.example?subject=" +
-        encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby Preview-d"))
+        "mailto:contact@Previewd.example?subject=" +
+        encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby Previewd"))
       );
     }
 
     renderPlan();
-    window.addEventListener("Preview-d:lang", renderPlan);
+    window.addEventListener("Previewd:lang", renderPlan);
 
     payButton.addEventListener("click", function () {
       if (freePlan) {
@@ -142,7 +152,7 @@
       fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: planKey }),
+        body: JSON.stringify({ plan: planKey, currency: currency().toLowerCase() }),
       })
         .then(function (response) {
           return response.json().then(function (data) {
@@ -189,9 +199,7 @@
     });
   }
 
-  /* ---------------------------------------------------------------------
-     B. Page de retour : on ne se contente pas de « merci », on vérifie
-     --------------------------------------------------------------------- */
+/* Page de retour : on ne se contente pas de « merci », on vérifie */
   var statusCard = document.getElementById("status-card");
 
   if (statusCard) {
@@ -256,7 +264,7 @@
       if (typeof apiSession.amount === "number") {
         setText(
           "status-amount",
-          formatMoney(apiSession.amount) +
+          formatMoney(apiSession.amount, apiSession.currency || currency()) +
             (apiSession.interval === "month" ? " " + t("js.perMonth", "/ mois") : "")
         );
       }
@@ -272,7 +280,7 @@
       );
     }
 
-    window.addEventListener("Preview-d:lang", renderStatus);
+    window.addEventListener("Previewd:lang", renderStatus);
 
     if (!sessionId) {
       renderStatus();

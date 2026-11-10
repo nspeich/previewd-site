@@ -1,6 +1,5 @@
-/* ==========================================================================
-   Preview-d — moteur i18n
-   --------------------------------------------------------------------------
+/* moteur i18n
+   
    Un dictionnaire (json/translate.json), quatre langues possibles, et un
    sélecteur persistant dans l'en-tête. Aucune dépendance, aucun appel réseau
    autre que le fichier de traductions lui-même.
@@ -17,14 +16,14 @@
    Le HTML reste lisible et complet en français sans JavaScript : si le
    dictionnaire ne peut pas être chargé (page ouverte en file://), le site
    s'affiche tel quel et le sélecteur reste masqué.
-   ========================================================================== */
+   */
 
 (function () {
   "use strict";
 
   var SCRIPT = document.currentScript;
   var DICT_URL = new URL("../json/translate.json", SCRIPT ? SCRIPT.src : window.location.href);
-  var DEFAULT_STORAGE_KEY = "Preview-d.lang";
+  var DEFAULT_STORAGE_KEY = "Previewd.lang";
   var PARAM = "lang";
 
   var state = {
@@ -35,9 +34,7 @@
     supported: [],
   };
 
-  /* ---------------------------------------------------------------------
-     Utilitaires
-     --------------------------------------------------------------------- */
+/* Utilitaires */
 
   function storageGet(key) {
     try {
@@ -59,9 +56,7 @@
     return String(code || "").trim().toLowerCase().split("-")[0];
   }
 
-  /* ---------------------------------------------------------------------
-     Résolution de la langue : ?lang= > choix mémorisé > <html lang> > défaut
-     --------------------------------------------------------------------- */
+/* Résolution de la langue : ?lang= > choix mémorisé > <html lang> > défaut */
 
   function resolveLanguage() {
     var supported = state.supported;
@@ -82,9 +77,7 @@
     return normalize(state.meta.default) || supported[0];
   }
 
-  /* ---------------------------------------------------------------------
-     Application du dictionnaire au document
-     --------------------------------------------------------------------- */
+/* Application du dictionnaire au document */
 
   function t(key, vars) {
     var locale = state.dict && state.dict[state.lang];
@@ -145,7 +138,7 @@
     syncSelect();
 
     window.dispatchEvent(
-      new CustomEvent("Preview-d:lang", {
+      new CustomEvent("Previewd:lang", {
         detail: {
           lang: state.lang,
           label: entry ? entry.label : state.lang,
@@ -156,9 +149,7 @@
     );
   }
 
-  /* ---------------------------------------------------------------------
-     Sélecteur de langue
-     --------------------------------------------------------------------- */
+/* Sélecteur de langue */
 
   function buildSelect(select) {
     select.innerHTML = "";
@@ -202,9 +193,7 @@
     document.documentElement.classList.add("i18n-ready");
   }
 
-  /* ---------------------------------------------------------------------
-     Chargement
-     --------------------------------------------------------------------- */
+  /* Chargement */
 
   function load() {
     return fetch(DICT_URL, { cache: "no-cache" }).then(function (response) {

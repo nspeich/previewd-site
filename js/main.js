@@ -1,7 +1,7 @@
-/* ==========================================================================
-   Preview-d — interactions du site
-   Aucune dépendance externe, aucun appel réseau.
-   ========================================================================== */
+/* 
+ interactions du site
+Aucune dépendance externe, aucun appel réseau.
+*/
 
 (function () {
   "use strict";
@@ -19,9 +19,7 @@
     return fallback;
   }
 
-  /* ---------------------------------------------------------------------
-     1. En-tête : fond au défilement
-     --------------------------------------------------------------------- */
+/* En-tête : fond au défilement */
   var header = document.getElementById("header");
 
   function onScroll() {
@@ -32,9 +30,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------------------------------------------------------------------
-     2. Menu mobile
-     --------------------------------------------------------------------- */
+/* Menu mobile */
   var burger = document.getElementById("burger");
   var nav = document.getElementById("nav");
 
@@ -64,9 +60,7 @@
     if (event.key === "Escape") setMenu(false);
   });
 
-  /* ---------------------------------------------------------------------
-     3. Apparition au défilement
-     --------------------------------------------------------------------- */
+/* Apparition au défilement */
   var revealables = document.querySelectorAll(".reveal");
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -90,9 +84,7 @@
     });
   }
 
-  /* ---------------------------------------------------------------------
-     4. Compteurs du bandeau de chiffres
-     --------------------------------------------------------------------- */
+/* Compteurs du bandeau de chiffres */
   var counters = document.querySelectorAll(".stat-value[data-count]");
 
   function animateCounter(el) {
@@ -136,82 +128,112 @@
     });
   }
 
-  /* ---------------------------------------------------------------------
-     5. Onglets de forge
-     --------------------------------------------------------------------- */
-  var tabs = document.querySelectorAll(".forge-tab");
+/* Onglets : forge, formules d'abonnement, sections de contenu */
+  function bindTabs(selector) {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(selector));
+    if (!tabs.length) return null;
 
-  function selectTab(tab) {
-    tabs.forEach(function (other) {
-      var selected = other === tab;
-      other.classList.toggle("is-active", selected);
-      other.setAttribute("aria-selected", String(selected));
+    function selectTab(tab, focus) {
+      tabs.forEach(function (other) {
+        var selected = other === tab;
+        other.classList.toggle("is-active", selected);
+        other.setAttribute("aria-selected", String(selected));
+        other.tabIndex = selected ? 0 : -1;
 
-      var panel = document.getElementById(other.getAttribute("aria-controls"));
-      if (panel) {
+        var panel = document.getElementById(other.getAttribute("aria-controls"));
+        if (!panel) return;
         panel.classList.toggle("is-active", selected);
         panel.hidden = !selected;
+
+        // Un panneau caché n'a pas pu déclencher l'apparition au défilement :
+        // on rend ses blocs visibles dès qu'il est affiché.
+        if (selected) {
+          panel.querySelectorAll(".reveal").forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }
+      });
+      if (focus) tab.focus();
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.tabIndex = tab.classList.contains("is-active") ? 0 : -1;
+
+      tab.addEventListener("click", function () {
+        selectTab(tab);
+      });
+
+      // Navigation au clavier entre les onglets (flèches, origine, fin).
+      tab.addEventListener("keydown", function (event) {
+        var key = event.key;
+        if (key !== "ArrowRight" && key !== "ArrowLeft" && key !== "Home" && key !== "End") return;
+        event.preventDefault();
+        var next;
+        if (key === "Home") next = tabs[0];
+        else if (key === "End") next = tabs[tabs.length - 1];
+        else if (key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+        else next = tabs[(index - 1 + tabs.length) % tabs.length];
+        selectTab(next, true);
+      });
+    });
+
+    return { tabs: tabs, select: selectTab };
+  }
+
+  bindTabs(".forge-tab");
+  bindTabs(".saas-tab");
+  var contentTabs = bindTabs(".content-tab");
+
+  // Les liens du menu pointent vers des panneaux masqués : on ouvre l'onglet
+  // correspondant avant que le navigateur ne fasse défiler la page.
+  if (contentTabs) {
+    function tabForPanel(id) {
+      return contentTabs.tabs.filter(function (tab) {
+        return tab.getAttribute("aria-controls") === id;
+      })[0];
+    }
+
+    // Le panneau commence sous l'en-tête fixe et la barre d'onglets collante :
+    // c'est le `scroll-margin-top` de .tab-panel qui fixe le décalage.
+    function scrollToPanel(panel, smooth) {
+      panel.scrollIntoView({
+        block: "start",
+        behavior: smooth && !reduceMotion ? "smooth" : "auto",
+      });
+    }
+
+    function openPanelFromHash() {
+      var id = window.location.hash.replace(/^#/, "");
+      if (!id) return;
+      var panel = document.getElementById(id);
+      if (!panel || !panel.classList.contains("tab-panel")) return;
+      var tab = tabForPanel(id);
+      if (!tab) return;
+      contentTabs.select(tab);
+      scrollToPanel(panel, false);
+    }
+
+    openPanelFromHash();
+    window.addEventListener("hashchange", openPanelFromHash);
+
+    // Un lien du menu pointe vers un panneau masqué : on ouvre l'onglet et on
+    // positionne le défilement nous-mêmes, le panneau venant d'être affiché.
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest ? event.target.closest('a[href^="#"]') : null;
+      if (!link) return;
+      var id = link.getAttribute("href").replace(/^#/, "");
+      var tab = tabForPanel(id);
+      if (!tab) return;
+      event.preventDefault();
+      contentTabs.select(tab);
+      scrollToPanel(document.getElementById(id), true);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", "#" + id);
       }
     });
   }
 
-  tabs.forEach(function (tab, index) {
-    tab.addEventListener("click", function () {
-      selectTab(tab);
-    });
-
-    // Navigation au clavier entre les onglets (flèches gauche/droite).
-    tab.addEventListener("keydown", function (event) {
-      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-      event.preventDefault();
-      var next =
-        event.key === "ArrowRight"
-          ? tabs[(index + 1) % tabs.length]
-          : tabs[(index - 1 + tabs.length) % tabs.length];
-      selectTab(next);
-      next.focus();
-    });
-  });
-
-  /* ---------------------------------------------------------------------
-     5 bis. Sélecteur de formule (grille tarifaire)
-     --------------------------------------------------------------------- */
-  var saasTabs = document.querySelectorAll(".saas-tab");
-
-  function selectSaasTab(tab) {
-    saasTabs.forEach(function (other) {
-      var selected = other === tab;
-      other.classList.toggle("is-active", selected);
-      other.setAttribute("aria-selected", String(selected));
-
-      var panel = document.getElementById(other.getAttribute("aria-controls"));
-      if (panel) {
-        panel.classList.toggle("is-active", selected);
-        panel.hidden = !selected;
-      }
-    });
-  }
-
-  saasTabs.forEach(function (tab, index) {
-    tab.addEventListener("click", function () {
-      selectSaasTab(tab);
-    });
-
-    tab.addEventListener("keydown", function (event) {
-      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-      event.preventDefault();
-      var next =
-        event.key === "ArrowRight"
-          ? saasTabs[(index + 1) % saasTabs.length]
-          : saasTabs[(index - 1 + saasTabs.length) % saasTabs.length];
-      selectSaasTab(next);
-      next.focus();
-    });
-  });
-
-  /* ---------------------------------------------------------------------
-     6. Boutons « Copier »
-     --------------------------------------------------------------------- */
+/* Boutons « Copier » */
   document.querySelectorAll(".copy-btn").forEach(function (button) {
     button.addEventListener("click", function () {
       var block = document.getElementById(button.getAttribute("data-copy"));
@@ -237,9 +259,7 @@
     });
   });
 
-  /* ---------------------------------------------------------------------
-     7. FAQ : une seule réponse ouverte à la fois
-     --------------------------------------------------------------------- */
+/*  FAQ : une seule réponse ouverte à la fois */
   var faqItems = document.querySelectorAll(".faq details");
 
   faqItems.forEach(function (item) {
@@ -251,9 +271,7 @@
     });
   });
 
-  /* ---------------------------------------------------------------------
-     8. Formulaire : composition d'un courriel, sans serveur
-     --------------------------------------------------------------------- */
+/*  Formulaire : composition d'un courriel, sans serveur */
   var form = document.getElementById("contact-form");
   var note = document.getElementById("form-note");
 
@@ -267,7 +285,7 @@
       var contexte = (document.getElementById("contexte") || {}).value || "";
 
       var sujet =
-        t("js.mailSubject", "Demande d'évaluation Preview-d") +
+        t("js.mailSubject", "Demande d'évaluation Previewd") +
         " — " +
         (org || t("js.mailOrg", "organisation"));
       var corps = [
@@ -278,7 +296,7 @@
         t("js.mailContext", "Contexte") + ":",
         contexte || t("js.mailUnspecified", "(non précisé)"),
         "",
-        t("js.mailFooter", "— Demande envoyée depuis le site Preview-d"),
+        t("js.mailFooter", "— Demande envoyée depuis le site Previewd"),
       ].join("\n");
 
       var destination = (form.getAttribute("action") || "")
@@ -302,10 +320,7 @@
       }
     });
   }
-
-  /* ---------------------------------------------------------------------
-     9. Année du pied de page
-     --------------------------------------------------------------------- */
+/* 9. Année du pied de page */
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 })();

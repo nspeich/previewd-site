@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Preview-d — serveur du site et du paiement
+ * Previewd — serveur du site et du paiement
  * =========================================================================
  * Rôle : servir les pages du site et créer les sessions Stripe Checkout.
  *
@@ -72,6 +72,10 @@ const PORT_RAW = Number.parseInt(process.env.PORT ?? "", 10);
 const PORT = Number.isInteger(PORT_RAW) && PORT_RAW > 0 && PORT_RAW < 65536 ? PORT_RAW : 8787;
 const HOST = process.env.HOST || "127.0.0.1";
 const CURRENCY = (process.env.CURRENCY || "eur").toLowerCase();
+// Devises acceptées pour une session de paiement : le site affiche l'euro en
+// français et le dollar américain en anglais et en espagnol. Le navigateur
+// envoie la devise choisie, jamais un montant.
+const SUPPORTED_CURRENCIES = new Set(["eur", "usd", CURRENCY]);
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || "";
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || "";
@@ -88,7 +92,8 @@ const CHECKOUT_RATE_LIMIT = 10; // par fenêtre et par adresse
 const CHECKOUT_RATE_WINDOW_MS = 60_000;
 
 /* Catalogue. Les montants sont en centimes et font foi : le client envoie un
-   identifiant de plan, jamais un prix. */
+   identifiant de plan, jamais un prix. Le montant est identique dans chaque
+   devise proposée (parité euro / dollar de démonstration). */
 const PLANS = {
   hobby: {
     id: "hobby",
@@ -243,7 +248,7 @@ async function stripeRequest(path, { method = "GET", body, idempotencyKey } = {}
   return data;
 }
 
-async function createCheckoutSession(plan) {
+async function createCheckoutSession(plan, currency = CURRENCY) {
   const params = new URLSearchParams();
 
   params.set("mode", "subscription");
@@ -251,12 +256,12 @@ async function createCheckoutSession(plan) {
   params.set("cancel_url", `${PUBLIC_BASE_URL}/pages/annulation.html?plan=${plan.id}`);
 
   params.set("line_items[0][quantity]", "1");
-  params.set("line_items[0][price_data][currency]", CURRENCY);
+  params.set("line_items[0][price_data][currency]", currency);
   params.set("line_items[0][price_data][unit_amount]", String(plan.amount));
   params.set("line_items[0][price_data][recurring][interval]", plan.interval);
   params.set(
     "line_items[0][price_data][product_data][name]",
-    `Preview-d Cloud — ${plan.label}`
+    `Previewd Cloud — ${plan.label}`
   );
   params.set("line_items[0][price_data][product_data][description]", plan.description);
 
@@ -373,7 +378,7 @@ const MIME_TYPES = {
 };
 
 const NOT_FOUND_PAGE = `<!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><title>Page introuvable — Preview-d</title>
+<html lang="fr"><head><meta charset="utf-8"><title>Page introuvable — Previewd</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>body{background:#07080a;color:#e8ecf1;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}
 a{color:#5eead4}code{font-family:ui-monospace,monospace;color:#8e99a8}</style></head>
@@ -473,10 +478,13 @@ async function handle(req, res) {
     }
 
     let plan;
+    let currency;
     try {
       const raw = await readBody(req, MAX_JSON_BODY);
       const parsed = JSON.parse(raw.toString("utf8") || "{}");
       plan = typeof parsed.plan === "string" ? parsed.plan.toLowerCase() : "";
+      currency =
+        typeof parsed.currency === "string" ? parsed.currency.trim().toLowerCase() : "";
     } catch (error) {
       const status = error.status || 400;
       return sendJSON(res, status, {
@@ -487,6 +495,13 @@ async function handle(req, res) {
 
     if (!Object.prototype.hasOwnProperty.call(PLANS, plan)) {
       return sendJSON(res, 400, { error: "unknown_plan", message: "Formule inconnue." });
+    }
+
+    if (currency && !SUPPORTED_CURRENCIES.has(currency)) {
+      return sendJSON(res, 400, {
+        error: "unknown_currency",
+        message: "Devise non prise en charge.",
+      });
     }
 
     const selected = PLANS[plan];
@@ -508,7 +523,7 @@ async function handle(req, res) {
     }
 
     try {
-      const session = await createCheckoutSession(selected);
+      const session = await createCheckoutSession(selected, currency || CURRENCY);
       if (!session || !session.url) throw new Error("Session sans URL de paiement");
       return sendJSON(res, 200, { url: session.url, id: session.id });
     } catch (error) {
@@ -623,7 +638,7 @@ const server = createServer((req, res) => {
 
 server.listen(PORT, HOST, () => {
   console.log("");
-  console.log("  Preview-d — site et paiement");
+  console.log("  Previewd — site et paiement");
   console.log(`  adresse      : http://${HOST === "0.0.0.0" ? "localhost" : HOST}:${PORT}`);
   console.log(`  origine Stripe : ${PUBLIC_BASE_URL}`);
   console.log(`  Stripe       : ${stripeMode()}`);
