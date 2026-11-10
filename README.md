@@ -173,7 +173,8 @@ complète. Il manque, volontairement à ce stade :
 ## Contact
 
 Le formulaire de la page de vente compose un courriel destiné à
-`previewd@previewd.dev` (aucun serveur n'est sollicité : le message s'ouvre dans
+`contact@previewd.dev
+` (aucun serveur n'est sollicité : le message s'ouvre dans
 le logiciel de messagerie du visiteur). Un bouton WhatsApp ouvre la conversation
 avec le `+33 6 65 11 03 38` (`https://wa.me/33665110338`). Le libellé du
 bouton reste « WhatsApp » : le numéro n'est présent que dans le lien et dans
