@@ -116,7 +116,7 @@
 
     function hobbyMailto() {
       return (
-        "mailto:contact@Previewd.example?subject=" +
+        "mailto:previewd@previewd.dev?subject=" +
         encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby Previewd"))
       );
     }

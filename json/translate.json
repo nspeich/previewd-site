@@ -331,6 +331,8 @@
       "contact.context": "Contexte",
       "contact.placeholder": "Forge utilisée, contraintes réseau, échéance…",
       "contact.submit": "Envoyer la demande",
+      "contact.whatsapp": "WhatsApp",
+      "contact.whatsappAria": "Discuter sur WhatsApp au +33 6 65 11 03 38",
       "contact.note": "L'envoi ouvre votre logiciel de messagerie : ce formulaire ne transmet rien à un serveur.",
       "contact.noteSent": "Votre logiciel de messagerie est ouvert avec la demande pré-remplie. Rien n'a été transmis à un serveur.",
 
@@ -383,14 +385,14 @@
       "success.state": "Statut",
       "success.connect": "Relier ma forge",
       "success.home": "Retour à l'accueil",
-      "success.help": "Une question sur cette commande ? Écrivez à <a href=\"mailto:contact@Previewd.example\">contact@Previewd.example</a> en précisant l'identifiant de session affiché par Stripe.",
+      "success.help": "Une question sur cette commande ? Écrivez à <a href=\"mailto:previewd@previewd.dev\">previewd@previewd.dev</a> en précisant l'identifiant de session affiché par Stripe.",
 
       "cancel.title": "Paiement interrompu — Previewd",
       "cancel.h1": "Paiement interrompu",
       "cancel.text": "Aucun montant n'a été prélevé et votre carte n'a pas été enregistrée. Vous pouvez reprendre quand vous voulez — le panier n'a pas de durée de vie.",
       "cancel.retry": "Réessayer",
       "cancel.compare": "Comparer les offres",
-      "cancel.help": "Un moyen de paiement refusé, une question de facturation ? Écrivez à <a href=\"mailto:contact@Previewd.example\">contact@Previewd.example</a>. Et si vous préférez ne dépendre de personne : l'édition Open Source est gratuite et complète.",
+      "cancel.help": "Un moyen de paiement refusé, une question de facturation ? Écrivez à <a href=\"mailto:previewd@previewd.dev\">previewd@previewd.dev</a>. Et si vous préférez ne dépendre de personne : l'édition Open Source est gratuite et complète.",
 
       "js.copied": "Copié",
       "js.copyFailed": "Échec",
@@ -742,6 +744,8 @@
       "contact.context": "Context",
       "contact.placeholder": "Forge in use, network constraints, deadline…",
       "contact.submit": "Send the request",
+      "contact.whatsapp": "WhatsApp",
+      "contact.whatsappAria": "Chat on WhatsApp at +33 6 65 11 03 38",
       "contact.note": "Sending opens your mail client: this form transmits nothing to a server.",
       "contact.noteSent": "Your mail client is open with the request pre-filled. Nothing was sent to a server.",
 
@@ -794,14 +798,14 @@
       "success.state": "Status",
       "success.connect": "Connect my forge",
       "success.home": "Back to home",
-      "success.help": "A question about this order? Write to <a href=\"mailto:contact@Previewd.example\">contact@Previewd.example</a> quoting the session identifier shown by Stripe.",
+      "success.help": "A question about this order? Write to <a href=\"mailto:previewd@previewd.dev\">previewd@previewd.dev</a> quoting the session identifier shown by Stripe.",
 
       "cancel.title": "Payment interrupted — Previewd",
       "cancel.h1": "Payment interrupted",
       "cancel.text": "No amount was charged and your card was not saved. You can pick up again whenever you want — the basket has no expiry.",
       "cancel.retry": "Try again",
       "cancel.compare": "Compare the offers",
-      "cancel.help": "A declined card, a billing question? Write to <a href=\"mailto:contact@Previewd.example\">contact@Previewd.example</a>. And if you would rather depend on nobody: the Open Source edition is free and complete.",
+      "cancel.help": "A declined card, a billing question? Write to <a href=\"mailto:previewd@previewd.dev\">previewd@previewd.dev</a>. And if you would rather depend on nobody: the Open Source edition is free and complete.",
 
       "js.copied": "Copied",
       "js.copyFailed": "Failed",
@@ -1153,6 +1157,8 @@
       "contact.context": "Contexto",
       "contact.placeholder": "Forja utilizada, restricciones de red, plazo…",
       "contact.submit": "Enviar la solicitud",
+      "contact.whatsapp": "WhatsApp",
+      "contact.whatsappAria": "Hablar por WhatsApp al +33 6 65 11 03 38",
       "contact.note": "El envío abre tu cliente de correo: este formulario no transmite nada a un servidor.",
       "contact.noteSent": "Tu cliente de correo está abierto con la solicitud rellenada. No se ha transmitido nada a un servidor.",
 
@@ -1205,14 +1211,14 @@
       "success.state": "Estado",
       "success.connect": "Conectar mi forja",
       "success.home": "Volver al inicio",
-      "success.help": "¿Una pregunta sobre este pedido? Escribe a <a href=\"mailto:contact@Previewd.example\">contact@Previewd.example</a> indicando el identificador de sesión que muestra Stripe.",
+      "success.help": "¿Una pregunta sobre este pedido? Escribe a <a href=\"mailto:previewd@previewd.dev\">previewd@previewd.dev</a> indicando el identificador de sesión que muestra Stripe.",
 
       "cancel.title": "Pago interrumpido — Previewd",
       "cancel.h1": "Pago interrumpido",
       "cancel.text": "No se ha cobrado ningún importe y tu tarjeta no se ha guardado. Puedes retomarlo cuando quieras — el carrito no caduca.",
       "cancel.retry": "Reintentar",
       "cancel.compare": "Comparar las ofertas",
-      "cancel.help": "¿Una tarjeta rechazada, una duda de facturación? Escribe a <a href=\"mailto:contact@Previewd.example\">contact@Previewd.example</a>. Y si prefieres no depender de nadie: la edición de código abierto es gratuita y completa.",
+      "cancel.help": "¿Una tarjeta rechazada, una duda de facturación? Escribe a <a href=\"mailto:previewd@previewd.dev\">previewd@previewd.dev</a>. Y si prefieres no depender de nadie: la edición de código abierto es gratuita y completa.",
 
       "js.copied": "Copiado",
       "js.copyFailed": "Fallo",

@@ -9,7 +9,7 @@
   <meta property="og:title" content="Previewd — La prévisualisation qui demeure dans votre infrastructure" data-i18n-content="meta.ogTitle">
   <meta property="og:description" content="Un binaire statique, un hôte Linux, Docker et Traefik. Chaque demande de fusion dispose de son adresse, de son réseau isolé et d'une piste d'audit vérifiable." data-i18n-content="meta.ogDescription">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261111">
 </head>
 <body>
   <a class="skip-link" href="#contenu" data-i18n="a11y.skip">Aller au contenu</a>
@@ -931,7 +931,7 @@
           </ul>
         </div>
 
-        <form class="contact-card reveal" id="contact-form" action="mailto:contact@Previewd.example" method="post" enctype="text/plain">
+        <form class="contact-card reveal" id="contact-form" action="mailto:previewd@previewd.dev" method="post" enctype="text/plain">
           <div class="field">
             <label for="nom" data-i18n="contact.name">Nom</label>
             <input id="nom" name="nom" type="text" autocomplete="name" required>
@@ -948,7 +948,14 @@
             <label for="contexte" data-i18n="contact.context">Contexte</label>
             <textarea id="contexte" name="contexte" rows="3" placeholder="Forge utilisée, contraintes réseau, échéance…" data-i18n-placeholder="contact.placeholder"></textarea>
           </div>
-          <button class="btn btn-primary btn-block" type="submit" data-i18n="contact.submit">Envoyer la demande</button>
+          <div class="contact-actions">
+            <button class="btn btn-primary btn-block" type="submit" data-i18n="contact.submit">Envoyer la demande</button>
+            <a class="btn btn-ghost btn-whatsapp" href="https://wa.me/33665110338" target="_blank" rel="noopener noreferrer" aria-label="Discuter sur WhatsApp au +33 6 65 11 03 38" data-i18n-aria-label="contact.whatsappAria">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.5 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.4-.2-3 .8.8-2.9-.2-.4A8.2 8.2 0 0 1 12 3.8zm-3.4 4c-.2 0-.5.1-.7.4-.3.3-.9 1-.9 2s.7 2 .8 2.2c.1.2 1.4 2.3 3.5 3.2 1.7.7 2.1.6 2.5.6.5 0 1.5-.5 1.7-1.1.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3l-1.5-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1-.2-.1-.9-.4-1.7-1.1-.6-.6-1-1.2-1.1-1.4-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3.2-.5.1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.4-.4-.4h-.4z" fill="currentColor"/></svg>
+              <span data-i18n="contact.whatsapp">WhatsApp</span>
+              <span class="wa-number">+33 6 65 11 03 38</span>
+            </a>
+          </div>
           <p class="form-note" id="form-note" data-i18n="contact.note">
             L'envoi ouvre votre logiciel de messagerie : ce formulaire ne transmet rien à un serveur.
           </p>
@@ -988,7 +995,7 @@
 
       <div class="footer-col">
         <h4 data-i18n="footer.contact">Contact</h4>
-        <a href="mailto:contact@Previewd.example">contact@Previewd.example</a>
+        <a href="mailto:previewd@previewd.dev">previewd@previewd.dev</a>
         <p class="footer-mono" data-i18n="footer.mono">GitHub Enterprise Server · GitLab Self-Managed</p>
       </div>
     </div>
@@ -999,7 +1006,7 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/i18n.js?v=20261111" defer></script>
+  <script src="js/main.js?v=20261111" defer></script>
 </body>
 </html>

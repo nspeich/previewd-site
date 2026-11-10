@@ -393,12 +393,14 @@ textarea:focus-visible {
 .nav {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 4px;
   margin-left: 6px;
 }
 
 .nav a {
   padding: 7px 11px;
+  white-space: nowrap;
   border-radius: 7px;
   font-size: 0.885rem;
   color: var(--muted);
@@ -1869,6 +1871,49 @@ html[lang="es"] .pillar-price .unit {
   margin-top: 4px;
 }
 
+/* Envoi de la demande et prise de contact directe, côte à côte */
+.contact-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.contact-actions .btn {
+  margin-top: 0;
+  min-height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn-whatsapp {
+  gap: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.btn-whatsapp svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+.btn-whatsapp:hover svg {
+  transform: none;
+}
+
+.wa-number {
+  font-size: 0.86em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 560px) {
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 .form-note {
   margin: 0;
   font-size: 0.72rem;
@@ -2021,7 +2066,44 @@ html[lang="es"] .pillar-price .unit {
 }
 
 /* 15. Responsive  */
+/* En-tête : la barre de navigation se resserre avant de laisser place au menu
+   replié, pour qu'aucun lien ne passe à la ligne ni ne sorte de la page. */
+@media (max-width: 1360px) {
+  .header-inner {
+    gap: 12px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .nav {
+    gap: 0;
+    margin-left: 0;
+  }
+
+  .nav a {
+    padding: 7px 9px;
+    font-size: 0.84rem;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+}
+
 @media (max-width: 1080px) {
+  .header-inner {
+    gap: 10px;
+  }
+
+  .header-actions .btn-ghost {
+    display: none;
+  }
+
+  .nav a {
+    padding: 7px 7px;
+    font-size: 0.8rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 52px;

@@ -154,7 +154,7 @@ complète. Il manque, volontairement à ce stade :
 ## Vérifications faites
 
 - Pages HTML : balises équilibrées, aucune ressource externe.
-- i18n : 387 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
+- i18n : 389 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
   ni vide) ; toutes les clés `data-i18n` du HTML existent dans les trois
   langues ; bascule vérifiée dans le navigateur, y compris après rechargement
   (mémoire du choix) et sur les pages de paiement (`79 €` en français, `$79` en
@@ -167,6 +167,19 @@ complète. Il manque, volontairement à ce stade :
 - Parcours complet testé contre un faux Stripe local (`STRIPE_API_BASE`) :
   création de session, redirection, vérification au retour.
 
-*Les identifiants de démonstration (`contact@Previewd.example`, montants,
-mentions légales) sont à remplacer avant toute mise en ligne réelle.*
+*Les tarifs, montants et mentions légales restent des valeurs de démonstration,
+à valider avant toute vente réelle.*
+
+## Contact
+
+Le formulaire de la page de vente compose un courriel destiné à
+`previewd@previewd.dev` (aucun serveur n'est sollicité : le message s'ouvre dans
+le logiciel de messagerie du visiteur). Un bouton WhatsApp ouvre la conversation
+avec le `+33 6 65 11 03 38` (`https://wa.me/33665110338`).
+
+Les feuilles de style et les scripts sont appelés avec un paramètre de version
+(`css/style.css?v=20261111`) : sans lui, l'hébergeur sert l'ancien fichier
+pendant plusieurs heures après un déploiement et la page apparaît à moitié
+stylée. À incrémenter à chaque modification de `style.css`, `main.js`,
+`i18n.js` ou `paiement.js`.
 # Previewd-site
