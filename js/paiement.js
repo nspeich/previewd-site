@@ -25,7 +25,6 @@
   var PLANS = {
     hobby: { free: true },
     pro: { free: false },
-    agence: { free: false },
   };
 
   function lang() {
@@ -116,8 +115,7 @@
 
     function hobbyMailto() {
       return (
-        "mailto:contact@previewd.dev
-?subject=" +
+        "mailto:previewd@previewd.dev?subject=" +
         encodeURIComponent(t("js.hobbySubject", "Activation du plan Hobby Previewd"))
       );
     }

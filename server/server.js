@@ -112,15 +112,6 @@ const PLANS = {
     description:
       "Prévisualisations illimitées, domaines personnalisés, sidecars, logs de build. TTL 7 jours.",
   },
-  agence: {
-    id: "agence",
-    label: "Agence",
-    amount: 7900,
-    interval: "month",
-    purchasable: true,
-    description:
-      "Tout le plan Pro, liens de revue protégés pour vos clients, espaces séparés par projet.",
-  },
 };
 
 const stripeConfigured = () => Boolean(STRIPE_SECRET_KEY);

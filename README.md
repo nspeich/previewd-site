@@ -122,7 +122,7 @@ Les anciennes adresses (`/paiement.html`, `/succes.html`, `/annulation.html`)
 redirigent en 301 vers `pages/`, pour ne pas casser les liens déjà diffusés.
 
 Le montant n'est **jamais** transmis par le navigateur : il envoie un identifiant
-de formule (`pro`, `agence`), et le serveur applique le tarif du catalogue. Un
+de formule (`pro`), et le serveur applique le tarif du catalogue. Un
 plan inconnu, gratuit ou absent est refusé.
 
 ## Ce que le serveur ne fait pas
@@ -154,10 +154,10 @@ complète. Il manque, volontairement à ce stade :
 ## Vérifications faites
 
 - Pages HTML : balises équilibrées, aucune ressource externe.
-- i18n : 389 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
+- i18n : 375 clés, parité stricte entre `fr`, `en` et `es` (aucune clé manquante
   ni vide) ; toutes les clés `data-i18n` du HTML existent dans les trois
   langues ; bascule vérifiée dans le navigateur, y compris après rechargement
-  (mémoire du choix) et sur les pages de paiement (`79 €` en français, `$79` en
+  (mémoire du choix) et sur les pages de paiement (`19 €` en français, `$19` en
   anglais et en espagnol).
 - Serveur lancé sans clé : `/api/checkout` répond 503 avec un message explicite
   (le paiement est désactivé, jamais simulé).
@@ -173,15 +173,14 @@ complète. Il manque, volontairement à ce stade :
 ## Contact
 
 Le formulaire de la page de vente compose un courriel destiné à
-`contact@previewd.dev
-` (aucun serveur n'est sollicité : le message s'ouvre dans
+`previewd@previewd.dev` (aucun serveur n'est sollicité : le message s'ouvre dans
 le logiciel de messagerie du visiteur). Un bouton WhatsApp ouvre la conversation
 avec le `+33 6 65 11 03 38` (`https://wa.me/33665110338`). Le libellé du
 bouton reste « WhatsApp » : le numéro n'est présent que dans le lien et dans
 l'étiquette d'accessibilité, jamais affiché en clair.
 
 Les feuilles de style et les scripts sont appelés avec un paramètre de version
-(`css/style.css?v=20261112`) : sans lui, l'hébergeur sert l'ancien fichier
+(`css/style.css?v=20261113`) : sans lui, l'hébergeur sert l'ancien fichier
 pendant plusieurs heures après un déploiement et la page apparaît à moitié
 stylée. À incrémenter à chaque modification de `style.css`, `main.js`,
 `i18n.js` ou `paiement.js`.

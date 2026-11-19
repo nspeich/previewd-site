@@ -3,9 +3,24 @@
     "default": "fr",
     "storageKey": "Previewd.lang",
     "languages": [
-      { "code": "fr", "htmlLang": "fr", "label": "Français", "short": "FR" },
-      { "code": "en", "htmlLang": "en", "label": "English", "short": "EN" },
-      { "code": "es", "htmlLang": "es", "label": "Español", "short": "ES" }
+      {
+        "code": "fr",
+        "htmlLang": "fr",
+        "label": "Français",
+        "short": "FR"
+      },
+      {
+        "code": "en",
+        "htmlLang": "en",
+        "label": "English",
+        "short": "EN"
+      },
+      {
+        "code": "es",
+        "htmlLang": "es",
+        "label": "Español",
+        "short": "ES"
+      }
     ]
   },
   "locales": {
@@ -14,7 +29,6 @@
       "meta.description": "Previewd construit, isole et supprime un environnement de prévisualisation pour chaque demande de fusion, exclusivement sur votre infrastructure. Aucun service cloud, aucun flux sortant, aucun secret écrit sur disque.",
       "meta.ogTitle": "Previewd — La prévisualisation qui demeure dans votre infrastructure",
       "meta.ogDescription": "Un binaire statique, un hôte Linux, Docker et Traefik. Chaque demande de fusion dispose de son adresse, de son réseau isolé et d'une piste d'audit vérifiable.",
-
       "a11y.skip": "Aller au contenu",
       "a11y.nav": "Navigation principale",
       "a11y.brandTop": "Previewd, retour en haut",
@@ -22,7 +36,6 @@
       "a11y.menuOpen": "Ouvrir le menu",
       "a11y.menuClose": "Fermer le menu",
       "a11y.lang": "Langue du site",
-
       "nav.problem": "Le problème",
       "tabs.label": "Découvrir Previewd",
       "tabs.listLabel": "Sections",
@@ -32,12 +45,10 @@
       "nav.deploy": "Déploiement",
       "nav.pricing": "Tarifs",
       "nav.faq": "FAQ",
-
       "header.install": "Installation",
       "header.cta": "Demander une évaluation",
       "header.backSite": "Retour au site",
       "header.backPricing": "Tarifs",
-
       "hero.badge": "v1.1 · GitHub Enterprise Server &amp; GitLab Self-Managed",
       "hero.h1": "Chaque demande de fusion dispose de<br><span class=\"hl\">son environnement isolé.</span><br>Aucune donnée ne quitte votre réseau.",
       "hero.lead": "Previewd construit la version exacte proposée par une demande de fusion, l'exécute dans un conteneur isolé sur <em>votre</em> serveur, lui attribue une adresse web, puis supprime l'ensemble à la fermeture. Un binaire statique, aucun compte cloud, aucun octet transmis à un tiers.",
@@ -48,7 +59,6 @@
       "hero.fact1": "Installation hors ligne, paquet <code>.deb</code> / <code>.rpm</code>",
       "hero.fact2": "Fonctionne sur un réseau sans accès à Internet",
       "hero.fact3": "Aucun secret écrit sur disque",
-
       "panel.title": "Previewd · réconciliation",
       "panel.tag": "hors ligne",
       "panel.s1.t": "pull_request.opened",
@@ -68,13 +78,11 @@
       "panel.s5.state": "en ligne",
       "panel.ok": "200 OK · 38 ms",
       "panel.audit": "audit : 5 entrées · chaîne vérifiée",
-
       "stats.label": "Chiffres clés",
       "stats.1": "connexion sortante émise par Previewd à l'exécution",
       "stats.2": "binaire statique, sans CGO, à installer sur un seul hôte",
       "stats.3": "dépendances directes, toutes figées et vérifiées",
       "stats.4": "modèles TLA+ vérifiés, de la notification webhook à l'expiration",
-
       "problem.eyebrow": "Le problème",
       "problem.h2": "La relecture ne démontre pas qu'un changement s'exécute.",
       "problem.lead": "Une demande de fusion affirme que le code fonctionne. Le vérifier suppose aujourd'hui soit un environnement de test partagé, que les équipes dégradent progressivement, soit un service de prévisualisation hébergé — c'est-à-dire transmettre votre code, et souvent vos secrets, à un tiers.",
@@ -84,7 +92,6 @@
       "problem.c2.p": "Un environnement de recette commun, un seul jeu de données, un seul jeu de secrets. Deux branches testées simultanément s'interfèrent, et l'identification de la version réellement exécutée devient impossible lorsqu'une anomalie survient.",
       "problem.c3.t": "Les décisions ne sont pas démontrables",
       "problem.c3.p": "« Qui a autorisé le déploiement de cette branche, à quelle heure, sur quel commit ? » Sans journal infalsifiable, la réponse repose sur la mémoire des intervenants. Un auditeur exige une preuve.",
-
       "how.eyebrow": "Fonctionnement",
       "how.h2": "De la notification à la suppression, en cinq étapes.",
       "how.lead": "Un seul chemin d'exécution, sans exception. Chaque étape est couverte par un test et chaque refus est journalisé.",
@@ -103,7 +110,6 @@
       "how.s5.t": "L'adresse est publiée, puis l'environnement est supprimé",
       "how.s5.p": "Une route atomique est écrite pour Traefik ; le lien est publié en commentaire et en statut de commit sur la demande de fusion. À la fermeture, au retrait de l'approbation ou à l'expiration du TTL, Previewd supprime conteneur, réseau, image, route et secrets — dans cet ordre, chaque étape s'exécutant même si la précédente échoue.",
       "how.s5.n": "TTL par défaut : 7 jours, sans nouvelle poussée",
-
       "forge.tabsLabel": "Forge",
       "forge.tabGhes": "GitHub Enterprise",
       "forge.tabGitlab": "GitLab Self-Managed",
@@ -123,7 +129,6 @@
       "forge.gitlab.approval": "hooks <code>approved</code> / <code>unapproved</code>, reconfirmés à chaque usage",
       "forge.gitlab.replay": "UUID d'événement + empreinte du corps",
       "forge.asideFoot": "Un seul fournisseur actif à la fois. Le passage de l'un à l'autre ne change ni le modèle de menace, ni les tests de sortie réseau.",
-
       "proofs.eyebrow": "Éléments de preuve",
       "proofs.h2": "La sécurité ne se déclare pas : elle se vérifie par des contrôles automatisés.",
       "proofs.lead": "Chaque affirmation ci-dessous est adossée à un contrôle exécuté à chaque intégration. Un binaire liant un SDK de télémétrie ne se compile pas. Une construction atteignant le réseau fait échouer la sonde de démarrage. Une route orpheline empêche le démon de démarrer.",
@@ -145,7 +150,6 @@
       "proofs.c8.p": "Onze configurations TLA+ couvrent la file, les approbations, le redémarrage, le TTL et les workers. En parallèle, des tests par propriétés génèrent des millions de séquences d'événements pour chercher une violation d'invariant — pas un exemple choisi à la main.",
       "proofs.c9.t": "Redémarrage et panne, traités comme un risque",
       "proofs.c9.p": "Au démarrage, un balayage inventorie ce qui tourne, détruit ce qui n'est plus gardé, vérifie qu'aucune route n'oriente vers un environnement non gardé — et refuse de servir si ce n'est pas le cas.",
-
       "teams.eyebrow": "Pour qui",
       "teams.h2": "Trois métiers, une même infrastructure.",
       "teams.lead": "Le confort obtenu par l'équipe de développement constitue, pour le responsable de la sécurité, un élément de preuve. Le mécanisme est identique.",
@@ -167,7 +171,6 @@
       "teams.ops.l2": "Un fichier SQLite, une base de schéma versionnée, migration automatique",
       "teams.ops.l3": "<code>Previewd doctor</code> vérifie l'hôte et rend un code de sortie exploitable",
       "teams.ops.l4": "<code>backup</code> / <code>restore</code> à chaud, avec vérification de la chaîne d'audit",
-
       "deploy.eyebrow": "Déploiement",
       "deploy.h2": "Trois commandes, aucun dépôt distant.",
       "deploy.lead": "Le paquet installe le binaire, l'unité systemd, la tranche de construction et la configuration Docker. Il crée un utilisateur système sans shell ni répertoire personnel. Avant le premier démarrage, Previewd vérifie les prérequis et refuse de s'exécuter tant qu'ils ne sont pas satisfaits.",
@@ -189,7 +192,6 @@
       "deploy.term5": "[PASS] mémoire verrouillée (mlockall)",
       "deploy.term6": "[PASS] dérive d'horloge forge : 41 ms",
       "deploy.termFoot": "7 contrôles · sortie 0",
-
       "pricing.eyebrow": "Tarifs",
       "pricing.h2": "Trois modalités d'adoption, une même exigence.",
       "pricing.lead": "Le logiciel est identique dans les trois offres. Seule diffère la personne qui l'administre : votre organisation, nos équipes ou votre direction des systèmes d'information. Aucune option ne crée de dépendance : le binaire reste exportable et vos secrets demeurent dans l'infrastructure que vous avez choisie.",
@@ -205,7 +207,7 @@
       "pricing.community.l5": "Les modèles TLA+ et les tests de propriétés",
       "pricing.community.cta": "Installer le binaire",
       "pricing.community.foot": "Paquet <code>.deb</code> / <code>.rpm</code> · aucun compte",
-      "pricing.saas.kicker": "02 · Freelance &amp; agences",
+      "pricing.saas.kicker": "02 · Freelance",
       "pricing.saas.h3": "Previewd Cloud",
       "pricing.saas.tagline": "Pour présenter des aperçus à vos clients sans leur communiquer de code, et sans administrer un serveur par projet.",
       "pricing.saas.badge": "Sans engagement",
@@ -216,7 +218,7 @@
       "pricing.ent.kicker": "03 · Enterprise &amp; souveraineté",
       "pricing.ent.h3": "Votre infrastructure",
       "pricing.ent.tagline": "Pour les organisations dont le code ne peut pas sortir et dont les auditeurs exigent des preuves.",
-      "pricing.ent.price": "À partir de 1 000+ €",
+      "pricing.ent.price": "À partir de 500 $",
       "pricing.ent.period": "/ an",
       "pricing.ent.l1": "Édition Team ou Enterprise, selon le nombre d'hôtes",
       "pricing.ent.l2": "Déploiement sur réseau isolé, installation sans Internet",
@@ -226,7 +228,6 @@
       "pricing.ent.cta": "Demander un devis",
       "pricing.ent.foot": "Facturation annuelle · bon de commande accepté",
       "pricing.plansFoot": "Prix hors taxes ; la TVA est ajoutée au paiement selon votre pays. Les abonnements Cloud sont payés par carte bancaire via Stripe et résiliables à tout moment, sans frais. Les offres Enterprise sont facturées annuellement, sur bon de commande, avec un devis chiffré après un échange technique.",
-
       "plans.hobby.name": "Plan Hobby",
       "plans.hobby.short": "Hobby",
       "plans.hobby.desc": "Pour une première évaluation sur un projet réel, sans carte bancaire.",
@@ -251,28 +252,14 @@
       "plans.pro.cta": "Choisir Pro",
       "plans.pro.pay": "Payer 19 € par mois",
       "plans.pro.foot": "Paiement par carte · résiliable en un clic",
-      "plans.agence.name": "Plan Agence",
-      "plans.agence.short": "Agence",
-      "plans.agence.desc": "Pour les équipes qui font valider chaque écran par leurs clients.",
-      "plans.agence.price": "79 €",
-      "plans.agence.f1": "Tout le plan Pro, pour toute l'équipe",
-      "plans.agence.f2": "Liens de revue protégés par mot de passe et par expiration",
-      "plans.agence.f3": "Validation client sans créer de compte",
-      "plans.agence.f4": "Espaces séparés par projet ou par client",
-      "plans.agence.f5": "Support prioritaire",
-      "plans.agence.cta": "Choisir Agence",
-      "plans.agence.pay": "Payer 79 € par mois",
-      "plans.agence.foot": "Paiement par carte · résiliable en un clic",
       "plans.vat": "Hors taxes · TVA ajoutée au paiement",
       "plans.per": "/ mois",
       "price.symbol": "€",
-
       "table.caption": "Comparaison détaillée des offres",
       "table.colFeature": "Fonctionnalité",
       "table.colCommunity": "Communauté",
       "table.colHobby": "Hobby",
       "table.colPro": "Pro",
-      "table.colAgency": "Agence",
       "table.colEnterprise": "Enterprise",
       "table.env": "Environnements actifs",
       "table.ttl": "Durée de vie (TTL)",
@@ -299,9 +286,7 @@
       "table.sla": "SLA contractuel",
       "table.none": "Aucune",
       "table.m19": "19 €/mois",
-      "table.m79": "79 €/mois",
-      "table.ent": "À partir de 1 000 €+/an",
-
+      "table.ent": "À partir de 500 $",
       "faq.eyebrow": "Questions fréquentes",
       "faq.h2": "Les questions posées avant tout engagement.",
       "faq.q1": "Cette solution remplace-t-elle un service de prévisualisation hébergé ?",
@@ -318,7 +303,6 @@
       "faq.a6": "Non, et ce choix est assumé. Previewd est un agent mono-nœud : il en résulte un état vérifiable, un modèle formel complet et une exploitation maîtrisable sur un réseau isolé. Un cluster réparti exigerait un consensus, donc une mécanique que ce produit ne fournit pas.",
       "faq.q7": "Les applications doivent-elles être modifiées ?",
       "faq.a7": "Elles doivent construire une image à partir d'une image de base autorisée et ne pas avoir besoin d'écrire hors de leur répertoire de travail. Les applications qui écrivent au démarrage peuvent s'appuyer sur les services annexes de la composition, qui disposent de systèmes de fichiers temporaires bornés.",
-
       "contact.eyebrow": "Évaluation",
       "contact.h2": "Évaluez Previewd sur votre réseau,<br>non sur le nôtre.",
       "contact.lead": "L'évaluation se déroule dans votre infrastructure : un hôte, un paquet, votre forge. Nous accompagnons l'installation et la revue du modèle de menace ; la décision vous revient, sur la base de preuves.",
@@ -335,7 +319,6 @@
       "contact.whatsappAria": "Discuter sur WhatsApp au +33 6 65 11 03 38",
       "contact.note": "L'envoi ouvre votre logiciel de messagerie : ce formulaire ne transmet rien à un serveur.",
       "contact.noteSent": "Votre logiciel de messagerie est ouvert avec la demande pré-remplie. Rien n'a été transmis à un serveur.",
-
       "footer.tagline": "Environnements de prévisualisation souverains pour infrastructures régulées et isolées.",
       "footer.product": "Produit",
       "footer.resources": "Ressources",
@@ -350,7 +333,6 @@
       "footer.mono": "GitHub Enterprise Server · GitLab Self-Managed",
       "footer.rights": "Tous droits réservés.",
       "footer.demo": "Site de démonstration · aucune ressource externe chargée",
-
       "pay.eyebrow": "Paiement",
       "pay.docTitle": "Paiement — Previewd",
       "pay.docDescription": "Finalisez votre abonnement Previewd. Paiement sécurisé par Stripe, sans engagement.",
@@ -375,7 +357,6 @@
       "pay.payButton": "Payer par carte",
       "pay.mono": "Paiement traité par Stripe · site de démonstration",
       "pay.monoSuccess": "Paiement traité par Stripe",
-
       "success.title": "Abonnement confirmé — Previewd",
       "success.h1": "C'est parti.",
       "success.intro": "Votre abonnement est en cours d'activation. Vous recevrez un courriel avec les instructions pour relier votre première forge.",
@@ -385,19 +366,13 @@
       "success.state": "Statut",
       "success.connect": "Relier ma forge",
       "success.home": "Retour à l'accueil",
-      "success.help": "Une question sur cette commande ? Écrivez à <a href=\"mailto:contact@previewd.dev
-\">contact@previewd.dev
-</a> en précisant l'identifiant de session affiché par Stripe.",
-
+      "success.help": "Une question sur cette commande ? Écrivez à <a href=\"mailto:previewd@previewd.dev \">previewd@previewd.dev </a> en précisant l'identifiant de session affiché par Stripe.",
       "cancel.title": "Paiement interrompu — Previewd",
       "cancel.h1": "Paiement interrompu",
       "cancel.text": "Aucun montant n'a été prélevé et votre carte n'a pas été enregistrée. Vous pouvez reprendre quand vous voulez — le panier n'a pas de durée de vie.",
       "cancel.retry": "Réessayer",
       "cancel.compare": "Comparer les offres",
-      "cancel.help": "Un moyen de paiement refusé, une question de facturation ? Écrivez à <a href=\"mailto:contact@previewd.dev
-\">contact@previewd.dev
-</a>. Et si vous préférez ne dépendre de personne : l'édition Open Source est gratuite et complète.",
-
+      "cancel.help": "Un moyen de paiement refusé, une question de facturation ? Écrivez à <a href=\"mailto:previewd@previewd.dev \">previewd@previewd.dev </a>. Et si vous préférez ne dépendre de personne : l'édition Open Source est gratuite et complète.",
       "js.copied": "Copié",
       "js.copyFailed": "Échec",
       "js.opening": "Ouverture du paiement…",
@@ -431,7 +406,6 @@
       "meta.description": "Previewd builds, isolates and destroys a preview environment for every pull request, entirely on your own infrastructure. No cloud, no outbound connection, no secret written to disk.",
       "meta.ogTitle": "Previewd — Preview environments that never leave your building",
       "meta.ogDescription": "One static binary, one Linux host, Docker and Traefik. Every pull request gets its own address, its sealed network and its tamper-evident audit trail.",
-
       "a11y.skip": "Skip to content",
       "a11y.nav": "Main navigation",
       "a11y.brandTop": "Previewd, back to top",
@@ -439,7 +413,6 @@
       "a11y.menuOpen": "Open the menu",
       "a11y.menuClose": "Close the menu",
       "a11y.lang": "Site language",
-
       "nav.problem": "The problem",
       "tabs.label": "Explore Previewd",
       "tabs.listLabel": "Sections",
@@ -449,12 +422,10 @@
       "nav.deploy": "Deployment",
       "nav.pricing": "Pricing",
       "nav.faq": "FAQ",
-
       "header.install": "Install",
       "header.cta": "Request an evaluation",
       "header.backSite": "Back to the site",
       "header.backPricing": "Pricing",
-
       "hero.badge": "v1.1 · GitHub Enterprise Server &amp; GitLab Self-Managed",
       "hero.h1": "Every pull request gets<br><span class=\"hl\">its own environment.</span><br>Nothing leaves your network.",
       "hero.lead": "Previewd builds the exact version a pull request proposes, runs it in a sealed box on <em>your</em> server, gives it a web address, then throws everything away when the PR closes. One static binary. No cloud account. Zero bytes sent to a third party.",
@@ -465,7 +436,6 @@
       "hero.fact1": "Offline installation, <code>.deb</code> / <code>.rpm</code> package",
       "hero.fact2": "Runs on a network with no Internet access",
       "hero.fact3": "No secret written to disk",
-
       "panel.title": "Previewd · reconciliation",
       "panel.tag": "offline",
       "panel.s1.t": "pull_request.opened",
@@ -485,13 +455,11 @@
       "panel.s5.state": "online",
       "panel.ok": "200 OK · 38 ms",
       "panel.audit": "audit: 5 entries · chain verified",
-
       "stats.label": "Key figures",
       "stats.1": "outbound connection opened by Previewd at run time",
       "stats.2": "static binary, no CGO, installed on a single host",
       "stats.3": "direct dependencies, all pinned and verified",
       "stats.4": "TLA+ models verified, from the webhook to expiry",
-
       "problem.eyebrow": "The problem",
       "problem.h2": "Your reviewers read the change. Nobody can run it.",
       "problem.lead": "A pull request is a promise: “this code works”. Checking it today costs either a shared test environment that everyone breaks, or a hosted preview service — which means sending your code, and often your secrets, to somebody else.",
@@ -501,7 +469,6 @@
       "problem.c2.p": "One staging setup, one data set, one set of secrets. Two branches tested at the same time step on each other, and nobody knows which version is really running when a bug shows up.",
       "problem.c3.t": "Nothing is provable",
       "problem.c3.p": "“Who authorised the deployment of this branch, when, and on which commit?” Without a tamper-evident record, the answer comes from memory. An auditor asks for evidence.",
-
       "how.eyebrow": "How it works",
       "how.h2": "From webhook to teardown, in five steps.",
       "how.lead": "One path, no exceptions. Every step has its test, and every refusal is logged.",
@@ -520,7 +487,6 @@
       "how.s5.t": "The address is published, then everything disappears",
       "how.s5.p": "An atomic route is written for Traefik, and the link comes straight back as a comment and a commit status on the pull request. On close, on approval withdrawal or on TTL expiry, Previewd destroys container, network, image, route and secrets — in that order, each step running even if the previous one fails.",
       "how.s5.n": "Default TTL: 7 days, without a new push",
-
       "forge.tabsLabel": "Forge",
       "forge.tabGhes": "GitHub Enterprise",
       "forge.tabGitlab": "GitLab Self-Managed",
@@ -540,7 +506,6 @@
       "forge.gitlab.approval": "<code>approved</code> / <code>unapproved</code> hooks, reconfirmed on every use",
       "forge.gitlab.replay": "event UUID + body digest",
       "forge.asideFoot": "One provider active at a time. Switching from one to the other changes neither the threat model nor the outbound network tests.",
-
       "proofs.eyebrow": "Proofs, not promises",
       "proofs.h2": "Security is not a documentation page. It is a test that fails.",
       "proofs.lead": "Every claim below rests on a check that runs on each integration. A binary that links a telemetry SDK does not compile. A build that reaches the network makes the start-up probe fail. An orphaned route stops the daemon from serving.",
@@ -562,7 +527,6 @@
       "proofs.c8.p": "Eleven TLA+ configurations cover the queue, approvals, restart, TTL and workers. In parallel, property-based tests generate millions of event sequences looking for an invariant violation — not a hand-picked example.",
       "proofs.c9.t": "Restarts and failures, treated as a risk",
       "proofs.c9.p": "At start-up, a sweep inventories what is running, destroys what is no longer kept, checks that no route points at an unkept environment — and refuses to serve if that is not the case.",
-
       "teams.eyebrow": "Who it is for",
       "teams.h2": "Three teams, one single infrastructure.",
       "teams.lead": "What the developer gains in comfort, the security lead gains in evidence. The same mechanism produces both.",
@@ -584,7 +548,6 @@
       "teams.ops.l2": "One SQLite file, a versioned schema, automatic migration",
       "teams.ops.l3": "<code>Previewd doctor</code> checks the host and returns a usable exit code",
       "teams.ops.l4": "Live <code>backup</code> / <code>restore</code>, with audit chain verification",
-
       "deploy.eyebrow": "Deployment",
       "deploy.h2": "Three commands. Zero remote repositories.",
       "deploy.lead": "The package installs the binary, the systemd unit, the build slice and the Docker settings. It creates a system user with no shell and no home directory. Before the first start, Previewd checks what it is missing and refuses to run until it is in place.",
@@ -606,7 +569,6 @@
       "deploy.term5": "[PASS] locked memory (mlockall)",
       "deploy.term6": "[PASS] forge clock drift: 41 ms",
       "deploy.termFoot": "7 checks · exit 0",
-
       "pricing.eyebrow": "Pricing",
       "pricing.h2": "Three ways to adopt Previewd. The same standard.",
       "pricing.lead": "The software is the same everywhere. What changes is who runs it: you, us, or your infrastructure team. None of the three locks you in — the binary stays exportable and your secrets never leave the infrastructure you chose.",
@@ -622,7 +584,7 @@
       "pricing.community.l5": "The TLA+ models and the property tests",
       "pricing.community.cta": "Install the binary",
       "pricing.community.foot": "<code>.deb</code> / <code>.rpm</code> package · no account",
-      "pricing.saas.kicker": "02 · Freelancers &amp; agencies",
+      "pricing.saas.kicker": "02 · Freelancers",
       "pricing.saas.h3": "Previewd Cloud",
       "pricing.saas.tagline": "To deliver previews to your clients without sending them code, and without standing up a server for every project.",
       "pricing.saas.badge": "No commitment",
@@ -633,7 +595,7 @@
       "pricing.ent.kicker": "03 · Enterprise &amp; sovereignty",
       "pricing.ent.h3": "Your own infrastructure",
       "pricing.ent.tagline": "For organisations where code does not leave, and where the auditor asks for evidence.",
-      "pricing.ent.price": "From $1,500+",
+      "pricing.ent.price": "From $500+",
       "pricing.ent.period": "/ year",
       "pricing.ent.l1": "Team or Enterprise edition, depending on the number of hosts",
       "pricing.ent.l2": "Deployment on an isolated network, install with no Internet",
@@ -643,7 +605,6 @@
       "pricing.ent.cta": "Request a quote",
       "pricing.ent.foot": "Annual billing · purchase order accepted",
       "pricing.plansFoot": "Prices exclude tax; VAT is added at checkout depending on your country. Cloud subscriptions are paid by card through Stripe and can be cancelled at any time, free of charge. Enterprise offers are billed annually, against a purchase order, with a quote after a technical discussion.",
-
       "plans.hobby.name": "Hobby plan",
       "plans.hobby.short": "Hobby",
       "plans.hobby.desc": "To try it on a real project, with no card.",
@@ -668,28 +629,14 @@
       "plans.pro.cta": "Choose Pro",
       "plans.pro.pay": "Pay $19 per month",
       "plans.pro.foot": "Card payment · cancel in one click",
-      "plans.agence.name": "Agency plan",
-      "plans.agence.short": "Agency",
-      "plans.agence.desc": "For teams that have every screen signed off by the client.",
-      "plans.agence.price": "$79",
-      "plans.agence.f1": "Everything in Pro, for the whole team",
-      "plans.agence.f2": "Review links protected by password and expiry",
-      "plans.agence.f3": "Client sign-off without creating an account",
-      "plans.agence.f4": "Spaces separated by project or by client",
-      "plans.agence.f5": "Priority support",
-      "plans.agence.cta": "Choose Agency",
-      "plans.agence.pay": "Pay $79 per month",
-      "plans.agence.foot": "Card payment · cancel in one click",
       "plans.vat": "Excluding tax · VAT added at checkout",
       "plans.per": "/ month",
       "price.symbol": "$",
-
       "table.caption": "Detailed comparison of the offers",
       "table.colFeature": "Feature",
       "table.colCommunity": "Community",
       "table.colHobby": "Hobby",
       "table.colPro": "Pro",
-      "table.colAgency": "Agency",
       "table.colEnterprise": "Enterprise",
       "table.env": "Active environments",
       "table.ttl": "Lifetime (TTL)",
@@ -716,9 +663,7 @@
       "table.sla": "Contractual SLA",
       "table.none": "None",
       "table.m19": "$19/month",
-      "table.m79": "$79/month",
-      "table.ent": "$1,500 – $25,000+/year",
-
+      "table.ent": "$500 – $25,000+/year",
       "faq.eyebrow": "Frequently asked",
       "faq.h2": "What people ask us before signing.",
       "faq.q1": "Does this replace a hosted preview service?",
@@ -735,7 +680,6 @@
       "faq.a6": "No, and that is deliberate. Previewd is a single-node agent: that is what makes its state verifiable, its formal model complete and its operation tenable on an isolated network. A distributed cluster would need consensus, hence machinery this product does not bring.",
       "faq.q7": "Do my applications need to change?",
       "faq.a7": "They must build an image from an allowed base image and must not need to write outside their working directory. Applications that write at start-up can use the compose sidecars, which get bounded temporary filesystems.",
-
       "contact.eyebrow": "Evaluation",
       "contact.h2": "See it run on your network,<br>not on ours.",
       "contact.lead": "An evaluation happens at your place: one host, one package, your forge. We help with the installation and the threat model review, then you decide with evidence in hand.",
@@ -752,7 +696,6 @@
       "contact.whatsappAria": "Chat on WhatsApp at +33 6 65 11 03 38",
       "contact.note": "Sending opens your mail client: this form transmits nothing to a server.",
       "contact.noteSent": "Your mail client is open with the request pre-filled. Nothing was sent to a server.",
-
       "footer.tagline": "Sovereign preview environments for regulated and isolated infrastructure.",
       "footer.product": "Product",
       "footer.resources": "Resources",
@@ -767,7 +710,6 @@
       "footer.mono": "GitHub Enterprise Server · GitLab Self-Managed",
       "footer.rights": "All rights reserved.",
       "footer.demo": "Demonstration site · no external resource loaded",
-
       "pay.eyebrow": "Payment",
       "pay.docTitle": "Payment — Previewd",
       "pay.docDescription": "Complete your Previewd subscription. Secure payment by Stripe, no commitment.",
@@ -792,7 +734,6 @@
       "pay.payButton": "Pay by card",
       "pay.mono": "Payment processed by Stripe · demonstration site",
       "pay.monoSuccess": "Payment processed by Stripe",
-
       "success.title": "Subscription confirmed — Previewd",
       "success.h1": "You're in.",
       "success.intro": "Your subscription is being activated. You will receive an email with the instructions to connect your first forge.",
@@ -802,19 +743,13 @@
       "success.state": "Status",
       "success.connect": "Connect my forge",
       "success.home": "Back to home",
-      "success.help": "A question about this order? Write to <a href=\"mailto:contact@previewd.dev
-\">contact@previewd.dev
-</a> quoting the session identifier shown by Stripe.",
-
+      "success.help": "A question about this order? Write to <a href=\"mailto:previewd@previewd.dev \">previewd@previewd.dev </a> quoting the session identifier shown by Stripe.",
       "cancel.title": "Payment interrupted — Previewd",
       "cancel.h1": "Payment interrupted",
       "cancel.text": "No amount was charged and your card was not saved. You can pick up again whenever you want — the basket has no expiry.",
       "cancel.retry": "Try again",
       "cancel.compare": "Compare the offers",
-      "cancel.help": "A declined card, a billing question? Write to <a href=\"mailto:contact@previewd.dev
-\">contact@previewd.dev
-</a>. And if you would rather depend on nobody: the Open Source edition is free and complete.",
-
+      "cancel.help": "A declined card, a billing question? Write to <a href=\"mailto:previewd@previewd.dev \">previewd@previewd.dev </a>. And if you would rather depend on nobody: the Open Source edition is free and complete.",
       "js.copied": "Copied",
       "js.copyFailed": "Failed",
       "js.opening": "Opening payment…",
@@ -848,7 +783,6 @@
       "meta.description": "Previewd construye, aísla y destruye un entorno de previsualización para cada pull request, enteramente en tu infraestructura. Sin nube, sin conexión saliente, sin secretos escritos en disco.",
       "meta.ogTitle": "Previewd — La previsualización que no sale de tu edificio",
       "meta.ogDescription": "Un binario estático, un host Linux, Docker y Traefik. Cada pull request obtiene su dirección, su red sellada y su rastro de auditoría inalterable.",
-
       "a11y.skip": "Ir al contenido",
       "a11y.nav": "Navegación principal",
       "a11y.brandTop": "Previewd, volver arriba",
@@ -856,7 +790,6 @@
       "a11y.menuOpen": "Abrir el menú",
       "a11y.menuClose": "Cerrar el menú",
       "a11y.lang": "Idioma del sitio",
-
       "nav.problem": "El problema",
       "tabs.label": "Descubrir Previewd",
       "tabs.listLabel": "Secciones",
@@ -866,12 +799,10 @@
       "nav.deploy": "Despliegue",
       "nav.pricing": "Tarifas",
       "nav.faq": "Preguntas",
-
       "header.install": "Instalación",
       "header.cta": "Solicitar una evaluación",
       "header.backSite": "Volver al sitio",
       "header.backPricing": "Tarifas",
-
       "hero.badge": "v1.1 · GitHub Enterprise Server &amp; GitLab Self-Managed",
       "hero.h1": "Cada pull request obtiene<br><span class=\"hl\">su entorno.</span><br>Nada sale de tu red.",
       "hero.lead": "Previewd construye la versión exacta que propone un pull request, la ejecuta en una caja sellada en <em>tu</em> servidor, le da una dirección web y luego lo tira todo al cerrarse. Un binario estático. Ninguna cuenta en la nube. Cero bytes enviados a terceros.",
@@ -882,7 +813,6 @@
       "hero.fact1": "Instalación sin conexión, paquete <code>.deb</code> / <code>.rpm</code>",
       "hero.fact2": "Funciona en una red sin Internet",
       "hero.fact3": "Ningún secreto escrito en disco",
-
       "panel.title": "Previewd · reconciliación",
       "panel.tag": "sin conexión",
       "panel.s1.t": "pull_request.opened",
@@ -902,13 +832,11 @@
       "panel.s5.state": "en línea",
       "panel.ok": "200 OK · 38 ms",
       "panel.audit": "auditoría: 5 entradas · cadena verificada",
-
       "stats.label": "Cifras clave",
       "stats.1": "conexión saliente emitida por Previewd en ejecución",
       "stats.2": "binario estático, sin CGO, instalado en un solo host",
       "stats.3": "dependencias directas, todas fijadas y verificadas",
       "stats.4": "modelos TLA+ verificados, del webhook a la expiración",
-
       "problem.eyebrow": "El problema",
       "problem.h2": "Quien revisa lee el cambio. Nadie puede ejecutarlo.",
       "problem.lead": "Un pull request es una promesa: «este código funciona». Hoy comprobarlo cuesta o bien un entorno de pruebas compartido que todo el mundo rompe, o bien un servicio de previsualización alojado — es decir, enviar tu código, y a menudo tus secretos, a casa de otro.",
@@ -918,7 +846,6 @@
       "problem.c2.p": "Un preproducción común, un solo conjunto de datos, un solo juego de secretos. Dos ramas probadas a la vez se pisan, y ya nadie sabe qué versión se está ejecutando de verdad cuando aparece un error.",
       "problem.c3.t": "Nada es demostrable",
       "problem.c3.p": "«¿Quién autorizó el despliegue de esta rama, a qué hora y con qué commit?» Sin un registro inalterable, la respuesta viene de la memoria. Un auditor, en cambio, pide pruebas.",
-
       "how.eyebrow": "Funcionamiento",
       "how.h2": "Del webhook a la demolición, en cinco tiempos.",
       "how.lead": "Un único camino, sin excepciones. Cada etapa tiene su prueba, y cada rechazo queda registrado.",
@@ -937,7 +864,6 @@
       "how.s5.t": "Se publica la dirección y luego todo desaparece",
       "how.s5.p": "Se escribe una ruta atómica para Traefik, y el enlace vuelve directamente como comentario y como estado de commit en el pull request. Al cerrarse, al retirarse la aprobación o al expirar el TTL, Previewd destruye contenedor, red, imagen, ruta y secretos — en ese orden, ejecutando cada paso aunque falle el anterior.",
       "how.s5.n": "TTL por defecto: 7 días, sin nuevos envíos",
-
       "forge.tabsLabel": "Forja",
       "forge.tabGhes": "GitHub Enterprise",
       "forge.tabGitlab": "GitLab Self-Managed",
@@ -957,7 +883,6 @@
       "forge.gitlab.approval": "hooks <code>approved</code> / <code>unapproved</code>, reconfirmados en cada uso",
       "forge.gitlab.replay": "UUID de evento + huella del cuerpo",
       "forge.asideFoot": "Un solo proveedor activo a la vez. Pasar de uno a otro no cambia ni el modelo de amenaza ni las pruebas de salida de red.",
-
       "proofs.eyebrow": "Pruebas, no promesas",
       "proofs.h2": "La seguridad no es una página de documentación. Es una prueba que falla.",
       "proofs.lead": "Cada afirmación de abajo se apoya en un control que se ejecuta en cada integración. Un binario que enlaza un SDK de telemetría no compila. Un build que alcanza la red hace fallar la sonda de arranque. Una ruta huérfana impide que el demonio sirva.",
@@ -979,7 +904,6 @@
       "proofs.c8.p": "Once configuraciones TLA+ cubren la cola, las aprobaciones, el reinicio, el TTL y los workers. En paralelo, las pruebas por propiedades generan millones de secuencias de eventos para buscar una violación de invariante — no un ejemplo elegido a mano.",
       "proofs.c9.t": "Reinicios y fallos, tratados como un riesgo",
       "proofs.c9.p": "Al arrancar, un barrido inventaría lo que se está ejecutando, destruye lo que ya no se conserva, comprueba que ninguna ruta apunte a un entorno no conservado — y se niega a servir si no es así.",
-
       "teams.eyebrow": "Para quién",
       "teams.h2": "Tres equipos, una sola infraestructura.",
       "teams.lead": "Lo que el desarrollador gana en comodidad, el responsable de seguridad lo gana en pruebas. El mismo mecanismo produce ambas cosas.",
@@ -1001,7 +925,6 @@
       "teams.ops.l2": "Un archivo SQLite, un esquema versionado, migración automática",
       "teams.ops.l3": "<code>Previewd doctor</code> revisa el host y devuelve un código de salida utilizable",
       "teams.ops.l4": "<code>backup</code> / <code>restore</code> en caliente, con verificación de la cadena de auditoría",
-
       "deploy.eyebrow": "Despliegue",
       "deploy.h2": "Tres comandos. Cero repositorios remotos.",
       "deploy.lead": "El paquete instala el binario, la unidad systemd, la slice de build y la configuración de Docker. Crea un usuario de sistema sin shell y sin directorio personal. Antes del primer arranque, Previewd comprueba lo que le falta y se niega a funcionar mientras no esté en su sitio.",
@@ -1023,7 +946,6 @@
       "deploy.term5": "[PASS] memoria bloqueada (mlockall)",
       "deploy.term6": "[PASS] deriva de reloj de la forja: 41 ms",
       "deploy.termFoot": "7 controles · salida 0",
-
       "pricing.eyebrow": "Tarifas",
       "pricing.h2": "Tres formas de adoptar Previewd. La misma exigencia.",
       "pricing.lead": "El software es el mismo en todas partes. Lo que cambia es quién lo administra: tú, nosotros o tu equipo de infraestructura. Ninguna de las tres opciones te encierra — el binario sigue siendo exportable y tus secretos nunca salen de la infraestructura que elijas.",
@@ -1039,7 +961,7 @@
       "pricing.community.l5": "Los modelos TLA+ y las pruebas de propiedades",
       "pricing.community.cta": "Instalar el binario",
       "pricing.community.foot": "Paquete <code>.deb</code> / <code>.rpm</code> · sin cuenta",
-      "pricing.saas.kicker": "02 · Freelance y agencias",
+      "pricing.saas.kicker": "02 · Freelance",
       "pricing.saas.h3": "Previewd Cloud",
       "pricing.saas.tagline": "Para entregar previsualizaciones a tus clientes sin enviarles código, y sin montar un servidor para cada proyecto.",
       "pricing.saas.badge": "Sin compromiso",
@@ -1050,7 +972,7 @@
       "pricing.ent.kicker": "03 · Enterprise y soberanía",
       "pricing.ent.h3": "Tu propia infraestructura",
       "pricing.ent.tagline": "Para organizaciones donde el código no sale, y donde el auditor pide pruebas.",
-      "pricing.ent.price": "Desde $1.500+",
+      "pricing.ent.price": "Desde $500+",
       "pricing.ent.period": "/ año",
       "pricing.ent.l1": "Edición Team o Enterprise, según el número de hosts",
       "pricing.ent.l2": "Despliegue en red aislada, instalación sin Internet",
@@ -1060,7 +982,6 @@
       "pricing.ent.cta": "Solicitar presupuesto",
       "pricing.ent.foot": "Facturación anual · se acepta orden de compra",
       "pricing.plansFoot": "Precios sin impuestos; el IVA se añade al pagar según tu país. Las suscripciones Cloud se pagan con tarjeta mediante Stripe y se pueden cancelar en cualquier momento, sin gastos. Las ofertas Enterprise se facturan anualmente, contra orden de compra, con un presupuesto tras un intercambio técnico.",
-
       "plans.hobby.name": "Plan Hobby",
       "plans.hobby.short": "Hobby",
       "plans.hobby.desc": "Para probarlo en un proyecto real, sin tarjeta.",
@@ -1085,28 +1006,14 @@
       "plans.pro.cta": "Elegir Pro",
       "plans.pro.pay": "Pagar $19 al mes",
       "plans.pro.foot": "Pago con tarjeta · cancelable en un clic",
-      "plans.agence.name": "Plan Agencia",
-      "plans.agence.short": "Agencia",
-      "plans.agence.desc": "Para equipos que hacen validar cada pantalla por su cliente.",
-      "plans.agence.price": "$79",
-      "plans.agence.f1": "Todo el plan Pro, para todo el equipo",
-      "plans.agence.f2": "Enlaces de revisión protegidos por contraseña y caducidad",
-      "plans.agence.f3": "Validación del cliente sin crear cuenta",
-      "plans.agence.f4": "Espacios separados por proyecto o por cliente",
-      "plans.agence.f5": "Soporte prioritario",
-      "plans.agence.cta": "Elegir Agencia",
-      "plans.agence.pay": "Pagar $79 al mes",
-      "plans.agence.foot": "Pago con tarjeta · cancelable en un clic",
       "plans.vat": "Sin impuestos · IVA añadido al pagar",
       "plans.per": "/ mes",
       "price.symbol": "$",
-
       "table.caption": "Comparación detallada de las ofertas",
       "table.colFeature": "Funcionalidad",
       "table.colCommunity": "Comunidad",
       "table.colHobby": "Hobby",
       "table.colPro": "Pro",
-      "table.colAgency": "Agencia",
       "table.colEnterprise": "Enterprise",
       "table.env": "Entornos activos",
       "table.ttl": "Duración (TTL)",
@@ -1133,9 +1040,7 @@
       "table.sla": "SLA contractual",
       "table.none": "Ninguna",
       "table.m19": "$19/mes",
-      "table.m79": "$79/mes",
-      "table.ent": "$1.500 – $25.000+/año",
-
+      "table.ent": "$500 – $25.000+/año",
       "faq.eyebrow": "Preguntas frecuentes",
       "faq.h2": "Lo que nos preguntan antes de firmar.",
       "faq.q1": "¿Esto sustituye a un servicio de previsualización alojado?",
@@ -1152,7 +1057,6 @@
       "faq.a6": "No, y es deliberado. Previewd es un agente de un solo nodo: eso es lo que hace su estado verificable, su modelo formal completo y su operación sostenible en una red aislada. Un clúster distribuido exigiría consenso, es decir, una maquinaria que este producto no aporta.",
       "faq.q7": "¿Hay que modificar mis aplicaciones?",
       "faq.a7": "Deben construir una imagen a partir de una imagen base autorizada y no necesitar escribir fuera de su directorio de trabajo. Las aplicaciones que escriben al arrancar pueden apoyarse en los servicios auxiliares de la composición, que disponen de sistemas de archivos temporales limitados.",
-
       "contact.eyebrow": "Evaluación",
       "contact.h2": "Vívelo en tu red,<br>no en la nuestra.",
       "contact.lead": "Una evaluación se hace en tu casa: un host, un paquete, tu forja. Acompañamos la instalación y la revisión del modelo de amenaza, y luego decides con pruebas en la mano.",
@@ -1169,7 +1073,6 @@
       "contact.whatsappAria": "Hablar por WhatsApp al +33 6 65 11 03 38",
       "contact.note": "El envío abre tu cliente de correo: este formulario no transmite nada a un servidor.",
       "contact.noteSent": "Tu cliente de correo está abierto con la solicitud rellenada. No se ha transmitido nada a un servidor.",
-
       "footer.tagline": "Entornos de previsualización soberanos para infraestructuras reguladas y aisladas.",
       "footer.product": "Producto",
       "footer.resources": "Recursos",
@@ -1184,7 +1087,6 @@
       "footer.mono": "GitHub Enterprise Server · GitLab Self-Managed",
       "footer.rights": "Todos los derechos reservados.",
       "footer.demo": "Sitio de demostración · ningún recurso externo cargado",
-
       "pay.eyebrow": "Pago",
       "pay.docTitle": "Pago — Previewd",
       "pay.docDescription": "Finaliza tu suscripción a Previewd. Pago seguro mediante Stripe, sin compromiso.",
@@ -1209,7 +1111,6 @@
       "pay.payButton": "Pagar con tarjeta",
       "pay.mono": "Pago procesado por Stripe · sitio de demostración",
       "pay.monoSuccess": "Pago procesado por Stripe",
-
       "success.title": "Suscripción confirmada — Previewd",
       "success.h1": "Ya está.",
       "success.intro": "Tu suscripción se está activando. Recibirás un correo con las instrucciones para conectar tu primera forja.",
@@ -1219,19 +1120,13 @@
       "success.state": "Estado",
       "success.connect": "Conectar mi forja",
       "success.home": "Volver al inicio",
-      "success.help": "¿Una pregunta sobre este pedido? Escribe a <a href=\"mailto:contact@previewd.dev
-\">contact@previewd.dev
-</a> indicando el identificador de sesión que muestra Stripe.",
-
+      "success.help": "¿Una pregunta sobre este pedido? Escribe a <a href=\"mailto:previewd@previewd.dev \">previewd@previewd.dev </a> indicando el identificador de sesión que muestra Stripe.",
       "cancel.title": "Pago interrumpido — Previewd",
       "cancel.h1": "Pago interrumpido",
       "cancel.text": "No se ha cobrado ningún importe y tu tarjeta no se ha guardado. Puedes retomarlo cuando quieras — el carrito no caduca.",
       "cancel.retry": "Reintentar",
       "cancel.compare": "Comparar las ofertas",
-      "cancel.help": "¿Una tarjeta rechazada, una duda de facturación? Escribe a <a href=\"mailto:contact@previewd.dev
-\">contact@previewd.dev
-</a>. Y si prefieres no depender de nadie: la edición de código abierto es gratuita y completa.",
-
+      "cancel.help": "¿Una tarjeta rechazada, una duda de facturación? Escribe a <a href=\"mailto:previewd@previewd.dev \">previewd@previewd.dev </a>. Y si prefieres no depender de nadie: la edición de código abierto es gratuita y completa.",
       "js.copied": "Copiado",
       "js.copyFailed": "Fallo",
       "js.opening": "Abriendo el pago…",
